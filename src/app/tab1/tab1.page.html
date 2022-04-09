@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Login1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="wrapper">
+    <ion-text class="ion-text-center">
+      <h1>Welcome to ISWiB</h1>
+    </ion-text>
+    <ion-text class="ion-text-center">
+      <h4>Sign in to continue</h4>
+    </ion-text>
+
+    <ion-item class="ion-no-padding">
+      <ion-input placeholder="Your Email">
+        <ion-icon name="mail-outline" class="ion-padding-end"></ion-icon>
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="ion-no-padding">
+      <ion-input placeholder="Password">
+        <ion-icon name="lock-closed-outline" class="ion-padding-end"></ion-icon>
+      </ion-input>
+    </ion-item>
+
+    <div>
+      <ion-button expand="block" color="secondary">Sign in</ion-button>
+
+      <ion-button expand="block" fill="outline" color="secondary">
+        Login with Google
+        <ion-icon slot="start" name="logo-google"></ion-icon>
+      </ion-button>
+    </div>
+
+    <a href="https://www.google.com">
+      Forgot password?
+    </a>
+
+    <p>
+      <ion-text color="medium">Don't have an account?
+        <a href="https://www.google.com">
+          Register
+        </a>
+      </ion-text>
+    </p>
+  </div>
+</ion-content>
