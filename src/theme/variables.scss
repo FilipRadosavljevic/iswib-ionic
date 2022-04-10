@@ -181,6 +181,11 @@
 
     --ion-item-background: #150f38;
 
+    
+    --ion-tab-bar-background: #150f38;
+    --ion-tab-bar-color: #ffffff70;
+    --ion-tab-bar-color-selected: #fff;
+
     --ion-card-background: #1c1c1d;
   }
 
@@ -226,10 +231,13 @@
 
     --ion-item-background: #1e1e1e;
 
-    --ion-toolbar-background: #1f1f1f;
+    --ion-toolbar-background: #150f38;
 
-    --ion-tab-bar-background: #1f1f1f;
+    --ion-tab-bar-background: #150f38;
+    --ion-tab-bar-color: #ffffff70;
+    --ion-tab-bar-color-selected: #fff;
 
     --ion-card-background: #1e1e1e;
+
   }
 }
