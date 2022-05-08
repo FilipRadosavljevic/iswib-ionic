@@ -1,17 +1,338 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Schedule
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<!-- <ion-content [fullscreen]="true"> -->
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-header collapse="fade" class="ion-no-border">
     <ion-toolbar>
-      <ion-title size="large">Schedule</ion-title>
+      <img alt="logo" id="header_logo" height="24" float-left src="assets/images/iswib-logo.png">
     </ion-toolbar>
   </ion-header>
-  <p>Home</p>
+
+  <!-- <ion-segment scrollable mode="md" (ionChange)="segmentChanged()" [(ngModel)]="segment" color="warning">
+    <ion-segment-button mode="md" value="0">
+      <p>Description</p>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="1">
+      <p>Interconnections</p>
+    </ion-segment-button>
+    <ion-segment-button mode="md" value="2">
+      <p>Declensions</p>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
+    <ion-slide>
+      First
+    </ion-slide>
+    <ion-slide>
+      second
+    </ion-slide>
+    <ion-slide>
+      third
+    </ion-slide>
+  </ion-slides> -->
+  <div class="segment-wrapper">
+    <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
+      <ion-segment-button value="day1" checked>
+        <ion-label>
+          Mon<br>
+          <b>18</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day2">
+        <ion-label>
+          Tue<br>
+          <b>19</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day3">
+        <ion-label>
+          Wed<br>
+          <b>20</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day4">
+        <ion-label>
+          Thu<br>
+          <b>21</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day5">
+        <ion-label>
+          Fri<br>
+          <b>22</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day6">
+        <ion-label>
+          Sat<br>
+          <b>23</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day7">
+        <ion-label>
+          Sun<br>
+          <b>24</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day8">
+        <ion-label>
+          Mon<br>
+          <b>25</b>
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="type">
+    <ion-list *ngSwitchCase="'day1'">
+      <ion-grid>
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="2" class="ion-margin-end">
+            <ion-text>
+              <h3>08:00</h3>
+            </ion-text>
+            <ion-text>
+              <p>09:00</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>Breakfast</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'day2'">
+      <ion-grid>
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="2" class="ion-margin-end">
+            <ion-text>
+              <h3>08:00</h3>
+            </ion-text>
+            <ion-text>
+              <p>09:00</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>DAN 2</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'day3'">
+      <ion-grid>
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="2" class="ion-margin-end">
+            <ion-text>
+              <h3>08:00</h3>
+            </ion-text>
+            <ion-text>
+              <p>09:00</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>DAN 3</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'day4'">
+      <ion-grid>
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="2" class="ion-margin-end">
+            <ion-text>
+              <h3>08:00</h3>
+            </ion-text>
+            <ion-text>
+              <p>09:00</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>DAN 4</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'day5'">
+      <ion-grid>
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="2" class="ion-margin-end">
+            <ion-text>
+              <h3>08:00</h3>
+            </ion-text>
+            <ion-text>
+              <p>09:00</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>DAN 5</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'day6'">
+      <ion-grid>
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="2" class="ion-margin-end">
+            <ion-text>
+              <h3>08:00</h3>
+            </ion-text>
+            <ion-text>
+              <p>09:00</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>DAN 6</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'day7'">
+      <ion-grid>
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="2" class="ion-margin-end">
+            <ion-text>
+              <h3>08:00</h3>
+            </ion-text>
+            <ion-text>
+              <p>09:00</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>DAN 7</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'day8'">
+      <ion-grid>
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="2" class="ion-margin-end">
+            <ion-text>
+              <h3>08:00</h3>
+            </ion-text>
+            <ion-text>
+              <p>09:00</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>DAN 8</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+  </div>
+
+
 
 </ion-content>

@@ -1,0 +1,24 @@
+{
+    "day1": [ {
+        "id": "1",
+        "timeFrom": "08:00",
+        "timeTo": "09:00",
+        "eventTitle": "NASLOV",
+        "location": "LINK ZA GOOGLE MAPU"
+    },
+    {
+        "id": "2",
+        "timeFrom": "09:00",
+        "timeTo": "10:00",
+        "eventTitle": "NASLOV",
+        "location": "LINK ZA GOOGLE MAPU"
+    },
+    {
+        "id": "3",
+        "timeFrom": "13:00",
+        "timeTo": "16:00",
+        "eventTitle": "NASLOV",
+        "location": "LINK ZA GOOGLE MAPU"
+    }
+    ]
+  }

@@ -20,3 +20,61 @@ h4 {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
 }
+
+.segment-wrapper {
+  margin-bottom: 24px;
+}
+
+// .segment-wrapper {
+//   border-top: 1px solid #fff;
+//   border-bottom: 1px solid #fff;
+//   width: 100%;
+// }
+
+ion-segment {
+  // overwrite inline styles
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.ios ion-segment {
+  --background: #ffffff00;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.md ion-segment {
+  --background: #ffffff00;
+  margin-bottom: 5px;
+}
+
+ion-segment-button {
+  --indicator-color: #ffd700;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.ios ion-segment-button {
+  --color-checked: #150f38;
+}
+
+.md ion-segment-button {
+  --color-checked: #ffd700;
+  margin: 6px;
+}
+
+ion-card {
+  color: #150f38;
+  ion-card-header {
+    padding: 20px;
+  }
+  ion-label a {
+    color: #150f38;
+  }
+  ion-card-content {
+    padding: 10px 0;
+  }
+}
