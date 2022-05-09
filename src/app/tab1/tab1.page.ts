@@ -8,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class Tab1Page implements OnInit {
 
   type: string;
-  data: any;
+  data: any = [];
 
   constructor() {}
-  // constructor(public http: HttpClient) {}
 
   ngOnInit() {
     this.type = 'day1';
@@ -22,10 +21,11 @@ export class Tab1Page implements OnInit {
     console.log('Segment changed', ev);
   }
 
-  getData() {
-    fetch('../assets/data/schedule.json').then(res => res.json())
+  async getData() {
+    await fetch('../assets/data/schedule.json').then(res => res.json())
     .then(json => {
       this.data = json;
+      console.log(this.data);
       console.table(this.data);
     });
   }

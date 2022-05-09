@@ -84,20 +84,20 @@
 
   <div [ngSwitch]="type">
     <ion-list *ngSwitchCase="'day1'">
-      <ion-grid>
+      <ion-grid *ngFor="let item of data.day1; index as i">
         <ion-row class="ion-align-items-stretch ion-margin-bottom">
           <ion-col size="2" class="ion-margin-end">
             <ion-text>
-              <h3>08:00</h3>
+              <h3>{{ item.timeFrom }}</h3>
             </ion-text>
             <ion-text>
-              <p>09:00</p>
+              <p>{{ item.timeTo }}</p>
             </ion-text>
           </ion-col>
           <ion-col>
             <ion-card color="secondary">
               <ion-card-header>
-                <ion-card-title>Breakfast</ion-card-title>
+                <ion-card-title>{{ item.eventTitle }}</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
@@ -115,20 +115,20 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'day2'">
-      <ion-grid>
+      <ion-grid *ngFor="let item of data.day2; index as i">
         <ion-row class="ion-align-items-stretch ion-margin-bottom">
           <ion-col size="2" class="ion-margin-end">
             <ion-text>
-              <h3>08:00</h3>
+              <h3>{{ item.timeFrom }}</h3>
             </ion-text>
             <ion-text>
-              <p>09:00</p>
+              <p>{{ item.timeTo }}</p>
             </ion-text>
           </ion-col>
           <ion-col>
             <ion-card color="secondary">
               <ion-card-header>
-                <ion-card-title>DAN 2</ion-card-title>
+                <ion-card-title>{{item.eventTitle}} 2</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
@@ -146,20 +146,20 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'day3'">
-      <ion-grid>
+      <ion-grid *ngFor="let item of data.day3; index as i">
         <ion-row class="ion-align-items-stretch ion-margin-bottom">
           <ion-col size="2" class="ion-margin-end">
             <ion-text>
-              <h3>08:00</h3>
+              <h3>{{ item.timeFrom }}</h3>
             </ion-text>
             <ion-text>
-              <p>09:00</p>
+              <p>{{ item.timeTo }}</p>
             </ion-text>
           </ion-col>
           <ion-col>
             <ion-card color="secondary">
               <ion-card-header>
-                <ion-card-title>DAN 3</ion-card-title>
+                <ion-card-title>{{item.eventTitle}} 3</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
@@ -177,20 +177,20 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'day4'">
-      <ion-grid>
+      <ion-grid *ngFor="let item of data.day4; index as i">
         <ion-row class="ion-align-items-stretch ion-margin-bottom">
           <ion-col size="2" class="ion-margin-end">
             <ion-text>
-              <h3>08:00</h3>
+              <h3>{{ item.timeFrom }}</h3>
             </ion-text>
             <ion-text>
-              <p>09:00</p>
+              <p>{{ item.timeTo }}</p>
             </ion-text>
           </ion-col>
           <ion-col>
             <ion-card color="secondary">
               <ion-card-header>
-                <ion-card-title>DAN 4</ion-card-title>
+                <ion-card-title>{{item.eventTitle}} 4</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
@@ -208,20 +208,20 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'day5'">
-      <ion-grid>
+      <ion-grid *ngFor="let item of data.day5; index as i">
         <ion-row class="ion-align-items-stretch ion-margin-bottom">
           <ion-col size="2" class="ion-margin-end">
             <ion-text>
-              <h3>08:00</h3>
+              <h3>{{ item.timeFrom }}</h3>
             </ion-text>
             <ion-text>
-              <p>09:00</p>
+              <p>{{ item.timeTo }}</p>
             </ion-text>
           </ion-col>
           <ion-col>
             <ion-card color="secondary">
               <ion-card-header>
-                <ion-card-title>DAN 5</ion-card-title>
+                <ion-card-title>{{item.eventTitle}} 5</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
@@ -239,20 +239,20 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'day6'">
-      <ion-grid>
+      <ion-grid *ngFor="let item of data.day6; index as i">
         <ion-row class="ion-align-items-stretch ion-margin-bottom">
           <ion-col size="2" class="ion-margin-end">
             <ion-text>
-              <h3>08:00</h3>
+              <h3>{{ item.timeFrom }}</h3>
             </ion-text>
             <ion-text>
-              <p>09:00</p>
+              <p>{{ item.timeTo }}</p>
             </ion-text>
           </ion-col>
           <ion-col>
             <ion-card color="secondary">
               <ion-card-header>
-                <ion-card-title>DAN 6</ion-card-title>
+                <ion-card-title>{{item.eventTitle}} 6</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
@@ -270,20 +270,20 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'day7'">
-      <ion-grid>
+      <ion-grid *ngFor="let item of data.day7; index as i">
         <ion-row class="ion-align-items-stretch ion-margin-bottom">
           <ion-col size="2" class="ion-margin-end">
             <ion-text>
-              <h3>08:00</h3>
+              <h3>{{ item.timeFrom }}</h3>
             </ion-text>
             <ion-text>
-              <p>09:00</p>
+              <p>{{ item.timeTo }}</p>
             </ion-text>
           </ion-col>
           <ion-col>
             <ion-card color="secondary">
               <ion-card-header>
-                <ion-card-title>DAN 7</ion-card-title>
+                <ion-card-title>{{item.eventTitle}} 7</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
@@ -301,20 +301,20 @@
     </ion-list>
 
     <ion-list *ngSwitchCase="'day8'">
-      <ion-grid>
+      <ion-grid *ngFor="let item of data.day8; index as i">
         <ion-row class="ion-align-items-stretch ion-margin-bottom">
           <ion-col size="2" class="ion-margin-end">
             <ion-text>
-              <h3>08:00</h3>
+              <h3>{{ item.timeFrom }}</h3>
             </ion-text>
             <ion-text>
-              <p>09:00</p>
+              <p>{{ item.timeTo }}</p>
             </ion-text>
           </ion-col>
           <ion-col>
             <ion-card color="secondary">
               <ion-card-header>
-                <ion-card-title>DAN 8</ion-card-title>
+                <ion-card-title>{{item.eventTitle}} 8</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
