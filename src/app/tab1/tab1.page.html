@@ -1,4 +1,3 @@
-<!-- <ion-content [fullscreen]="true"> -->
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
   <ion-header collapse="fade" class="ion-no-border">
     <ion-toolbar>
@@ -6,29 +5,6 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <ion-segment scrollable mode="md" (ionChange)="segmentChanged()" [(ngModel)]="segment" color="warning">
-    <ion-segment-button mode="md" value="0">
-      <p>Description</p>
-    </ion-segment-button>
-    <ion-segment-button mode="md" value="1">
-      <p>Interconnections</p>
-    </ion-segment-button>
-    <ion-segment-button mode="md" value="2">
-      <p>Declensions</p>
-    </ion-segment-button>
-  </ion-segment>
-
-  <ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
-    <ion-slide>
-      First
-    </ion-slide>
-    <ion-slide>
-      second
-    </ion-slide>
-    <ion-slide>
-      third
-    </ion-slide>
-  </ion-slides> -->
   <div class="segment-wrapper">
     <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
       <ion-segment-button value="day1" checked>

@@ -5,5 +5,33 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-text>
+    <h1>#NurtureOurFuture</h1>
+  </ion-text>
+
+  <ion-list *ngFor="let item of data; index as i">
+    <ion-card [ngStyle]="{'background-color': item.cardColor}">
+      <ion-card-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card-title [ngStyle]="{'color': item.textColor}">{{ item.title | titlecase }}</ion-card-title>
+              <ion-card-subtitle [ngStyle]="{'color': item.textColor}">{{ item.moderator }}</ion-card-subtitle>
+            </ion-col>
+            <ion-col size="2">
+              <ion-avatar>
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+              </ion-avatar>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-header>
+      <ion-card-content [ngStyle]="{'color': item.textColor}">
+        {{ item.discription }}
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+
 </ion-content>

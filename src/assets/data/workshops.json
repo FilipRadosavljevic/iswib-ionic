@@ -1,0 +1,94 @@
+{
+    "workshops": [
+    {
+        "id": "1",
+        "title": "ECOLOGY AND THE ENVIRONMENT",
+        "moderator": "Moderator: ",
+        "discription": "In this workshop you will hear about these and many more ways in which you can help your planet and contribute to making it a healthier place to live in.",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#4453A4",
+        "textColor": "#FFFFFF"
+    },
+    {
+        "id": "2",
+        "title": "FASHION AND BEAUTY",
+        "moderator": "Moderator:",
+        "discription": "We would like you to take a deep dive into the world of creativity and creation and think about fashion and beauty from a different perspective - perspective of a sustainable future. ",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#186C5F",
+        "textColor": "#FFFFFF"
+    },
+    {
+        "id": "3",
+        "title": "GLOBAL STRATEGY",
+        "moderator": "Moderator:",
+        "discription": "This workshop will help and motivate you to find a global strategy which should establish equality in all spheres of life.",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#F79A4D",
+        "textColor": "#150F38"
+    },
+    {
+        "id": "4",
+        "title": "INNOVATION AND DEVELOPMENT",
+        "moderator": "Moderator:",
+        "discription": "By dictating the way of how we are performing our professional, and also every-day activities, technology has the power to impact the future in the way we let it to",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#FCD905",
+        "textColor": "#150F38"
+    },
+    {
+        "id": "5",
+        "title": "MARKETING AND MEDIA",
+        "moderator": "Moderator:",
+        "discription": "At this workshop, you and your team will have the aim to do a critical evaluation of marketing and social media campaigns in the past, and think about how sustainability and global problems are portrayed in the media?",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#F79A4D",
+        "textColor": "#150F38"
+    },
+    {
+        "id": "6",
+        "title": "MUSICAL",
+        "moderator": "Moderator:",
+        "discription": "Everybody has their own way of dealing with their thoughts, speaking their truth or advocating for what they believe in. For some this might be art, for others dancing or acting.",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#FCD905",
+        "textColor": "#150F38"
+    },
+    {
+        "id": "7",
+        "title": "SUSTAINABLE ART",
+        "moderator": "Moderator:",
+        "discription": "If you want to learn how to help protect, enlighten and educate yourself and others about art and environment by creating, this is the workshop for you.",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#F0482B",
+        "textColor": "#FFFFFF"
+    },
+    {
+        "id": "8",
+        "title": "URBAN SUSTAINABILITY",
+        "moderator": "Moderator:",
+        "discription": "The sustainable city, eco-city, or green city is a city designed with consideration for social, economic, environmental impact and resilient habitat for existing populations, without compromising the ability of future generations to experience the same.",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#4453A4",
+        "textColor": "#FFFFFF"
+    },
+    {
+        "id": "9",
+        "title": "WELLNESS AND MOVEMENT",
+        "moderator": "Moderator:",
+        "discription": "In this workshop, you will have the chance to work on your wellness through dance, yoga and other expressive activities.",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#186C5F",
+        "textColor": "#FFFFFF"
+    },
+    {
+        "id": "10",
+        "title": "CASE STUDY",
+        "moderator": "Moderator:",
+        "discription": "This workshop will give you the opportunity to collaborate and join the forces with your fellow workshop warriors, all in order to find a sustainable solution to a sustainability problem put in front of you.",
+        "image": "LINK ZA SLIKU",
+        "cardColor": "#F0482B",
+        "textColor": "#FFFFFF"
+    }
+    ]
+}

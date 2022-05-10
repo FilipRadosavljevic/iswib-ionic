@@ -3,53 +3,53 @@
         "id": "1",
         "timeFrom": "08:00",
         "timeTo": "09:00",
-        "eventTitle": "Dorucak",
+        "eventTitle": "Breakfast",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "2",
-        "timeFrom": "09:00",
+        "timeFrom": "09:30",
         "timeTo": "10:00",
-        "eventTitle": "Enerdzajzer",
+        "eventTitle": "Meet Your GGs!",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "3",
         "timeFrom": "12:00",
-        "timeTo": "13:00",
-        "eventTitle": "Ceremonija otvaranja",
+        "timeTo": "13:30",
+        "eventTitle": "Opening Ceremony",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
+        "id": "4",
         "timeFrom": "14:00",
         "timeTo": "15:00",
-        "eventTitle": "Rucak",
+        "eventTitle": "Lunch",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "16:00",
-        "timeTo": "17:00",
-        "eventTitle": "Ture Beograda",
+        "id": "5",
+        "timeFrom": "15:30",
+        "timeTo": "18:30",
+        "eventTitle": "City Tours",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "18:00",
-        "timeTo": "19:00",
-        "eventTitle": "Vecera",
+        "id": "6",
+        "timeFrom": "19:00",
+        "timeTo": "20:30",
+        "eventTitle": "Dinner",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "21:00",
-        "timeTo": "03:00",
-        "eventTitle": "Zurka",
+        "id": "7",
+        "timeFrom": "22:00",
+        "timeTo": "04:00",
+        "eventTitle": "Theme Party",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
+        "id": "8",
         "timeFrom": "04:00",
         "timeTo": "NN",
         "eventTitle": "After",
@@ -60,54 +60,47 @@
         "id": "1",
         "timeFrom": "08:00",
         "timeTo": "09:00",
-        "eventTitle": "Dorucak",
+        "eventTitle": "Breakfast",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "2",
-        "timeFrom": "09:00",
-        "timeTo": "10:00",
-        "eventTitle": "Enerdzajzer",
+        "timeFrom": "10:00",
+        "timeTo": "14:00",
+        "eventTitle": "Workshop",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "3",
-        "timeFrom": "12:00",
-        "timeTo": "13:00",
-        "eventTitle": "Ceremonija otvaranja",
+        "timeFrom": "14:30",
+        "timeTo": "15:30",
+        "eventTitle": "Lunch",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "14:00",
-        "timeTo": "15:00",
-        "eventTitle": "Rucak",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "16:00",
-        "timeTo": "17:00",
-        "eventTitle": "Ture Beograda",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
+        "id": "4",
         "timeFrom": "18:00",
         "timeTo": "19:00",
-        "eventTitle": "Vecera",
+        "eventTitle": "Country Fair Preparations",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
+        "id": "5",
+        "timeFrom": "19:00",
+        "timeTo": "21:00",
+        "eventTitle": "Country Fair",
+        "location": "LINK ZA GOOGLE MAPU"
+    },
+    {
+        "id": "6",
         "timeFrom": "21:00",
         "timeTo": "03:00",
-        "eventTitle": "Zurka",
+        "eventTitle": "Party",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "04:00",
+        "id": "7",
+        "timeFrom": "02:00",
         "timeTo": "NN",
         "eventTitle": "After",
         "location": "LINK ZA GOOGLE MAPU"
@@ -117,53 +110,39 @@
         "id": "1",
         "timeFrom": "08:00",
         "timeTo": "09:00",
-        "eventTitle": "Dorucak",
+        "eventTitle": "Breakfast",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "2",
-        "timeFrom": "09:00",
-        "timeTo": "10:00",
-        "eventTitle": "Enerdzajzer",
+        "timeFrom": "10:00",
+        "timeTo": "14:00",
+        "eventTitle": "Workshop",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "3",
-        "timeFrom": "12:00",
-        "timeTo": "13:00",
-        "eventTitle": "Ceremonija otvaranja",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "14:00",
-        "timeTo": "15:00",
-        "eventTitle": "Rucak",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "16:00",
-        "timeTo": "17:00",
-        "eventTitle": "Ture Beograda",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "18:00",
+        "timeFrom": "14:30",
         "timeTo": "19:00",
-        "eventTitle": "Vecera",
+        "eventTitle": "Kalemegdan Picnic",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "21:00",
-        "timeTo": "03:00",
-        "eventTitle": "Zurka",
+        "id": "4",
+        "timeFrom": "19:00",
+        "timeTo": "20:30",
+        "eventTitle": "Dinner",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
+        "id": "5",
+        "timeFrom": "22:00",
+        "timeTo": "04:00",
+        "eventTitle": "Boat Party",
+        "location": "LINK ZA GOOGLE MAPU"
+    },
+    {
+        "id": "6",
         "timeFrom": "04:00",
         "timeTo": "NN",
         "eventTitle": "After",
@@ -174,54 +153,47 @@
         "id": "1",
         "timeFrom": "08:00",
         "timeTo": "09:00",
-        "eventTitle": "Dorucak",
+        "eventTitle": "Breakfast",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "2",
-        "timeFrom": "09:00",
-        "timeTo": "10:00",
-        "eventTitle": "Enerdzajzer",
+        "timeFrom": "10:00",
+        "timeTo": "12:00",
+        "eventTitle": "Workshop",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "3",
-        "timeFrom": "12:00",
-        "timeTo": "13:00",
-        "eventTitle": "Ceremonija otvaranja",
+        "timeFrom": "12:30",
+        "timeTo": "14:30",
+        "eventTitle": "Serbia 101",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "14:00",
+        "id": "4",
+        "timeFrom": "14:30",
         "timeTo": "15:00",
-        "eventTitle": "Rucak",
+        "eventTitle": "Slava Lunch",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
+        "id": "5",
         "timeFrom": "16:00",
-        "timeTo": "17:00",
-        "eventTitle": "Ture Beograda",
+        "timeTo": "20:00",
+        "eventTitle": "Be a Serb Challenge",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "18:00",
-        "timeTo": "19:00",
-        "eventTitle": "Vecera",
+        "id": "6",
+        "timeFrom": "20:00",
+        "timeTo": "00:00",
+        "eventTitle": "Kafana with dinner",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "21:00",
-        "timeTo": "03:00",
-        "eventTitle": "Zurka",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "04:00",
+        "id": "7",
+        "timeFrom": "00:00",
         "timeTo": "NN",
         "eventTitle": "After",
         "location": "LINK ZA GOOGLE MAPU"
@@ -231,54 +203,47 @@
         "id": "1",
         "timeFrom": "08:00",
         "timeTo": "09:00",
-        "eventTitle": "Dorucak",
+        "eventTitle": "Breakfast",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "2",
-        "timeFrom": "09:00",
-        "timeTo": "10:00",
-        "eventTitle": "Enerdzajzer",
+        "timeFrom": "10:00",
+        "timeTo": "14:00",
+        "eventTitle": "Workshop",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "3",
-        "timeFrom": "12:00",
-        "timeTo": "13:00",
-        "eventTitle": "Ceremonija otvaranja",
+        "timeFrom": "14:30",
+        "timeTo": "15:30",
+        "eventTitle": "Lunch",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "14:00",
-        "timeTo": "15:00",
-        "eventTitle": "Rucak",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
+        "id": "4",
         "timeFrom": "16:00",
-        "timeTo": "17:00",
-        "eventTitle": "Ture Beograda",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "18:00",
         "timeTo": "19:00",
-        "eventTitle": "Vecera",
+        "eventTitle": "Ada Chill Out",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "21:00",
-        "timeTo": "03:00",
-        "eventTitle": "Zurka",
+        "id": "5",
+        "timeFrom": "19:00",
+        "timeTo": "20:00",
+        "eventTitle": "Packed Dinner",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "04:00",
+        "id": "6",
+        "timeFrom": "20:00",
+        "timeTo": "01:00",
+        "eventTitle": "Golfada Party",
+        "location": "LINK ZA GOOGLE MAPU"
+    },
+    {
+        "id": "7",
+        "timeFrom": "01:00",
         "timeTo": "NN",
         "eventTitle": "After",
         "location": "LINK ZA GOOGLE MAPU"
@@ -288,54 +253,40 @@
         "id": "1",
         "timeFrom": "08:00",
         "timeTo": "09:00",
-        "eventTitle": "Dorucak",
+        "eventTitle": "Breakfast",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "2",
-        "timeFrom": "09:00",
-        "timeTo": "10:00",
-        "eventTitle": "Enerdzajzer",
+        "timeFrom": "10:00",
+        "timeTo": "14:00",
+        "eventTitle": "Workshop",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "3",
-        "timeFrom": "12:00",
-        "timeTo": "13:00",
-        "eventTitle": "Ceremonija otvaranja",
+        "timeFrom": "14:30",
+        "timeTo": "15:30",
+        "eventTitle": "Lunch",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "14:00",
-        "timeTo": "15:00",
-        "eventTitle": "Rucak",
+        "id": "4",
+        "timeFrom": "15:30",
+        "timeTo": "18:30",
+        "eventTitle": "Free Time/EDU games?",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "16:00",
-        "timeTo": "17:00",
-        "eventTitle": "Ture Beograda",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "18:00",
-        "timeTo": "19:00",
-        "eventTitle": "Vecera",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "21:00",
+        "id": "5",
+        "timeFrom": "18:30",
         "timeTo": "03:00",
-        "eventTitle": "Zurka",
+        "eventTitle": "Art night",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "04:00",
+        "id": "6",
+        "timeFrom": "03:00",
         "timeTo": "NN",
         "eventTitle": "After",
         "location": "LINK ZA GOOGLE MAPU"
@@ -343,55 +294,55 @@
     ],
     "day7": [ {
         "id": "1",
-        "timeFrom": "08:00",
-        "timeTo": "09:00",
-        "eventTitle": "Dorucak",
+        "timeFrom": "09:30",
+        "timeTo": "11:00",
+        "eventTitle": "Breakfast",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "2",
-        "timeFrom": "09:00",
-        "timeTo": "10:00",
-        "eventTitle": "Enerdzajzer",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
         "timeFrom": "12:00",
-        "timeTo": "13:00",
-        "eventTitle": "Ceremonija otvaranja",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "14:00",
         "timeTo": "15:00",
-        "eventTitle": "Rucak",
+        "eventTitle": "Closin Ceremony",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "3",
-        "timeFrom": "16:00",
+        "timeFrom": "15:00",
+        "timeTo": "15:30",
+        "eventTitle": "Packed Lunch",
+        "location": "LINK ZA GOOGLE MAPU"
+    },
+    {
+        "id": "4",
+        "timeFrom": "15:30",
         "timeTo": "17:00",
-        "eventTitle": "Ture Beograda",
+        "eventTitle": "Flag Parade",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "18:00",
+        "id": "5",
+        "timeFrom": "17:00",
         "timeTo": "19:00",
-        "eventTitle": "Vecera",
+        "eventTitle": "Free Time",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
-        "timeFrom": "21:00",
-        "timeTo": "03:00",
-        "eventTitle": "Zurka",
+        "id": "6",
+        "timeFrom": "19:00",
+        "timeTo": "20:30",
+        "eventTitle": "Dinner",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
-        "id": "3",
+        "id": "7",
+        "timeFrom": "22:00",
+        "timeTo": "04:00",
+        "eventTitle": "Farewell Party",
+        "location": "LINK ZA GOOGLE MAPU"
+    },
+    {
+        "id": "8",
         "timeFrom": "04:00",
         "timeTo": "NN",
         "eventTitle": "After",
@@ -401,57 +352,15 @@
     "day8": [ {
         "id": "1",
         "timeFrom": "08:00",
-        "timeTo": "09:00",
-        "eventTitle": "Dorucak",
+        "timeTo": "09:30",
+        "eventTitle": "Breakfast",
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
         "id": "2",
-        "timeFrom": "09:00",
-        "timeTo": "10:00",
-        "eventTitle": "Enerdzajzer",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "12:00",
-        "timeTo": "13:00",
-        "eventTitle": "Ceremonija otvaranja",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "14:00",
-        "timeTo": "15:00",
-        "eventTitle": "Rucak",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "16:00",
-        "timeTo": "17:00",
-        "eventTitle": "Ture Beograda",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "18:00",
-        "timeTo": "19:00",
-        "eventTitle": "Vecera",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "21:00",
-        "timeTo": "03:00",
-        "eventTitle": "Zurka",
-        "location": "LINK ZA GOOGLE MAPU"
-    },
-    {
-        "id": "3",
-        "timeFrom": "04:00",
+        "timeFrom": "09:30",
         "timeTo": "NN",
-        "eventTitle": "After",
+        "eventTitle": "Departure",
         "location": "LINK ZA GOOGLE MAPU"
     }
     ]
