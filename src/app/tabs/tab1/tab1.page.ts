@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab1Page implements OnInit {
 
+  // type: string;
   type: string;
   data: any = [];
+  days: any;
 
   constructor() {}
 
@@ -17,6 +19,7 @@ export class Tab1Page implements OnInit {
     this.getData();
   }
 
+
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
   }
@@ -24,9 +27,16 @@ export class Tab1Page implements OnInit {
   async getData() {
     await fetch('../assets/data/schedule.json').then(res => res.json())
     .then(json => {
-      this.data = json;
+      this.data = Object.values(json);
+      this.days = Object.keys(json);
       console.log(this.data);
       console.table(this.data);
     });
+    // this.days = this.getDays();
+    console.log(this.days);
+  }
+
+  getDays() {
+    return Object.keys(this.data);
   }
 }

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-// import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+// Get image from Galery
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Platform } from '@ionic/angular';
+// Capture image
+import { CameraPreview } from '@capacitor-community/camera-preview';
+import { CameraPreviewOptions, CameraPreviewPictureOptions } from '@capacitor-community/camera-preview';
+import '@capacitor-community/camera-preview';
 
 const IMAGE_DIR = 'stored-images';
 interface LocalFile {
@@ -18,11 +22,42 @@ interface LocalFile {
 export class Tab3Page implements OnInit{
 
   images: LocalFile[] = [];
+  image = null;
+  cameraActive = false;
 
   constructor(private platform: Platform) {}
 
   async ngOnInit() {
 
+  }
+
+  openCamera() {
+    const cameraPreviewOptions: CameraPreviewOptions = {
+      position: 'rear',
+      width: window.screen.width-1,
+      height: window.screen.height-300
+    };
+    CameraPreview.start(cameraPreviewOptions);
+    this.cameraActive = true;
+  }
+
+  async stopCamera() {
+    await CameraPreview.stop();
+    this.cameraActive = false;
+  }
+
+  async captureImage() {
+    const cameraPreviewPictureOptions: CameraPreviewPictureOptions = {
+      quality: 90
+    };
+
+    const result = await CameraPreview.capture(cameraPreviewPictureOptions);
+    this.image = `data:image/jpeg;base64,${result.value}`;
+    this.stopCamera();
+  }
+
+  flipCamera() {
+    CameraPreview.flip();
   }
 
   async selectImage() {

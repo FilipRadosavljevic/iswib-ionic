@@ -48,6 +48,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>This app needs access to your Photo Library for uploading files</string>
+	<key>NSCameraUsageDescription</key>
+    <string>This app needs access to your Camera to allow you to take and upload a picture.</string>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>This app needs access to your Microphone to allow you to capture video.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>

@@ -1,0 +1,94 @@
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+  <ion-header collapse="fade" class="ion-no-border">
+    <ion-toolbar>
+      <img alt="logo" id="header_logo" height="24" float-left src="assets/images/iswib-logo.png">
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="segment-wrapper">
+    <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
+      <ion-segment-button value="day1" checked>
+        <ion-label>
+          Mon<br>
+          <b>18</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day2">
+        <ion-label>
+          Tue<br>
+          <b>19</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day3">
+        <ion-label>
+          Wed<br>
+          <b>20</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day4">
+        <ion-label>
+          Thu<br>
+          <b>21</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day5">
+        <ion-label>
+          Fri<br>
+          <b>22</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day6">
+        <ion-label>
+          Sat<br>
+          <b>23</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day7">
+        <ion-label>
+          Sun<br>
+          <b>24</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day8">
+        <ion-label>
+          Mon<br>
+          <b>25</b>
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="type" *ngFor="let day of days; index as i">
+    <ion-list *ngSwitchCase="day">
+      <ion-grid *ngFor="let item of data[i]">
+        <ion-row class="ion-align-items-stretch ion-margin-bottom">
+          <ion-col size="3">
+            <ion-text>
+              <h3>{{ item.timeFrom }}</h3>
+            </ion-text>
+            <ion-text>
+              <p>{{ item.timeTo }}</p>
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-card color="secondary">
+              <ion-card-header>
+                <ion-card-title>{{ item.eventTitle }}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-item color="secondary" slot="start" lines="none">
+                  <ion-icon name="location-outline" color="primary"></ion-icon>
+                  <ion-label><a href="www.google.com">Location</a></ion-label>
+                  <ion-avatar *ngIf="item.eventTitle === 'Workshop'" slot="end">
+                    <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+                  </ion-avatar>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+  </div>
+
+</ion-content>

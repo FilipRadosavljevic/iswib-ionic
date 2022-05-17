@@ -13,6 +13,24 @@ h4 {
   color: rgba(255, 255, 255, 0.8);
 }
 
+
+
+ion-card {
+  color: #150f38;
+  ion-card-header {
+    padding: 20px;
+  }
+  ion-label a {
+    color: #150f38;
+  }
+  ion-card-content {
+    padding: 10px 0;
+  }
+}
+
+.md ion-list {
+  background: #150f38;
+}
 .segment-wrapper {
   margin-bottom: 24px;
 }
@@ -50,21 +68,4 @@ ion-segment-button {
 .md ion-segment-button {
   --color-checked: #ffd700;
   margin: 6px;
-}
-
-ion-card {
-  color: #150f38;
-  ion-card-header {
-    padding: 20px;
-  }
-  ion-label a {
-    color: #150f38;
-  }
-  ion-card-content {
-    padding: 10px 0;
-  }
-}
-
-.md ion-list {
-  background: #150f38;
 }
