@@ -1,0 +1,13 @@
+ion-card {
+    padding: 15px;
+    ion-card-title {
+        margin: 16px 0 4px 0;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+    ion-card-subtitle {
+        font-size: 12px;
+        text-transform: lowercase;
+    }
+}
