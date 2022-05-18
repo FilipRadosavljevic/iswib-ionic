@@ -1,0 +1,36 @@
+.design {
+    background-image: url('../../../assets/images/hram.png');
+    background-size: cover;
+    width: 300px;
+    height: 400px;
+}
+
+ion-icon {
+    width: 25px;
+    height: 25px;
+}
+
+ion-item {
+    background: transparent;
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+ion-chip {
+    ion-icon {
+        width: 16px;
+        height: 16px;
+    }
+    ion-label {
+        margin-left: 5px;
+    }
+   padding: 15px;
+   --background: rgba(255, 255, 255, 0.6);
+}
+
+.arrow {
+    padding: 10px;
+
+}
