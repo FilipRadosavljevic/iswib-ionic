@@ -11,3 +11,32 @@ ion-card {
         text-transform: lowercase;
     }
 }
+
+h1 {
+    margin: 20px 0;
+}
+
+.categories-button {
+    min-width: 140px;
+}
+
+.sponsors-button {
+    min-width: 120px;
+}
+
+// ion-segment-button {
+//     position: relative;
+// }
+
+ion-chip {
+    background-color: white;
+    padding: 8px 16px;
+    // position: absolute;
+    // left: 0;
+    // top: 0;
+    ion-label {
+        text-transform: capitalize;
+        margin-left: 8px;
+        font-size: 12px;
+    }
+}

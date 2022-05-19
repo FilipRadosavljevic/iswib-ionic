@@ -9,7 +9,7 @@
 
   <div class="segment-wrapper">
     <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
-      <ion-segment-button value="sponsor1" checked>
+      <ion-segment-button class="sponsors-button" value="sponsor1" checked>
         <ion-card color="light">
           <img src="../../../assets/images/red-bull-logo.png" />
           <ion-card-header>
@@ -18,7 +18,7 @@
           </ion-card-header>
         </ion-card>
       </ion-segment-button>
-      <ion-segment-button value="sponsor2">
+      <ion-segment-button class="sponsors-button" value="sponsor2">
         <ion-card color="light">
           <img src="../../../assets/images/red-bull-logo.png" />
           <ion-card-header>
@@ -27,7 +27,7 @@
           </ion-card-header>
         </ion-card>
       </ion-segment-button>
-      <ion-segment-button value="sponsor3">
+      <ion-segment-button class="sponsors-button" value="sponsor3">
         <ion-card color="light">
           <img src="../../../assets/images/red-bull-logo.png" />
           <ion-card-header>
@@ -36,7 +36,7 @@
           </ion-card-header>
         </ion-card>
       </ion-segment-button>
-      <ion-segment-button value="sponsor4">
+      <ion-segment-button class="sponsors-button" value="sponsor4">
         <ion-card color="light">
           <img src="../../../assets/images/red-bull-logo.png" />
           <ion-card-header>
@@ -45,7 +45,7 @@
           </ion-card-header>
         </ion-card>
       </ion-segment-button>
-      <ion-segment-button value="sponsor5">
+      <ion-segment-button class="sponsors-button" value="sponsor5">
         <ion-card color="light">
           <img src="../../../assets/images/red-bull-logo.png" />
           <ion-card-header>
@@ -54,7 +54,7 @@
           </ion-card-header>
         </ion-card>
       </ion-segment-button>
-      <ion-segment-button value="sponsor6">
+      <ion-segment-button class="sponsors-button" value="sponsor6">
         <ion-card color="light">
           <img src="../../../assets/images/red-bull-logo.png" />
           <ion-card-header>
@@ -63,7 +63,7 @@
           </ion-card-header>
         </ion-card>
       </ion-segment-button>
-      <ion-segment-button value="sponsor7">
+      <ion-segment-button class="sponsors-button" value="sponsor7">
         <ion-card color="light">
           <img src="../../../assets/images/red-bull-logo.png" />
           <ion-card-header>
@@ -72,7 +72,7 @@
           </ion-card-header>
         </ion-card>
       </ion-segment-button>
-      <ion-segment-button value="sponsor8">
+      <ion-segment-button class="sponsors-button" value="sponsor8">
         <ion-card color="light">
           <img src="../../../assets/images/red-bull-logo.png" />
           <ion-card-header>
@@ -80,6 +80,31 @@
             <ion-card-subtitle>See more</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <h1>Search by categories</h1>
+
+  <div class="segment-wrapper">
+    <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
+      <ion-segment-button class="categories-button" value="restaurants" checked>
+        <ion-chip>
+          <ion-icon name="restaurant-sharp" color="primary"></ion-icon>
+          <ion-label color="primary">Restaurants</ion-label>
+        </ion-chip>
+      </ion-segment-button>
+      <ion-segment-button class="categories-button" value="fastfood">
+        <ion-chip>
+          <ion-icon name="fast-food" color="primary"></ion-icon>
+          <ion-label color="primary">Fast-food</ion-label>
+        </ion-chip>
+      </ion-segment-button>
+      <ion-segment-button class="categories-button" value="vegan">
+        <ion-chip>
+          <ion-icon name="leaf" color="primary"></ion-icon>
+          <ion-label color="primary">Vegan</ion-label>
+        </ion-chip>
       </ion-segment-button>
     </ion-segment>
   </div>

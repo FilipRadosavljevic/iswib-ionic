@@ -1,27 +1,37 @@
 [
     {
-        "name": "Temple Saint Sava",
+        "id": "1",
+        "name": "Temple Saint Sava 1",
         "image": "../../../assets/images/hram.png",
+        "likes": 0,
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
+        "id": "2",
         "name": "Temple Saint Sava 2",
         "image": "../../../assets/images/hram.png",
+        "likes": 0,
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
+        "id": "3",
         "name": "Temple Saint Sava 3",
         "image": "../../../assets/images/hram.png",
+        "likes": 0,
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
+        "id": "4",
         "name": "Temple Saint Sava 4",
         "image": "../../../assets/images/hram.png",
+        "likes": 0,
         "location": "LINK ZA GOOGLE MAPU"
     },
     {
+        "id": "5",
         "name": "Temple Saint Sava 5",
         "image": "../../../assets/images/hram.png",
+        "likes": 0,
         "location": "LINK ZA GOOGLE MAPU"
     }
 ]

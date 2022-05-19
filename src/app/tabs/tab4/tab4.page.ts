@@ -9,11 +9,9 @@ export class Tab4Page implements OnInit{
 
   data: any;
   likes: number;
-  dislikes: number;
 
   constructor() {
     this.likes = 0;
-    this.dislikes = 0;
   }
 
   ngOnInit() {
@@ -29,12 +27,13 @@ export class Tab4Page implements OnInit{
     });
   }
 
-  handleLike() {
-    this.likes++;
+  handleLike(id) {
+    console.log(id);
+    this.data[id-1].likes++;
   }
 
   handleDislike() {
-    this.dislikes++;
+    this.likes--;
   }
 
   handleArrow(event) {

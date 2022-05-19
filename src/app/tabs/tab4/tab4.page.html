@@ -23,8 +23,8 @@
             <ion-list class="bg-transparent">
               <ion-item color="none" lines="none">
                 <!-- <ion-label slot="end" *ngIf="likes !== 0">{{likes}}</ion-label> -->
-                <ion-label slot="end">{{likes}}</ion-label>
-                <ion-icon name="heart-outline" color="light" slot="end" (click)="handleLike()"></ion-icon>
+                <ion-label slot="end">{{item.likes}}</ion-label>
+                <ion-icon [class]="" name="heart-outline" color="light" slot="end" (click)="handleLike(item.id)"></ion-icon>
               </ion-item>
             </ion-list>
           </ion-card-header>
