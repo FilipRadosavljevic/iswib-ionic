@@ -9,6 +9,7 @@ export class Tab4Page implements OnInit{
 
   data: any;
   likes: number;
+  // isLiked = false;
 
   constructor() {
     this.likes = 0;
@@ -28,12 +29,17 @@ export class Tab4Page implements OnInit{
   }
 
   handleLike(id) {
+    // if(!this.data[id-1].isLiked) {
+      this.data[id-1].isLiked = !this.data[id-1].isLiked;
+      this.data[id-1].likes++;
+    // } else {
+    //   this.handleDislike(id);
+    // }
     console.log(id);
-    this.data[id-1].likes++;
   }
 
-  handleDislike() {
-    this.likes--;
+  handleDislike(id) {
+    this.data[id-1].likes--;
   }
 
   handleArrow(event) {
