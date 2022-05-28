@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="fade" class="ion-no-border">
+    <ion-toolbar>
+      <ion-icon class="back-button" (click)="goToPage()" name="arrow-back"></ion-icon>
+      <img alt="logo" id="header_logo" height="24" float-left src="assets/images/iswib-logo.png">
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="wrapper">
+
+    <!-- <ion-list> -->
+    <img class="background-picture" src="assets/images/hram.png">
+    <!-- </ion-list>
+    <ion-list class="list-card"> -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="primary" class="ion-margin-bottom">Temple Saint Sava</ion-card-title>
+        <ion-card-subtitle color="primary">Description</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet repudiandae quia quidem, magni dolor at
+        quaerat
+        iste dolorem possimus deserunt cupiditate totam quae laudantium exercitationem voluptate necessitatibus eum?
+        Dolorum, dicta.
+        <ion-list class="location">
+          <ion-icon class="location-icon" color="primary" name="location-sharp"></ion-icon>
+          <ion-label color="primary">See location > </ion-label>
+        </ion-list>
+        <ion-list class="center">
+          <ion-icon class="back-button-bottom" color="primary" name="chevron-up-circle" (click)="goToPage()"></ion-icon>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- </ion-list> -->
+  </div>
+
+
+
+</ion-content>
+
+<ion-footer>
+
+</ion-footer>

@@ -44,20 +44,23 @@ ion-chip {
 
 // heart
 .heart {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     background: url("../../../assets/images/heart-animation.png") no-repeat;
     background-position: 0 0;
     cursor: pointer;
     transition: background-position 1s steps(28);
     transition-duration: 0s;
+    margin-top: -20px;
     
     &.is-active {
       transition-duration: 1s;
-      background-position: -1400px 0;
+      background-position: -2800px 0;
     }
-}
+  }
 
-.likes {
-    margin-left: -10px;
-}
+  .likes {
+    margin-left: -25px;
+    margin-top: -20px;
+    font-size: 18px;
+  }
