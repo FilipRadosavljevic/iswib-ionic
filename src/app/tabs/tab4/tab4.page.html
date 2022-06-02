@@ -36,7 +36,7 @@
           </ion-card-header>
           <ion-card-content>
             <ion-list class="bg-transparent flex">
-              <ion-chip>
+              <ion-chip (click)="goToLocation(item.id)">
                 <ion-icon color="primary" name="location-sharp"></ion-icon>
                 <ion-label color="primary">{{ item.name }}</ion-label>
               </ion-chip>

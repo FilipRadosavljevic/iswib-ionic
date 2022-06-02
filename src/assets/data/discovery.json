@@ -5,7 +5,7 @@
         "image": "../../../assets/images/hram.png",
         "likes": 0,
         "isLiked": false,
-        "location": "LINK ZA GOOGLE MAPU"
+        "location": "https://www.google.com/maps/search/?api=1&query=44.7981967,20.46914"
     },
     {
         "id": "2",

@@ -47,4 +47,8 @@ export class Tab4Page implements OnInit {
     this.router.navigate(['/discovery-page']);
   }
 
+  goToLocation(id) {
+    window.open(this.data[id-1].location);
+  }
+
 }
