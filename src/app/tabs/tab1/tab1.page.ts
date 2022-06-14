@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-tab1',
@@ -12,7 +13,11 @@ export class Tab1Page implements OnInit {
   data: any = [];
   days: any;
 
-  constructor() {}
+  constructor(private dataService: DataService) {
+    this.dataService.getSchedule().subscribe(res => {
+      console.log(res);
+    });
+  }
 
   ngOnInit() {
     this.type = 'day1';
@@ -32,11 +37,7 @@ export class Tab1Page implements OnInit {
       console.log(this.data);
       console.table(this.data);
     });
-    // this.days = this.getDays();
     console.log(this.days);
   }
 
-  getDays() {
-    return Object.keys(this.data);
-  }
 }

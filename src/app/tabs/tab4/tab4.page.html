@@ -25,7 +25,7 @@
                 <!-- <ion-label slot="end" *ngIf="likes !== 0">{{likes}}</ion-label> -->
                 <div class="stage" slot="end">
                   <div class="heart" [ngClass]="item.isLiked ? 'heart is-active' : 'heart'"
-                    (click)="handleLike(item.id)">
+                    (click)="item.isLiked ? handleDislike(item.id) : handleLike(item.id)">
                   </div>
                 </div>
                 <ion-label slot="end" class="likes">{{item.likes}}</ion-label>
