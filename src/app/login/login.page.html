@@ -1,9 +1,9 @@
 <ion-content>
-  <img alt="logo" id="header_logo" height="max" float-left src="assets/images/login.png">
-  
+  <img alt="logo" id="header_picture" float-left src="assets/images/login.png">
+
   <h1>Welcome to ISWiB</h1>
   <p>Sign in to continue</p>
-  
+
   <form (ngSubmit)="login()" [formGroup]="credentials">
     <ion-item lines="full">
       <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
@@ -12,7 +12,8 @@
     </ion-item>
     <ion-item lines="full">
       <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 6 characters</ion-note>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 6
+        characters</ion-note>
       <!-- <ion-input type="password" required></ion-input> -->
     </ion-item>
     <ion-row>
@@ -21,18 +22,14 @@
       </ion-col>
     </ion-row>
   </form>
-  
+
   <span class="divider line one-line">OR</span>
-  
+
   <ion-button type="submit" color="primary" expand="block">
     <ion-icon name="logo-google" slot="start"></ion-icon>
     Login with Google
   </ion-button>
-  <ion-button type="submit" color="primary" expand="block">
-    <ion-icon name="logo-facebook"></ion-icon>
-    Login with Facebook
-  </ion-button>
-  
+
   <ion-label>
     <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
   </ion-label>

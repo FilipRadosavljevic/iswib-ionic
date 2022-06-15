@@ -4,6 +4,7 @@ import {
   Auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signOut
 } from '@angular/fire/auth';
 @Injectable({
@@ -30,6 +31,16 @@ export class AuthenticationService {
       const user = await signInWithEmailAndPassword(this.auth, email, password);
       return user;
     } catch (e) {
+      return null;
+    }
+  }
+
+  async recover({email}): Promise<void> {
+    try {
+      const resetEmail = await sendPasswordResetEmail(this.auth, email);
+      return resetEmail;
+    } catch (e) {
+      console.log(e);
       return null;
     }
   }
