@@ -19,6 +19,11 @@ export class DataService {
     return collectionData(workshopsRef);
   }
 
+  getSponsors() {
+    const sponsorsRef = collection(this.firestore, 'sponsors');
+    return collectionData(sponsorsRef);
+  }
+
   getScheduleById(id) {
     const scheduleRef = doc(this.firestore, `schedule/${id}`);
     return docData(scheduleRef, { idField: 'id' });

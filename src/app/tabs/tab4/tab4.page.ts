@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -11,22 +12,26 @@ import { UsersService } from 'src/app/services/users.service';
 export class Tab4Page implements OnInit, OnDestroy {
 
   data: any;
+  sub: Subscription;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private dataService: DataService,
     private user: UsersService
-    ) {
-      console.log(this.dataService.getSchedule());
+    ) {}
 
-  }
-
-  async ngOnInit() {
-    // this.dataService.getDiscovery().subscribe(res => {
-    //   this.data = res;
-    // });
+  ngOnInit() {
+    this.getData();
   }
 
   ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  async getData() {
+    this.sub = this.dataService.getDiscovery().subscribe(res => {
+      this.data = res;
+    });
   }
 
   handleLike(id) {

@@ -1,11 +1,13 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="fade" class="ion-no-border">
-    <ion-toolbar>
-      <ion-icon class="back-button" (click)="goToPage()" name="arrow-back"></ion-icon>
-      <img alt="logo" id="header_logo" height="24" float-left src="assets/images/iswib-logo.png">
-    </ion-toolbar>
-  </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab4"></ion-back-button>
+    </ion-buttons>
+    <img alt="logo" id="header_logo" height="24" float-left src="assets/images/iswib-logo.png">
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
   <div id="wrapper">
 
     <!-- <ion-list> -->
