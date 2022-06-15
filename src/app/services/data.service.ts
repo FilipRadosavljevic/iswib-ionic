@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { collectionData, collection,  docData, Firestore, doc, updateDoc } from '@angular/fire/firestore';
-import { get, getDatabase, onValue, ref } from 'firebase/database';
-
-// import { collection } from '@firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +14,10 @@ export class DataService {
     return collectionData(scheduleRef, { idField: 'id' });
   }
 
-  // async getSchedule() {
-  //   const db = getDatabase();
-  //   const starCountRef = ref(db, 'schedule/day1');
-  //   // const snapshot = await get(ref(db, 'schedule'));
-  //   // return snapshot.val();
-  //   return onValue(starCountRef, (snapshot) => {
-  //     snapshot.val();
-
-  //   });
-  // }
+  getWorkshops() {
+    const workshopsRef = collection(this.firestore, 'workshops');
+    return collectionData(workshopsRef);
+  }
 
   getScheduleById(id) {
     const scheduleRef = doc(this.firestore, `schedule/${id}`);
