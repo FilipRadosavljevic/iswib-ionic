@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/auth/authentication.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-registration',
@@ -13,13 +14,13 @@ export class RegistrationPage implements OnInit {
 
   credentials: FormGroup;
 
-
   constructor(
     private fb: FormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private user: UsersService
   ) {}
 
   get email() {
@@ -51,9 +52,16 @@ export class RegistrationPage implements OnInit {
     await loading.present();
 
     const user = await this.authService.register(this.credentials.value);
+    console.log(user);
+    console.log(user.user.uid);
     await loading.dismiss();
 
     if (user) {
+      this.user.setUser({
+        email: this.email.value,
+        userID: user.user.uid
+      });
+      this.user.setUserToDB(this.email.value, user.user.uid);
       this.router.navigateByUrl('/tabs', { replaceUrl: true });
     } else {
       this.showAlert('Registration failed', 'Please try again!');

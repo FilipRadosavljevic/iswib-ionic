@@ -28,7 +28,7 @@
                     (click)="item.isLiked ? handleDislike(item.id) : handleLike(item.id)">
                   </div>
                 </div>
-                <ion-label slot="end" class="likes">{{item.likes}}</ion-label>
+                <ion-label slot="end" class="likes">{{item.likes.length}}</ion-label>
 
                 <!-- <ion-icon [class]="" name="heart-outline" color="light" slot="end" (click)="handleLike(item.id)"></ion-icon> -->
               </ion-item>

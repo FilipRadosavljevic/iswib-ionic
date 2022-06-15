@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { get, getDatabase, onValue, ref } from 'firebase/database';
 
 @Component({
   selector: 'app-tab1',
@@ -8,15 +9,11 @@ import { DataService } from '../../services/data.service';
 })
 export class Tab1Page implements OnInit {
 
-  // type: string;
   type: string;
   data: any = [];
   days: any;
 
   constructor(private dataService: DataService) {
-    this.dataService.getSchedule().subscribe(res => {
-      console.log(res);
-    });
   }
 
   ngOnInit() {
@@ -29,15 +26,12 @@ export class Tab1Page implements OnInit {
     console.log('Segment changed', ev);
   }
 
+
   async getData() {
-    await fetch('../assets/data/schedule.json').then(res => res.json())
-    .then(json => {
-      this.data = Object.values(json);
-      this.days = Object.keys(json);
-      console.log(this.data);
-      console.table(this.data);
+    this.dataService.getSchedule().subscribe(res => {
+      this.data = Object.values(res[0]).filter(element => typeof(element) === 'object');
+      this.days = Object.keys(res[0]).filter(element => element !== 'id');
     });
-    console.log(this.days);
   }
 
 }

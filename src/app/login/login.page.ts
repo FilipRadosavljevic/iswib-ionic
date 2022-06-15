@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/auth/authentication.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -44,6 +45,7 @@ export class LoginPage implements OnInit {
     await loading.dismiss();
 
     if (user) {
+
       this.router.navigateByUrl('/tabs', { replaceUrl: true });
     } else {
       this.showAlert('Login failed', 'Please try again!');

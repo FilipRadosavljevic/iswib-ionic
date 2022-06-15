@@ -8,6 +8,7 @@ export const environment = {
   firebaseConfig: {
     apiKey: 'AIzaSyDG4DBho5C6jetLFvmfsPYPoV4X8wLGWy8',
     authDomain: 'iswib-app-ionic.firebaseapp.com',
+    databaseURL: 'https://iswib-app-ionic-default-rtdb.europe-west1.firebasedatabase.app',
     projectId: 'iswib-app-ionic',
     storageBucket: 'iswib-app-ionic.appspot.com',
     messagingSenderId: '383398594023',

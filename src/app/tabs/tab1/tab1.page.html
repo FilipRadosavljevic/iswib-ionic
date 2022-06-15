@@ -77,8 +77,10 @@
               </ion-card-header>
               <ion-card-content>
                 <ion-item color="secondary" slot="start" lines="none">
-                  <ion-icon name="location-outline" color="primary"></ion-icon>
-                  <ion-label><a href="">Location</a>
+
+                  <ion-label *ngIf="item.location !== ''">
+                    <ion-icon name="location-outline" color="primary"></ion-icon>
+                    <a [href]="">See location</a>
                   </ion-label>
                   <ion-avatar *ngIf="item.eventTitle === 'Workshop'" slot="end">
                     <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
