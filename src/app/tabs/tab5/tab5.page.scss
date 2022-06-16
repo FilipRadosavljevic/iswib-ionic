@@ -16,27 +16,53 @@ h1 {
     margin: 20px 0;
 }
 
+.segment-wrapper {
+    margin-bottom: 25px;
+}
+
 .categories-button {
     min-width: 140px;
+    // margin-left: 10px;
+
+    // ion-chip {
+    //     width: 140px;
+    // }
 }
 
 .sponsors-button {
     min-width: 120px;
 }
 
-// ion-segment-button {
-//     position: relative;
-// }
 
 ion-chip {
-    background-color: white;
+    background-color: #fff;
     padding: 8px 16px;
-    // position: absolute;
-    // left: 0;
-    // top: 0;
     ion-label {
         text-transform: capitalize;
         margin-left: 8px;
         font-size: 12px;
     }
+}
+
+.restaurant-card {
+    border: 1px solid #fff;
+    border-radius: 10px;
+    h1 {
+        margin: 0;
+    }
+    ion-card-content {
+        padding: 5px 0 0 20px;
+    }
+    ion-label {
+        margin-left: 4px;
+    }
+    #vegan {
+        font-size: 30px;
+        color: green;
+        float: right;
+    }
+}
+
+.restaurant-chip {
+    background-color: rgba(255, 255, 255, 0.404);
 }

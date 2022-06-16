@@ -9,7 +9,8 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class Tab5Page implements OnInit, OnDestroy {
 
-  data: any = [];
+  sponsors: any = [];
+  restaurants: any = [];
   sub: Subscription;
 
   constructor(private dataService: DataService) {}
@@ -24,12 +25,20 @@ export class Tab5Page implements OnInit, OnDestroy {
 
   async getData() {
     this.sub = this.dataService.getSponsors().subscribe(res => {
-      this.data = res;
+      this.sponsors = res;
+      console.log(res);
+    });
+    this.dataService.getRestaurants().subscribe(res => {
+      this.restaurants = res;
       console.log(res);
     });
   }
 
   segmentChanged(ev) {
     console.log(ev);
+  }
+
+  goToLocation() {
+    console.log('location');
   }
 }

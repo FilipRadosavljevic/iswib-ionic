@@ -9,11 +9,11 @@
 
   <div class="segment-wrapper">
     <ion-segment scrollable>
-      <ion-segment-button class="sponsors-button" *ngFor="let item of data; index as i">
+      <ion-segment-button class="sponsors-button" *ngFor="let sponsor of sponsors; index as i">
         <ion-card color="light">
-          <img [src]="item.image" />
+          <img [src]="sponsor.image" />
           <ion-card-header>
-            <ion-card-title>{{item.name}}</ion-card-title>
+            <ion-card-title>{{sponsor.name}}</ion-card-title>
             <ion-card-subtitle>See more</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
@@ -45,5 +45,27 @@
       </ion-segment-button>
     </ion-segment>
   </div>
+
+  <ion-card *ngFor="let restaurant of restaurants" class="restaurant-card ion-margin-bottom" color="primary">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <img src="https://material.angular.io/assets/img/examples/shiba1.jpg">
+        </ion-col>
+        <ion-col>
+          <ion-card-content>
+            <h1>{{restaurant.name}}</h1>
+            <p>Open from: {{restaurant.timeFrom}} - {{restaurant.timeTo}} </p>
+            <ion-chip (click)="goToLocation()" class="restaurant-chip">
+              <ion-icon color="primary" name="location-sharp"></ion-icon>
+              <ion-label color="primary">See location</ion-label>
+            </ion-chip>
+            <ion-icon *ngIf="restaurant.vegan" id="vegan" name="leaf"></ion-icon>
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
 
 </ion-content>

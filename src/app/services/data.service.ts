@@ -24,6 +24,11 @@ export class DataService {
     return collectionData(sponsorsRef);
   }
 
+  getRestaurants() {
+    const restaurantsRef = collection(this.firestore, 'restaurants');
+    return collectionData(restaurantsRef);
+  }
+
   getScheduleById(id) {
     const scheduleRef = doc(this.firestore, `schedule/${id}`);
     return docData(scheduleRef, { idField: 'id' });
