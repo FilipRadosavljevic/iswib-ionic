@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { collectionData, collection,  docData, Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-interface User {
+
+export interface User {
   email: string;
   userID: string;
 }
@@ -20,7 +22,8 @@ export class UsersService {
   }
 
   getUserId() {
-    return this.user.userID;
+    const auth = getAuth();
+    return auth.currentUser.uid;
   }
 
   setUserToDB(username, id) {

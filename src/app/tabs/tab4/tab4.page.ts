@@ -13,12 +13,15 @@ export class Tab4Page implements OnInit, OnDestroy {
 
   data: any;
   sub: Subscription;
+  userID: any;
+  hasLiked: any;
 
   constructor(
     private router: Router,
     private dataService: DataService,
     private user: UsersService
-    ) {}
+    ) {
+    }
 
   ngOnInit() {
     this.getData();
@@ -34,21 +37,32 @@ export class Tab4Page implements OnInit, OnDestroy {
     });
   }
 
-  handleLike(id) {
-    this.data[id-1].isLiked = !this.data[id-1].isLiked;
-    const userID = this.user.getUserId();
-    this.data[id-1].likes.push(userID);
-    console.log(this.data);
+  // async handleLike(id) {
+  //   // this.data[id-1].isLiked = !this.data[id-1].isLiked;
+  //   const userid = this.user.getUserId();
+  //   this.hasLiked = await this.data[id-1].likes.includes(userid);
+  //   // console.log(this.hasLiked);
 
-    // this.dataService.updateDiscovery(this.data, id);
-  }
+  //   if(!this.hasLiked) {
+  //     this.data[id-1].likes.push(userid);
+  //     this.dataService.updateDiscovery(this.data, id);
+  //   } else {
+  //     this.handleDislike(id);
+  //   }
+  // }
 
-  handleDislike(id) {
-    this.data[id-1].isLiked = !this.data[id-1].isLiked;
-    this.data[id-1].likes.splice(id-1, 1);
-    console.log(this.data);
-    // this.dataService.updateDiscovery(this.data, id);
-  }
+  // handleDislike(id) {
+  //   // this.data[id-1].isLiked = !this.data[id-1].isLiked;
+  //   this.data[id-1].likes.splice(id-1, 1);
+  //   this.dataService.updateDiscovery(this.data, id);
+  // }
+
+  // async toggleHeart(id) {
+  //   const userid = this.user.getUserId();
+  //   this.hasLiked = await this.data[id-1].likes.includes(userid);
+  //   console.log(this.hasLiked);
+  //   return 'heart';
+  // }
 
   goToPage() {
     this.router.navigate(['/discovery-page']);

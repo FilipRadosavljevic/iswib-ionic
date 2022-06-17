@@ -33,6 +33,8 @@ export class Tab1Page implements OnInit, OnDestroy {
     this.sub = this.dataService.getSchedule().subscribe(res => {
       this.data = Object.values(res[0]).filter(element => typeof(element) === 'object');
       this.days = Object.keys(res[0]).filter(element => element !== 'id');
+      console.log(this.data);
+      console.log(this.days);
     });
   }
 

@@ -51,17 +51,17 @@ export class RegistrationPage implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    const user = await this.authService.register(this.credentials.value);
-    console.log(user);
-    console.log(user.user.uid);
+    const newUser = await this.authService.register(this.credentials.value);
+    console.log(newUser);
+    console.log(newUser.user.uid);
     await loading.dismiss();
 
-    if (user) {
+    if (newUser) {
       this.user.setUser({
         email: this.email.value,
-        userID: user.user.uid
+        userID: newUser.user.uid
       });
-      this.user.setUserToDB(this.email.value, user.user.uid);
+      this.user.setUserToDB(this.email.value, newUser.user.uid);
       this.router.navigateByUrl('/tabs', { replaceUrl: true });
     } else {
       this.showAlert('Registration failed', 'Please try again!');

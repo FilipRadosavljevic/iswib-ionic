@@ -35,7 +35,7 @@ ion-chip {
         margin-left: 5px;
     }
    padding: 15px;
-   --background: rgba(255, 255, 255, 0.6);
+   --background: rgba(255, 255, 255, 0.8);
 }
 
 .arrow {
@@ -59,8 +59,13 @@ ion-chip {
     }
   }
 
-  .likes {
+.likes {
     margin-left: -25px;
     margin-top: -20px;
     font-size: 18px;
-  }
+}
+
+h1 {
+    color: #fff;
+    font-weight: 600;
+}

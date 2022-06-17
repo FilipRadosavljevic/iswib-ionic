@@ -29,6 +29,11 @@ export class DataService {
     return collectionData(restaurantsRef);
   }
 
+  getDiscovery() {
+    const discoveryRef = collection(this.firestore, 'discovery');
+    return collectionData(discoveryRef);
+  }
+
   getScheduleById(id) {
     const scheduleRef = doc(this.firestore, `schedule/${id}`);
     return docData(scheduleRef, { idField: 'id' });
@@ -39,16 +44,8 @@ export class DataService {
     return updateDoc(scheduleRef, { idField: 'id' });
   }
 
-  getDiscovery() {
-    const discoveryRef = collection(this.firestore, 'discovery');
-    return collectionData(discoveryRef, { idField: 'id' });
-  }
-
-  updateDiscovery(data) {
-    console.log(data);
-    const discoveryRef = doc(this.firestore, `discovery`);
-    return updateDoc(discoveryRef, { isLiked: data[0].isLiked, likes: data[0].likes });
-    // const discoveryRef = doc(this.firestore, `discovery/${id}`);
-    // return updateDoc(discoveryRef, { isLiked: data[id-1].isLiked, likes: data[id-1].likes });
+  updateDiscovery(data, id) {
+    const discoveryRef = doc(this.firestore, `discovery/${id}`);
+    return updateDoc(discoveryRef, { isLiked: data[id-1].isLiked, likes: data[id-1].likes });
   }
 }

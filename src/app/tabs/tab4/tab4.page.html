@@ -12,34 +12,34 @@
   <h1>City discovery</h1>
 
   <ion-grid>
-    <ion-row *ngFor="let item of data">
-      <ion-col>
-      </ion-col>
+    <ion-row *ngFor="let item of data; index as i">
       <ion-col>
         <ion-card [ngStyle]="{
-          'background-image': 'url(' + item.image + ')',
-          'background-size': 'cover',
-          width: '300px',
+          'background': 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .9)), url(' + item.image + ')',
+          'background-size': '100% 100%',
+          'background-repeat': 'no-repeat',
+          width: '100%',
           height: '400px',
           position: 'relative'
         }">
           <ion-card-header>
             <ion-list class="bg-transparent">
-              <ion-item color="none" lines="none">
+              <!-- <ion-item color="none" lines="none">
                 <div class="stage" slot="end">
                   <div class="heart" [ngClass]="item.isLiked ? 'heart is-active' : 'heart'"
-                    (click)="item.isLiked ? handleDislike(item.id) : handleLike(item.id)">
+                    (click)="handleLike(item.id)">
                   </div>
                 </div>
                 <ion-label slot="end" class="likes">{{item.likes.length}}</ion-label>
-              </ion-item>
+              </ion-item> -->
             </ion-list>
           </ion-card-header>
           <ion-card-content>
+            <h1 class="ion-text-start">{{item.name}}</h1>
             <ion-list class="bg-transparent flex">
               <ion-chip (click)="goToLocation(item.id)">
                 <ion-icon color="primary" name="location-sharp"></ion-icon>
-                <ion-label color="primary">{{ item.name }}</ion-label>
+                <ion-label color="primary">See location</ion-label>
               </ion-chip>
               <ion-chip class="arrow">
                 <ion-icon color="primary" name="chevron-forward-outline" (click)="goToPage()"></ion-icon>
@@ -47,8 +47,6 @@
             </ion-list>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-      <ion-col>
       </ion-col>
     </ion-row>
   </ion-grid>
