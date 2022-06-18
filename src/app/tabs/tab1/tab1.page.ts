@@ -18,11 +18,14 @@ export class Tab1Page implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.type = 'day1';
-    this.getData();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  ionViewDidEnter() {
+    this.getData();
   }
 
   segmentChanged(ev: any) {

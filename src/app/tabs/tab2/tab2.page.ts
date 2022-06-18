@@ -15,11 +15,14 @@ export class Tab2Page implements OnInit, OnDestroy {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.getData();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  ionViewDidEnter() {
+    this.getData();
   }
 
   async getData() {

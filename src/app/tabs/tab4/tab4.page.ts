@@ -25,11 +25,14 @@ export class Tab4Page implements OnInit, OnDestroy {
     ) {}
 
   ngOnInit() {
-    this.getData();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  ionViewDidEnter() {
+    this.getData();
   }
 
   async getData() {

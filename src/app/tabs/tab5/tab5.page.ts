@@ -19,11 +19,14 @@ export class Tab5Page implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.type = 'restaurants';
-    this.getData();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  ionViewDidEnter() {
+    this.getData();
   }
 
   async getData() {
