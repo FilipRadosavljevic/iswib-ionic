@@ -23,7 +23,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   }
 
   async getData() {
-    this.sub = this.dataService.getWorkshops().subscribe(res => {
+    this.sub = await this.dataService.getWorkshops().subscribe(res => {
       this.data = res;
       console.log(res);
     });

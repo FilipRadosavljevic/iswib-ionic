@@ -9,13 +9,21 @@ import { Router } from '@angular/router';
 })
 export class DiscoveryPagePage implements OnInit {
 
-  constructor(private router: Router) { }
+  data: any;
+
+  constructor(private router: Router) {
+    this.data = this.router.getCurrentNavigation().extras.state;
+   }
 
   ngOnInit() {
   }
 
   goToPage() {
     this.router.navigate(['/tabs/tab4']);
+  }
+
+  goToLocation() {
+    window.open(this.data.location);
   }
 
 }

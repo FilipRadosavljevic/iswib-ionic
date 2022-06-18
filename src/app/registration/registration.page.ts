@@ -52,8 +52,6 @@ export class RegistrationPage implements OnInit {
     await loading.present();
 
     const newUser = await this.authService.register(this.credentials.value);
-    console.log(newUser);
-    console.log(newUser.user.uid);
     await loading.dismiss();
 
     if (newUser) {

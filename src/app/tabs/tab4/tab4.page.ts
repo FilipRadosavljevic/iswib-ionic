@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { UsersService } from 'src/app/services/users.service';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tab4',
@@ -15,13 +16,13 @@ export class Tab4Page implements OnInit, OnDestroy {
   sub: Subscription;
   userID: any;
   hasLiked: any;
+  private subject$ = new Subject();
 
   constructor(
     private router: Router,
     private dataService: DataService,
     private user: UsersService
-    ) {
-    }
+    ) {}
 
   ngOnInit() {
     this.getData();
@@ -32,7 +33,7 @@ export class Tab4Page implements OnInit, OnDestroy {
   }
 
   async getData() {
-    this.sub = this.dataService.getDiscovery().subscribe(res => {
+    this.sub = await this.dataService.getDiscovery().subscribe(res => {
       this.data = res;
     });
   }
@@ -64,8 +65,12 @@ export class Tab4Page implements OnInit, OnDestroy {
   //   return 'heart';
   // }
 
-  goToPage() {
-    this.router.navigate(['/discovery-page']);
+  goToPage(obj) {
+    // console.log(obj);
+    // this.router.navigate(['/discovery-page']);
+    this.router.navigate(['/discovery-page'], {
+      state: obj
+    });
   }
 
   goToLocation(id) {

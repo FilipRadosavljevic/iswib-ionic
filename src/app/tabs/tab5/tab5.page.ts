@@ -27,7 +27,7 @@ export class Tab5Page implements OnInit, OnDestroy {
   }
 
   async getData() {
-    this.sub = this.dataService.getSponsors().subscribe(res => {
+    this.sub = await this.dataService.getSponsors().subscribe(res => {
       this.sponsors = res;
     });
     this.dataService.getRestaurants().subscribe(res => {
@@ -36,8 +36,6 @@ export class Tab5Page implements OnInit, OnDestroy {
 
       this.restaurants = Object.keys(res[0]).filter(element => element !== 'id');
       console.log(this.data);
-
-
     });
   }
 
