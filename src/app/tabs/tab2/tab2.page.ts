@@ -9,7 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class Tab2Page implements OnInit, OnDestroy {
 
-  data: any = [];
+  data: any;
   sub: Subscription;
 
   constructor(private dataService: DataService) {}
@@ -28,7 +28,6 @@ export class Tab2Page implements OnInit, OnDestroy {
   async getData() {
     this.sub = await this.dataService.getWorkshops().subscribe(res => {
       this.data = res;
-      console.log(res);
     });
   }
 

@@ -13,7 +13,28 @@ h4 {
   color: rgba(255, 255, 255, 0.8);
 }
 
-
+.custom-skeleton {
+  ion-skeleton-text {
+    line-height: 13px;
+  }
+  ion-card {
+    background: #1c173a;
+    ion-card-header {
+      padding: 0;
+    }
+    ion-item {
+      --background: transparent;
+    }
+  }
+  ion-card-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
 
 ion-card {
   color: #150f38;

@@ -76,3 +76,23 @@ ion-chip {
 ion-list {
     background: #150f38;
 }
+
+.custom-skeleton {
+    ion-card {
+        background: #150f38;
+        padding: 0;
+    }
+    ion-card-content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    .segment-wrapper {
+        width: 100%;
+        display: flex;
+        gap: 5px;
+    }
+    .restaurant-card {
+        border: none;
+    }
+}

@@ -9,7 +9,7 @@ import { DataService } from '../../services/data.service';
 export class Tab1Page implements OnInit, OnDestroy {
 
   type: string;
-  data: any = [];
+  data: any;
   days: any;
   sub: Subscription;
 

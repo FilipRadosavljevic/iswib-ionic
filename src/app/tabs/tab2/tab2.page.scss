@@ -27,3 +27,26 @@ ion-card {
 h1 {
   color: #fff;
 }
+
+.custom-skeleton {
+  ion-skeleton-text {
+    line-height: 12px;
+    margin-bottom: 5px;
+  }
+  ion-card {
+    background: #1c173a;
+    ion-card-header {
+      padding: 0;
+    }
+  }
+  .circle {
+    border-radius: 40px;
+    line-height: 40px;
+    margin-bottom: 10px;
+  }
+  ion-card-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}

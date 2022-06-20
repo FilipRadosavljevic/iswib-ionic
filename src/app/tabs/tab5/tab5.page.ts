@@ -11,7 +11,7 @@ export class Tab5Page implements OnInit, OnDestroy {
 
   sponsors: any = [];
   restaurants: any = [];
-  data: any = [];
+  data: any;
   sub: Subscription;
   type: string;
 

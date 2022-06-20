@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { UsersService } from 'src/app/services/users.service';
-import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tab4',
@@ -16,7 +15,6 @@ export class Tab4Page implements OnInit, OnDestroy {
   sub: Subscription;
   userID: any;
   hasLiked: any;
-  private subject$ = new Subject();
 
   constructor(
     private router: Router,
