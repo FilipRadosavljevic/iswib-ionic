@@ -7,7 +7,7 @@ import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-
+import { HeaderComponent } from 'src/app/header/header.component';
 @NgModule({
   imports: [
     IonicModule,
@@ -17,6 +17,6 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     RouterModule.forChild([{ path: '', component: Tab1Page }]),
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page]
+  declarations: [Tab1Page, HeaderComponent]
 })
 export class Tab1PageModule {}
