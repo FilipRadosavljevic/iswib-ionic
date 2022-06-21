@@ -7,7 +7,7 @@ import { Tab5Page } from './tab5.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { Tab5PageRoutingModule } from './tab5-routing.module';
-import { HeaderComponent } from 'src/app/header/header.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 @NgModule({
   imports: [

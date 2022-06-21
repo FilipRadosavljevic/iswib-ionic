@@ -3,13 +3,23 @@ ion-card {
     ion-card-title {
         margin: 16px 0 4px 0;
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 500;
         text-transform: capitalize;
     }
     ion-card-subtitle {
         font-size: 12px;
+        font-weight: 500;
         text-transform: lowercase;
     }
+}
+
+.ios ion-segment-button {
+    --background: #150f38;
+    --indicator-color: #211857;
+}
+
+.ios ion-segment {
+    --background: #150f38;
 }
 
 .segment-wrapper {
@@ -28,6 +38,7 @@ ion-card {
 ion-chip {
     background-color: #fff;
     padding: 8px 16px;
+    // width: 100%;
     ion-label {
         text-transform: capitalize;
         margin-left: 8px;
@@ -40,6 +51,9 @@ ion-chip {
     border-radius: 5px;
     h1 {
         margin: 0;
+    }
+    ion-chip {
+        background: rgba(255, 255, 255, 0.7);
     }
     ion-card-content {
         padding: 5px 0 0 20px;

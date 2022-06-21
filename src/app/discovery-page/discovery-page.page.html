@@ -12,12 +12,13 @@
   <div id="wrapper">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="tabs/tab4"></ion-back-button>
+      <h3>{{data.name}}</h3>
     </ion-buttons>
     <img class="background-picture" [src]="data.image">
     <ion-card>
       <ion-card-header>
-        <ion-card-title color="primary" class="ion-margin-bottom">{{data.name}}</ion-card-title>
-        <ion-card-subtitle color="primary">Description</ion-card-subtitle>
+        <ion-card-title color="primary" class="ion-margin-bottom">Description</ion-card-title>
+        <!-- <ion-card-subtitle color="primary">Description</ion-card-subtitle> -->
       </ion-card-header>
       <ion-card-content>
         <p>{{data.description}}</p>

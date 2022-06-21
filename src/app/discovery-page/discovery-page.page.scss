@@ -10,21 +10,29 @@
     img {
         opacity: 0.8;
     }
-    ion-buttons {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10;
-    }
 }
 
-.back-button {
-    font-size: 25px;
-    margin-left: 10px;
-    &-bottom {
-        font-size: 40px;
-        margin-bottom: 16px;
-    }
+.ios h3 {
+    margin: 16px 0 16px 20px;
+}
+.md h3 {
+    margin: 16px 0;
+}
+
+ion-buttons {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: #150f38;
+    padding-left: 10px;
+}
+
+ion-back-button {
+    --color: #ffffff;
+    --icon-font-size: 20px;
+    --icon-padding-end: 6px;
 }
 
 ion-card {
@@ -56,14 +64,20 @@ ion-card {
         color: #150f38;
     }
     ion-icon {
-        font-size: 20px;
+        font-size: 16px;
         margin-right: 4px;
     }
     ion-label {
-        font-size: 18px;
+        font-size: 16px;
     }
-    @media only screen and (max-height: 700px) {
+    @media only screen and (max-height: 780px) {
+        height: 45%;
+    }
+    @media only screen and (max-height: 690px) {
         height: 50%;
+    }
+    @media only screen and (max-width: 320px) {
+        height: 55%;
     }
 }
 

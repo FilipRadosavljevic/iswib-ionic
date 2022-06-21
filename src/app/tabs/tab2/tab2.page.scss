@@ -1,10 +1,15 @@
 ion-card {
     color: #150f38;
+    margin-bottom: 16px;
     ion-card-header {
       padding: 15px 0 15px 15px;
     }
     ion-card-title {
-        padding-bottom: 6px;
+      font-weight: 500;
+      padding-bottom: 6px;
+    }
+    ion-card-subtitle {
+      font-weight: 500;
     }
     ion-label a {
       color: #150f38;
@@ -13,10 +18,13 @@ ion-card {
       padding: 0 15px 15px 15px;
     }
     ion-avatar {
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 35px !important;
-        max-height: 35px !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 35px !important;
+      max-height: 35px !important;
+    }
+    p {
+      margin-right: 16px;
     }
 }
 

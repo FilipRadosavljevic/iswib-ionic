@@ -67,8 +67,6 @@ export class Tab4Page implements OnInit, OnDestroy {
   // }
 
   goToPage(obj) {
-    // console.log(obj);
-    // this.router.navigate(['/discovery-page']);
     this.router.navigate(['/discovery-page'], {
       state: obj
     });
