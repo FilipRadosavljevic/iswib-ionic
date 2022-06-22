@@ -1,6 +1,5 @@
 ion-card {
     color: #150f38;
-    margin-bottom: 16px;
     ion-card-header {
       padding: 15px 0 15px 15px;
     }
@@ -26,6 +25,10 @@ ion-card {
     p {
       margin-right: 16px;
     }
+}
+
+.ios ion-card {
+  margin-bottom: 16px;
 }
 
 .md ion-list {
