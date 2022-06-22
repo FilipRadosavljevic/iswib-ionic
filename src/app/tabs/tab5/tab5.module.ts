@@ -7,7 +7,7 @@ import { Tab5Page } from './tab5.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { Tab5PageRoutingModule } from './tab5-routing.module';
-import { HeaderComponent } from 'src/app/components/header/header.component';
+import { HeaderModule } from 'src/app/components/header/header.component.module';
 
 @NgModule({
   imports: [
@@ -17,7 +17,8 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab5Page }]),
     Tab5PageRoutingModule,
+    HeaderModule
   ],
-  declarations: [Tab5Page, HeaderComponent]
+  declarations: [Tab5Page]
 })
 export class Tab5PageModule {}

@@ -31,14 +31,6 @@ export class RegistrationPage implements OnInit {
     return this.credentials.get('password');
   }
 
-  // get firstName() {
-  //   return this.credentials.get('name');
-  // }
-
-  // get secondName() {
-  //   return this.credentials.get('surname');
-  // }
-
   ngOnInit() {
     this.credentials = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
