@@ -17,7 +17,7 @@ export class Tab1Page implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.type = 'day1';
+    this.type = 'day0';
   }
 
   ngOnDestroy() {

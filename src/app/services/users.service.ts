@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { collectionData, collection,  docData, Firestore, doc, setDoc } from '@angular/fire/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { getAuth } from 'firebase/auth';
 
 
 export interface User {

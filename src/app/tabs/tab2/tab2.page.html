@@ -54,14 +54,22 @@
                 <ion-card-title [ngStyle]="{'color': item.textColor}">{{ item.title | titlecase }}</ion-card-title>
                 <ion-card-subtitle [ngStyle]="{'color': item.textColor}">{{ item.moderator }}</ion-card-subtitle>
               </ion-col>
-              <ion-col size="2">
-                <ion-avatar>
-                  <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-                </ion-avatar>
+              <ion-col size="3">
+                <div>
+                  <ion-avatar [ngClass]="item.image2 ? 'image1' : ''">
+                    <img *ngIf="item.image" [src]="item.image" width="50" height="50">
+                  </ion-avatar>
+                  <ion-avatar class="image2">
+                    <img *ngIf="item.image2" [src]="item.image2" width="50" height="50">
+                  </ion-avatar>
+                  <ion-avatar *ngIf="item.image3" class="image3">
+                    <img *ngIf="item.image3" [src]="item.image3" width="50" height="50">
+                  </ion-avatar>
+                </div>
               </ion-col>
+              <ion-col size="1"></ion-col>
             </ion-row>
           </ion-grid>
-
         </ion-card-header>
         <ion-card-content [ngStyle]="{'color': item.textColor}">
           <p>{{ item.discription }}</p>

@@ -7,18 +7,21 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form (ngSubmit)="register()" [formGroup]="credentials">
-    <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
-      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
-    </ion-item>
-    <ion-item color="primary" class="ion-margin-horizontal ion-margin-vertical" lines="none">
-      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 6
-        characters</ion-note>
-    </ion-item>
-    <ion-button class="ion-margin-horizontal ion-margin-vertical" type="submit" color="secondary" expand="block"
-      [disabled]="!credentials.valid">Sign Up
-    </ion-button>
-  </form>
+  <div id="wrapper">
+    <form (ngSubmit)="register()" [formGroup]="credentials">
+      <ion-item color="primary" class="ion-margin-horizontal" lines="none">
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+        <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
+      </ion-item>
+      <ion-item color="primary" class="ion-margin-horizontal ion-margin-vertical" lines="none">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+        <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 6
+          characters</ion-note>
+      </ion-item>
+      <ion-button class="ion-margin-horizontal ion-margin-vertical" type="submit" color="secondary" expand="block"
+        [disabled]="!credentials.valid">Sign Up
+      </ion-button>
+    </form>
+    <img alt="logo" id="header_picture" src="assets/images/background/register.png">
+  </div>
 </ion-content>

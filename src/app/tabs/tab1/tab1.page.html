@@ -4,52 +4,58 @@
 
   <div class="segment-wrapper">
     <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
-      <ion-segment-button value="day1" checked>
+      <ion-segment-button value="day0" checked>
         <ion-label>
           Mon<br>
           <b>18</b>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="day2">
+      <ion-segment-button value="day1">
         <ion-label>
           Tue<br>
           <b>19</b>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="day3">
+      <ion-segment-button value="day2">
         <ion-label>
           Wed<br>
           <b>20</b>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="day4">
+      <ion-segment-button value="day3">
         <ion-label>
           Thu<br>
           <b>21</b>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="day5">
+      <ion-segment-button value="day4">
         <ion-label>
           Fri<br>
           <b>22</b>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="day6">
+      <ion-segment-button value="day5">
         <ion-label>
           Sat<br>
           <b>23</b>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="day7">
+      <ion-segment-button value="day6">
         <ion-label>
           Sun<br>
           <b>24</b>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="day8">
+      <ion-segment-button value="day7">
         <ion-label>
           Mon<br>
           <b>25</b>
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="day8">
+        <ion-label>
+          Tue<br>
+          <b>26</b>
         </ion-label>
       </ion-segment-button>
     </ion-segment>
@@ -122,7 +128,7 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-item color="secondary" slot="start" lines="none">
-                    <ion-label *ngIf="item.location !== ''">
+                    <ion-label *ngIf="item.location">
                       <ion-icon name="location-outline" color="primary"></ion-icon>
                       <a [href]="">See location</a>
                     </ion-label>

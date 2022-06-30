@@ -70,14 +70,17 @@ ion-card {
     ion-label {
         font-size: 16px;
     }
-    @media only screen and (max-height: 780px) {
-        height: 45%;
-    }
-    @media only screen and (max-height: 690px) {
+    @media only screen and (min-height: 560px) {
         height: 50%;
     }
-    @media only screen and (max-width: 320px) {
-        height: 55%;
+    @media only screen and (min-height: 620px) {
+        height: 45%;
+    }
+    @media only screen and (min-height: 670px) {
+        height: 40%;
+    }
+    @media only screen and (min-height: 740px) {
+        height: 35%;
     }
 }
 

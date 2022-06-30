@@ -80,7 +80,6 @@
 
   <div *ngIf="data">
     <h1>Our recommendation</h1>
-
     <div class="segment-wrapper">
       <ion-segment scrollable>
         <ion-segment-button class="sponsors-button" *ngFor="let sponsor of sponsors; index as i">
@@ -96,7 +95,6 @@
     </div>
 
     <h1>Search by categories</h1>
-
     <div class="segment-wrapper">
       <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
         <ion-segment-button class="categories-button" value="restaurants" checked>
@@ -149,6 +147,4 @@
       </ion-list>
     </div>
   </div>
-
-
 </ion-content>
