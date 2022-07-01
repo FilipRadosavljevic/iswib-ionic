@@ -1,6 +1,6 @@
 {
 	"appId": "com.iswib.app",
 	"appName": "ISWiB",
-	"webDir": "www",
+	"webDir": "./www",
 	"bundledWebRuntime": false
 }
