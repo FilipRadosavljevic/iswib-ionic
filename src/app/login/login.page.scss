@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+#wrapper {
+    margin-top: env(safe-area-inset-top);
+}
+
 .block {
     display: block;
 }
@@ -23,6 +27,9 @@ ion-icon {
 }
 
 ion-button {
+    font-family: 'FontSemibold';
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
     font-size: 16px;
 }
 
@@ -34,7 +41,15 @@ ion-item {
 }
 
 h1 {
-    font-weight: 600;
+    font-family: 'FontBold';
+}
+
+p {
+    font-family: 'FontSemibold';
+}
+
+a {
+    font-family: 'FontBold';
 }
 
 ion-note {

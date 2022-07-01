@@ -3,8 +3,18 @@
 
 /** Ionic CSS Variables **/
 @font-face {
-  font-family: AppFont;
-  src: url("../assets/font/Roboto-Regular.ttf");
+  font-family: 'FontRegular';
+  src: url("../assets/font/Montserrat-Regular.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FontSemibold';
+  src: url("../assets/font/Montserrat-SemiBold.ttf");
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FontBold';
+  src: url("../assets/font/Montserrat-Bold.ttf");
   font-display: swap;
 }
 
@@ -15,7 +25,7 @@
   --ion-text-color-rgb: #fff;
   --ion-tab-bar-color: rgba(255, 255, 255, 0.3);
   --ion-tab-bar-color-selected: #fff;
-  --ion-font-family: 'AppFont';
+  --ion-font-family: 'FontRegular';
 
   /** primary **/
   --ion-color-primary: #150f38;

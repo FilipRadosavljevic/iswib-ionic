@@ -38,7 +38,7 @@ export class ForgotPasswordPage implements OnInit {
     await loading.dismiss();
 
     if(user !== null) {
-      this.presentToast('Password reset email sent', 'bottom', 2000);
+      this.presentToast('Password reset email sent. Check your spam folder.', 'bottom', 2500);
       this.router.navigateByUrl('', { replaceUrl: true});
     } else {
       console.log('err');

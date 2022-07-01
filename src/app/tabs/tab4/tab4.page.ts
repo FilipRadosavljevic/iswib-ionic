@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
-import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-tab4',
@@ -18,8 +17,7 @@ export class Tab4Page implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private dataService: DataService,
-    private user: UsersService
+    private dataService: DataService
     ) {}
 
   ngOnInit() {
@@ -72,8 +70,10 @@ export class Tab4Page implements OnInit, OnDestroy {
     });
   }
 
-  goToLocation(id) {
-    window.open(this.data[id-1].location);
+  goToLocation(currentObject: any) {
+    // eslint-disable-next-line max-len
+    const googleLocation = `https://www.google.com/maps/search/?api=1&query=${currentObject.location}&query_place_id=${currentObject.placeId}`;
+    window.open(googleLocation);
   }
 
 }

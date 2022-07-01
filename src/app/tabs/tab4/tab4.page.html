@@ -63,12 +63,13 @@
             <ion-card-content>
               <h1 class="ion-text-start">{{item.name}}</h1>
               <ion-list class="bg-transparent flex">
-                <ion-chip (click)="goToLocation(item.id)">
+                <ion-chip *ngIf="item.location" (click)="goToLocation(data[i])" class="restaurant-chip">
                   <ion-icon color="primary" name="location-sharp"></ion-icon>
                   <ion-label color="primary">See location</ion-label>
                 </ion-chip>
-                <ion-chip class="arrow">
-                  <ion-icon color="primary" name="chevron-forward-outline" (click)="goToPage(data[i])"></ion-icon>
+                <ion-chip class="arrow" (click)="goToPage(data[i])">
+                  <ion-label color="primary">Read more</ion-label>
+                  <ion-icon color="primary" name="chevron-forward-outline"></ion-icon>
                 </ion-chip>
               </ion-list>
             </ion-card-content>

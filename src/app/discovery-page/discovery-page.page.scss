@@ -2,8 +2,8 @@
     margin-left: 5px;
 }
 
-
 #wrapper {
+    margin-top: env(safe-area-inset-top);
     position: relative;
     width: 100%;
     height: 100vh;

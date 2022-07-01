@@ -111,7 +111,7 @@
   <div *ngIf="data">
     <div [ngSwitch]="type" *ngFor="let day of days; index as i">
       <ion-list *ngSwitchCase="day">
-        <ion-grid *ngFor="let item of data[i]">
+        <ion-grid *ngFor="let item of data[i], index as j">
           <ion-row class="ion-align-items-stretch ion-margin-bottom">
             <ion-col size="3">
               <ion-text>
@@ -128,10 +128,10 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-item color="secondary" slot="start" lines="none">
-                    <ion-label *ngIf="item.location">
-                      <ion-icon name="location-outline" color="primary"></ion-icon>
-                      <a [href]="">See location</a>
-                    </ion-label>
+                    <ion-chip *ngIf="item.location" (click)="goToLocation(data[i][j])" class="restaurant-chip">
+                      <ion-icon color="primary" name="location-sharp"></ion-icon>
+                      <ion-label color="primary">See location</ion-label>
+                    </ion-chip>
                     <ion-avatar *ngIf="item.image" slot="end">
                       <img [src]="item.image">
                     </ion-avatar>

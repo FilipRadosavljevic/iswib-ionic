@@ -1,45 +1,41 @@
 <ion-content>
-  <img alt="logo" width="100%" height="100%" id="header_picture" float-left src="assets/images/background/login.png">
+  <div id="wrapper">
 
-  <div class="ion-text-center">
-    <h1>Welcome to ISWiB</h1>
-    <p class="ion-margin-bottom">Sign in to continue</p>
-  </div>
-
-  <form (ngSubmit)="login()" [formGroup]="credentials">
-    <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
-    </ion-item>
-    <ion-note color="danger" class="ion-margin-horizontal" slot="error"
-      *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
-    <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-    </ion-item>
-    <ion-note color="danger" class="ion-margin-horizontal" slot="error"
-      *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 6
-      characters</ion-note>
-    <ion-button class="ion-margin-horizontal ion-margin-vertical" type="submit" color="secondary" expand="block"
-      [disabled]="!credentials.valid">Sign In
-    </ion-button>
-  </form>
-
-  <!-- <span class="divider line one-line">OR</span>
-
-  <ion-button class="ion-margin-vertical" type="submit" color="primary" expand="block">
-    <ion-icon name="logo-google" slot="start"></ion-icon>
-    Login with Google
-  </ion-button> -->
-
-  <div class="ion-text-center">
-    <ion-label>
-      <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
-    </ion-label>
-    <br>
-    <ion-label>
-      Don't have account?
-      <a [routerLink]="['/registration']" class="small-text">Register</a>
-    </ion-label>
-
+    <img alt="logo" width="100%" height="100%" id="header_picture" float-left src="assets/images/background/login.png">
+  
+    <div class="ion-text-center">
+      <h1>Welcome to ISWiB</h1>
+      <p class="ion-margin-bottom">Sign in to continue</p>
+    </div>
+  
+    <form (ngSubmit)="login()" [formGroup]="credentials">
+      <ion-item color="primary" class="ion-margin-horizontal" lines="none">
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-note color="danger" class="ion-margin-horizontal" slot="error"
+        *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
+      <ion-item color="primary" class="ion-margin-horizontal" lines="none">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-note color="danger" class="ion-margin-horizontal" slot="error"
+        *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 6
+        characters</ion-note>
+      <ion-button class="ion-margin-horizontal ion-margin-vertical" type="submit" color="secondary" expand="block"
+        [disabled]="!credentials.valid">Sign In
+      </ion-button>
+    </form>
+  
+    <div class="ion-text-center">
+      <ion-label>
+        <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
+      </ion-label>
+      <br>
+      <ion-label>
+        Don't have account?
+        <a [routerLink]="['/registration']" class="small-text">Register</a>
+      </ion-label>
+  
+    </div>
   </div>
 
 </ion-content>

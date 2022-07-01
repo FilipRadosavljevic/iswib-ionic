@@ -39,4 +39,10 @@ export class Tab1Page implements OnInit, OnDestroy {
     });
   }
 
+  goToLocation(currentObject: any) {
+    // eslint-disable-next-line max-len
+    const googleLocation = `https://www.google.com/maps/search/?api=1&query=${currentObject.location}&query_place_id=${currentObject.placeId}`;
+    window.open(googleLocation);
+  }
+
 }
