@@ -2,5 +2,8 @@
 	"appId": "com.iswib.app",
 	"appName": "ISWiB",
 	"webDir": "./www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"server": {
+		"url": "http://192.168.0.23:8100"
+	}
 }

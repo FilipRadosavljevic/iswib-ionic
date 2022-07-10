@@ -51,7 +51,6 @@ export class RegistrationPage implements OnInit {
         email: this.email.value,
         userID: newUser.user.uid
       });
-      this.user.setUserToDB(this.email.value, newUser.user.uid);
       this.router.navigateByUrl('/tabs', { replaceUrl: true });
     } else {
       this.showAlert('Registration failed', 'Please try again!');
