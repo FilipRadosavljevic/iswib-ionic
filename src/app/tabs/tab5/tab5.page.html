@@ -79,19 +79,23 @@
 
 
   <div *ngIf="data">
-    <h1>Our recommendation</h1>
+    <h1>Our sponsors</h1>
     <div class="segment-wrapper">
-      <ion-segment scrollable>
-        <ion-segment-button class="sponsors-button" *ngFor="let sponsor of sponsors; index as i">
-          <ion-card color="light">
-            <img [src]="sponsor.image" />
-            <ion-card-header>
-              <ion-card-title>{{sponsor.name}}</ion-card-title>
-              <ion-card-subtitle>See more</ion-card-subtitle>
-            </ion-card-header>
-          </ion-card>
-        </ion-segment-button>
-      </ion-segment>
+      <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+        <ion-slide *ngFor="let sponsor of sponsors; index as i">
+          <ion-col>
+            <ion-card class="sponsors" color="light">
+              <img class="sponsors-img" [src]="sponsor.image" />
+              <ion-card-header>
+                <ion-card-title>{{sponsor.name}}</ion-card-title>
+                <ion-card-subtitle [hidden]="!sponsor.link">
+                  <a (click)="seeMore(sponsor.link)">See more</a>
+                </ion-card-subtitle>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-slide>
+      </ion-slides>
     </div>
 
     <h1>Search by categories</h1>

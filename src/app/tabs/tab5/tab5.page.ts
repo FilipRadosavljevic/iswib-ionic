@@ -51,4 +51,8 @@ export class Tab5Page implements OnInit, OnDestroy {
     const googleLocation = `https://www.google.com/maps/search/?api=1&query=${currentObject.location}&query_place_id=${currentObject.placeId}`;
     window.open(googleLocation);
   }
+
+  seeMore(link: string) {
+    window.open(link);
+  }
 }

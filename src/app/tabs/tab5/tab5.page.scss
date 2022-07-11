@@ -1,49 +1,44 @@
-ion-card {
+.sponsors {
     padding: 10px;
+    width: 120px;
+    height: 140px;
     ion-card-title {
         margin: 16px 0 4px 0;
         font-size: 16px;
         font-family: 'FontSemibold';
-        text-transform: capitalize;
     }
     ion-card-subtitle {
-        font-size: 12px;
         font-family: 'FontRegular';
         text-transform: lowercase;
     }
+    a {
+        font-size: 14px;
+        text-decoration: none;
+        padding: 10px;
+    }
+    &-img {
+        width: 100%;
+        height: 45px;
+    }
+}
+
+ion-slide {
+    width: 120px;
+    height: 170px;
+    margin-right: 20px;
 }
 
 h1 {
     font-family: 'FontBold';
- 
-}
-
-.ios ion-segment-button {
-    --background: #150f38;
-    --indicator-color: #211857;
-}
-
-.ios ion-segment {
-    --background: #150f38;
-}
-
-.segment-wrapper {
-    margin: 25px 0;
 }
 
 .categories-button {
     min-width: 140px;
 }
 
-.sponsors-button {
-    min-width: 120px;
-}
-
-
 ion-chip {
     background-color: #fff;
     padding: 8px 16px;
-    // width: 100%;
     ion-label {
         text-transform: capitalize;
         margin-left: 8px;
