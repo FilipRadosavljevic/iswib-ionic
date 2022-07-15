@@ -53,7 +53,7 @@ export class RegistrationPage implements OnInit {
       });
       this.router.navigateByUrl('/tabs', { replaceUrl: true });
     } else {
-      this.showAlert('Registration failed', 'Please try again!');
+      this.showAlert('Registration failed', 'User already exists!');
     }
   }
 
@@ -61,6 +61,7 @@ export class RegistrationPage implements OnInit {
     const alert = await this.alertController.create({
       header,
       message,
+      cssClass: 'custom-alert',
       buttons: ['OK'],
     });
     await alert.present();

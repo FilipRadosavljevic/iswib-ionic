@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { AnimationController } from '@ionic/angular';
+import { AnimationController, MenuController, ToastController } from '@ionic/angular';
+import { AuthenticationService } from './services/auth/authentication.service';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +13,14 @@ import { AnimationController } from '@ionic/angular';
 export class AppComponent {
 
   constructor(
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
+    private auth: AuthenticationService,
+    private router: Router,
+    private menu: MenuController,
+    private user: UsersService,
+    private toastController: ToastController,
   ) {}
+
 
 
   myCustomPageTransition = ((baseEl: any, opts?: any) => {
@@ -36,4 +45,47 @@ export class AppComponent {
         .addAnimation([anim1, anim2]);
       return anim2;
   });
+
+  isUserLoggedIn() {
+    return this.user.getUser();
+  }
+
+  async logout() {
+    let userId = null;
+    userId = this.user.getUserId();
+    this.menu.close();
+
+    if(userId) {
+      await this.auth.logout();
+      this.router.navigate(['']);
+    } else {
+      this.router.navigate(['']);
+    }
+
+  }
+
+  deleteAccount() {
+    let userId = null;
+    userId = this.user.getUser();
+    this.menu.close();
+
+    if(userId) {
+      userId.delete().then(() => {
+        this.router.navigate(['']);
+        this.presentToast('Your account has been successfully deleted.', 'bottom', 4000);
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+  }
+
+  async presentToast(message, position, duration) {
+    const toast = await this.toastController.create({
+      message,
+      duration,
+      position,
+      color: 'light',
+    });
+    toast.present();
+  }
 }

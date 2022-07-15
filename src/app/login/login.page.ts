@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthenticationService } from '../services/auth/authentication.service';
-import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +17,7 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
   ) {}
 
   // Easy access for form fields
@@ -47,14 +46,19 @@ export class LoginPage implements OnInit {
     if (user) {
       this.router.navigateByUrl('/tabs', { replaceUrl: true });
     } else {
-      this.showAlert('Login failed', 'Please try again!');
+      this.showAlert('Login failed', 'Your email or password is not correct!');
     }
+  }
+
+  loginAsGuest() {
+    this.router.navigateByUrl('/tabs', { replaceUrl: true });
   }
 
   async showAlert(header, message) {
     const alert = await this.alertController.create({
       header,
       message,
+      cssClass: 'custom-alert',
       buttons: ['OK'],
     });
     await alert.present();

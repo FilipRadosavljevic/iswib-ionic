@@ -25,6 +25,12 @@
       </ion-button>
     </form>
   
+    <ion-button class="ion-margin-horizontal ion-margin-vertical" color="secondary" expand="block"
+    fill="outline" (click)="loginAsGuest()"
+    >
+    Continue as guest
+    </ion-button>
+
     <div class="ion-text-center">
       <ion-label>
         <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>

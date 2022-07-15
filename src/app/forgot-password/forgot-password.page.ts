@@ -41,6 +41,7 @@ export class ForgotPasswordPage implements OnInit {
       this.presentToast('Password reset email sent. Check your spam folder.', 'bottom', 2500);
       this.router.navigateByUrl('', { replaceUrl: true});
     } else {
+      this.presentToast('User does not exist', 'bottom', 2500);
       console.log('err');
     }
   }
@@ -49,7 +50,8 @@ export class ForgotPasswordPage implements OnInit {
     const toast = await this.toastController.create({
       message,
       duration,
-      position
+      position,
+      color: 'light',
     });
     toast.present();
   }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
 import { getAuth } from 'firebase/auth';
 
 
@@ -15,15 +14,24 @@ export class UsersService {
 
   private user: User;
 
-  constructor(private firestore: Firestore) { }
+  constructor() { }
 
   setUser(user: User) {
     this.user = user;
   }
 
+  getUser() {
+    const auth = getAuth();
+    if(auth.currentUser) {
+      return auth.currentUser;
+    }
+  }
+
   getUserId() {
     const auth = getAuth();
-    return auth.currentUser.uid;
+    if(auth.currentUser) {
+      return auth.currentUser.uid;
+    }
   }
 
 }

@@ -76,3 +76,13 @@ ion-content {
     display: none;
   }
 }
+
+.custom-alert .alert-wrapper {
+  h2, div {
+    color: #150f38 !important;
+  }
+  background-color: #fff !important;
+  background: #fff  !important;
+  $alert-md-background-color: #fff;
+  $alert-ios-background: #fff;
+}

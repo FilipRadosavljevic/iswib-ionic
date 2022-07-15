@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
-import { AuthenticationService } from '../../services/auth/authentication.service';
+
 
 @Component({
   selector: 'app-header',
@@ -10,13 +8,9 @@ import { AuthenticationService } from '../../services/auth/authentication.servic
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private auth: AuthenticationService, private router: Router,private menu: MenuController) {
+  constructor() {
   }
 
   ngOnInit() {}
-  async logout() {
-    await this.auth.logout();
-    this.menu.close();
-    this.router.navigate(['']);
-  }
+
 }

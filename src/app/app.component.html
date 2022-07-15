@@ -1,3 +1,22 @@
 <ion-app>
-  <ion-router-outlet [animation]="myCustomPageTransition"></ion-router-outlet>
+  <ion-menu side="end" menuId="top-menu" type="push" contentId="main" [swipeGesture]="false">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="ion-padding-start">Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item *ngIf="isUserLoggedIn()" (click)="deleteAccount()" lines="full">
+          <ion-icon name="trash-outline"></ion-icon>
+          Delete account
+        </ion-item>
+        <ion-item (click)="logout()" lines="full">
+          <ion-icon name="log-out-outline"></ion-icon>
+          Logout
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main" [animation]="myCustomPageTransition"></ion-router-outlet>
 </ion-app>
