@@ -4,8 +4,10 @@ import {
   redirectLoggedInTo,
   canActivate,
 } from '@angular/fire/auth-guard';
+import { AuthGuard } from './services/auth/auth.guard';
 
-const redirectLoggedInToHome = () => redirectLoggedInTo(['tabs']);
+//const redirectLoggedInToHome = () => redirectLoggedInTo(['tabs']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['profile']);
 
 const routes: Routes = [
   {
@@ -28,6 +30,11 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
+    canLoad: [AuthGuard]
   }
 
 ];

@@ -7,13 +7,26 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item *ngIf="isUserLoggedIn()" (click)="deleteAccount()" lines="full">
-          <ion-icon name="trash-outline"></ion-icon>
-          Delete account
-        </ion-item>
+        <ion-menu-toggle menu="top-menu">
+          <ion-item lines="full" routerLink="/profile">
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label>Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle menu="top-menu">
+          <ion-item lines="full" routerLink="/tabs">
+            <ion-icon name="balloon" slot="start"></ion-icon>
+            <ion-label>ISWiB</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
         <ion-item (click)="logout()" lines="full">
           <ion-icon name="log-out-outline"></ion-icon>
           Logout
+        </ion-item>
+        <ion-item-divider color="secondary" *ngIf="isUserLoggedIn()"></ion-item-divider>
+        <ion-item *ngIf="isUserLoggedIn()" (click)="presentAlert()" lines="full">
+          <ion-icon name="trash-outline"></ion-icon>
+          Delete account
         </ion-item>
       </ion-list>
     </ion-content>
