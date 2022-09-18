@@ -19,6 +19,12 @@
             <ion-label>ISWiB</ion-label>
           </ion-item>
         </ion-menu-toggle>
+        <ion-menu-toggle menu="top-menu">
+          <ion-item lines="full" routerLink="/converter">
+            <ion-icon name="cash" slot="start"></ion-icon>
+            <ion-label>Currency converter</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
         <ion-item (click)="logout()" lines="full">
           <ion-icon name="log-out-outline"></ion-icon>
           Logout
