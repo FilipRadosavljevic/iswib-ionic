@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<ion-content>
+  <div class="detail-header">
+    <div class="avatar-container">
+      <ion-avatar>
+        <ion-img class="profile" [src]="user.profilePic"> </ion-img>
+      </ion-avatar>
+      <div class="inner">
+        <ion-icon name="camera" class="camera-icon"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div class="user-details">
+    <p>{{ user | json }}</p>
+    <ion-item>
+      <ion-label>
+        <p>{{ user.email }}</p>
+        <p>{{ user.firstName }} {{ user.lastName }}</p>
+        <p>{{ user.role }}</p>
+      </ion-label>
+    </ion-item>
+  </div>
+</ion-content>

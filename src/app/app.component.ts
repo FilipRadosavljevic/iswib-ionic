@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
-import { AnimationController, MenuController, ToastController } from '@ionic/angular';
+import { AlertController, AnimationController, MenuController, ToastController } from '@ionic/angular';
+import { take } from 'rxjs/operators';
 import { AuthenticationService } from './services/auth/authentication.service';
-import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,12 @@ export class AppComponent {
 
   constructor(
     private animationCtrl: AnimationController,
-    private auth: AuthenticationService,
+    private auth: Auth,
     private router: Router,
     private menu: MenuController,
-    private user: UsersService,
     private toastController: ToastController,
+    private alertController: AlertController,
+    private authService: AuthenticationService
   ) {}
 
 
@@ -47,16 +49,16 @@ export class AppComponent {
   });
 
   isUserLoggedIn() {
-    return this.user.getUser();
+    //console.log(this.auth.currentUser);
+    return !!this.auth.currentUser;
   }
 
   async logout() {
-    let userId = null;
-    userId = this.user.getUserId();
+    const user = this.auth.currentUser;
     this.menu.close();
 
-    if(userId) {
-      await this.auth.logout();
+    if(user) {
+      await this.authService.logout();
       this.router.navigate(['']);
     } else {
       this.router.navigate(['']);
@@ -66,7 +68,7 @@ export class AppComponent {
 
   deleteAccount() {
     let userId = null;
-    userId = this.user.getUser();
+    userId = this.auth.currentUser.uid;
     this.menu.close();
 
     if(userId) {
@@ -87,5 +89,25 @@ export class AppComponent {
       color: 'light',
     });
     toast.present();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Are you sure?',
+      message: 'Deleting your account cannot be undone',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => { this.menu.close();}
+        },
+        {
+          text: 'Yes',
+          role: 'confirm',
+          handler: this.deleteAccount.bind(this)
+        }
+      ]
+    });
+    await alert.present();
   }
 }
