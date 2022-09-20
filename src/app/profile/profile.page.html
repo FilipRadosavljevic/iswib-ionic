@@ -22,5 +22,24 @@
       </ion-label>
     </ion-item>
   </div>
+  <ion-list *ngIf="orders && orders.length > 0">
+    <ion-item-sliding *ngFor="let order of orders">
+      <ion-item-options side="start">
+        <ion-item-option color="secondary">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item>
+        <ion-label>{{order.timestamp | date: 'dd.MM.yyyy HH.mm'}}</ion-label>
+        <ion-label>{{order.total | currency:'EUR'}}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="onDeleteOrder(order.orderID)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <p *ngIf="!orders || orders.length === 0">No orders yet</p>
 </ng-container>
 </ion-content>

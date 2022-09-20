@@ -17,9 +17,9 @@ export class AuthGuard implements CanActivate, CanLoad {
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     console.log('Entered AuthGuard');
     console.log(this.auth.currentUser);
-    if(!this.auth.currentUser){
-      await this.authService.autoLogin();
-    }
+    //if(!this.auth.currentUser){
+    await this.authService.autoLogin();
+    //}
     return true;
   }
   async canLoad(route: Route, segments: UrlSegment[]) {

@@ -4,6 +4,8 @@ import { AuthenticationService } from '../services/auth/authentication.service';
 import { User } from '../models/user.model';
 import { PhotoService, UserPhotoData } from '../services/photo.service';
 import { LoadingController, Platform } from '@ionic/angular';
+import { Product } from '../models/product.model';
+import { OrderData, StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,8 +17,10 @@ export class ProfilePage implements OnInit, OnDestroy {
   currentUser: User | undefined;
   profilePictureUrl: string;
   userSub: Subscription;
+  orders: OrderData[];
 
   constructor(
+    private storeService: StoreService,
     private authService: AuthenticationService,
     private photoService: PhotoService,
     private loadingController: LoadingController,
@@ -46,6 +50,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     } else {
       this.profilePictureUrl = newImageData.webviewPathWeb;
     }
+    this.orders = await this.storeService.fetchUserOrders(this.currentUser.userID);
     this.isLoading = false;
     //await loading.dismiss();
   }
@@ -65,5 +70,10 @@ export class ProfilePage implements OnInit, OnDestroy {
     } else {
       this.profilePictureUrl = newImageData.webviewPathWeb;
     }
+  }
+
+  async onDeleteOrder(orderID: string) {
+    this.orders = this.orders.filter(order => order.orderID !== orderID);
+    await this.storeService.deleteOrder(orderID);
   }
 }

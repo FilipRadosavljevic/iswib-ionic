@@ -53,18 +53,24 @@
 }
 
 .detail-price {
-  margin-top:-15px;
+  margin-top: 5px;
   color: #888;
   font-size: 14px;
   float: left;
 }
 
-.headband {
-  text-decoration: line-through;
+h1 {
+  font-family: 'FontBold';
+  color: #fff;
+  margin-bottom: 12px;
 }
 
 .sold {
   color: red;
+}
+
+.icon {
+  color: white;
 }
 
 // Add some space on mobile between each product card
