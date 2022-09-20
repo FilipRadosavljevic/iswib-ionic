@@ -1,10 +1,11 @@
 <app-header></app-header>
 
 <ion-content>
+  <ng-container *ngIf="currentUser && !isLoading">
   <div class="detail-header">
     <div class="avatar-container" (click)="onChooseNewProfilePic()">
       <ion-avatar>
-        <ion-img class="profile" [src]="user.profilePic"> </ion-img>
+        <ion-img class="profile" [src]="profilePictureUrl"> </ion-img>
       </ion-avatar>
       <div class="inner">
         <ion-icon name="camera" class="camera-icon"></ion-icon>
@@ -12,13 +13,14 @@
     </div>
   </div>
   <div class="user-details">
-    <p>{{ user | json }}</p>
+    <p>{{ currentUser | json }}</p>
     <ion-item>
       <ion-label>
-        <p>{{ user.email }}</p>
-        <p>{{ user.firstName }} {{ user.lastName }}</p>
-        <p>{{ user.role }}</p>
+        <p>{{ currentUser.email }}</p>
+        <p>{{ currentUser.firstName }} {{ currentUser?.lastName }}</p>
+        <p>{{ currentUser.role }}</p>
       </ion-label>
     </ion-item>
   </div>
+</ng-container>
 </ion-content>

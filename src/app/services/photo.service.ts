@@ -5,25 +5,30 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Platform } from '@ionic/angular';
 import { Capacitor } from '@capacitor/core';
 import { Auth } from '@angular/fire/auth';
-import { getDatabase, ref, update } from '@angular/fire/database';
+import { Firestore, doc, updateDoc } from '@angular/fire/firestore';
 
 export interface UserPhoto {
   filepath: string;
   webviewPath: string;
-  data?: string;
-  name?: string;
+}
+
+export interface UserPhotoData {
+  filepathNative: string;
+  webviewPathNative: string;
+  filepathWeb: string;
+  webviewPathWeb: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotoService {
-  profilePic: UserPhoto;
   private storageKey = 'photos';
 
   constructor(
     private platform: Platform,
-    private auth: Auth
+    private auth: Auth,
+    private firestore: Firestore
   ) { }
 
   async addNewProfilePic() {
@@ -36,59 +41,70 @@ export class PhotoService {
     });
 
     const savedImageFile = await this.savePicture(capturedPhoto);
-    this.profilePic = savedImageFile;
-
-    Preferences.set({
-      key: this.storageKey + `/${this.auth.currentUser.uid}`,
-      value: JSON.stringify(this.profilePic),
-    });
     return savedImageFile;
   }
 
-  async loadSaved() {
-    const photo = await Preferences.get({
-      key: this.storageKey + `/${this.auth.currentUser.uid}`
-    });
-    this.profilePic = JSON.parse(photo.value) || null;
-    if(!this.platform.is('hybrid') && this.profilePic) {
+  async loadSaved(profilePicString: string) {
+
+    console.log(profilePicString);
+    if(profilePicString === 'default'){
+      return  {
+        filepathNative: 'assets/images/swibi.png',
+        webviewPathNative: 'assets/images/swibi.png',
+        filepathWeb: 'assets/images/swibi.png',
+        webviewPathWeb: 'assets/images/swibi.png'
+      };
+    }
+    const data: UserPhotoData = JSON.parse(profilePicString) || null;
+    console.log(data);
+    if(!this.platform.is('hybrid')){
       const readFile = await Filesystem.readFile({
-        path: this.profilePic.filepath,
+        path: data.filepathWeb,
         directory: Directory.Data,
       });
-      this.profilePic.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+      data.webviewPathWeb = `data:image/jpeg;base64,${readFile.data}`;
     }
+    console.log(data);
+    return data;
   }
 
   private async savePicture(photo: Photo) {
-    const base64Data = await this.readAsBase64(photo);
 
-    //const fileName = new Date().getTime() + '.jpeg';
-    const fileName = this.auth.currentUser.uid + '.jpeg';
+    const fileName = `${this.auth.currentUser.uid}.jpeg`;
+    const base64Data = await this.readAsBase64(photo);
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,
       directory: Directory.Data
     });
 
-    await update(ref(getDatabase(), `users/${this.auth.currentUser.uid}`), {
-      profilePic: Capacitor.convertFileSrc(savedFile.uri)
-    });
+    const nativePhoto: UserPhoto = {
+      filepath: savedFile.uri,
+      webviewPath: Capacitor.convertFileSrc(savedFile.uri),
+    };
+    const webPhoto: UserPhoto = {
+      filepath: fileName,
+      webviewPath: photo.webPath,
+    };
 
-    if(this.platform.is('hybrid')) {
-      return {
-        filepath: savedFile.uri,
-        webviewPath: Capacitor.convertFileSrc(savedFile.uri),
-        name: fileName,
-        data: base64Data
-      };
-    } else {
-      return {
-        filepath: fileName,
-        webviewPath: photo.webPath,
-        name: fileName,
-        data: base64Data
-      };
-    }
+    const data: UserPhotoData = {
+      filepathNative: nativePhoto.filepath,
+      webviewPathNative: nativePhoto.webviewPath,
+      filepathWeb: webPhoto.filepath,
+      webviewPathWeb: webPhoto.webviewPath,
+    };
+
+    await updateDoc(
+      doc(this.firestore,`users/${this.auth.currentUser.uid}`),
+      {
+        profilePic: JSON.stringify(data)
+      }
+    );
+    Preferences.set({
+      key: this.storageKey + `/${this.auth.currentUser.uid}`,
+      value: JSON.stringify(data),
+    });
+    return data;
   }
 
   private async readAsBase64(photo: Photo) {
