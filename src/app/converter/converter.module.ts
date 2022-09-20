@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ConverterPageRoutingModule } from './converter-routing.module';
 
 import { ConverterPage } from './converter.page';
+import { HeaderModule } from '../components/header/header.component.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConverterPageRoutingModule
+    ConverterPageRoutingModule,
+    HeaderModule
   ],
   declarations: [ConverterPage]
 })

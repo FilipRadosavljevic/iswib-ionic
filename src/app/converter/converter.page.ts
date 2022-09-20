@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ModalController, LoadingController, IonModal } from '@ionic/angular';
 import { Currency, CurrencyService } from '../services/currency.service';
 
@@ -10,9 +10,12 @@ import { Currency, CurrencyService } from '../services/currency.service';
 export class ConverterPage implements OnInit {
   @ViewChild('fromModal') fromModal: IonModal;
   @ViewChild('toModal') toModal: IonModal;
+  @ViewChild('fromValueRef') fromValueRef: ElementRef<HTMLInputElement>;
+  @ViewChild('toValueRef') toValueRef: ElementRef<HTMLInputElement>;
   countryRates = new Map<string, number>();
   countryNames = new Map<string, string>();
   currencies: Currency[];
+  searchResults: Currency[];
   isLoading = false;
 
   fromValue: number;
@@ -28,9 +31,21 @@ export class ConverterPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+    console.log('onInit');
     await this.currencyService.fetchCurrencies();
-    this.currencies = this.currencyService.currencies;
+    this.currencies = await this.currencyService.fetchCurrencies();
+    this.searchResults = [...this.currencies];
     this.populateMaps();
+  }
+
+  onSearch(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.searchResults = this.currencies.filter(curr => curr.code.toLowerCase().indexOf(query) > -1
+      || curr.name.toLowerCase().indexOf(query) > -1);
+  }
+
+  getNewRates() {
+    this.currencyService.dowloadNewRates();
   }
 
   calculateFromValue() {
