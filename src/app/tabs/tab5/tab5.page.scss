@@ -45,6 +45,17 @@ ion-chip {
         margin-left: 8px;
         font-size: 12px;
     }
+    &.checked {
+      background-color: var(--ion-color-secondary);
+      ion-label {
+        font-weight: bolder;
+    }
+    }
+}
+
+ion-segment-button {
+  --indicator-color: transparent;
+  --border-color: transparent;
 }
 
 .restaurant-card {
