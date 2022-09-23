@@ -1,5 +1,9 @@
+/* eslint-disable max-len */
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 import { DataService } from '../../services/data.service';
 @Component({
   selector: 'app-tab1',
@@ -9,11 +13,15 @@ import { DataService } from '../../services/data.service';
 export class Tab1Page implements OnInit, OnDestroy {
 
   type: string;
-  data: any;
+  scheduleData = {};
   days: any;
   sub: Subscription;
 
-  constructor(private dataService: DataService) {
+  constructor(
+    public authService: AuthenticationService,
+    private dataService: DataService,
+    private alertController: AlertController,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -21,26 +29,31 @@ export class Tab1Page implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if(this.sub){
+      this.sub.unsubscribe();
+    }
   }
 
-  ionViewDidEnter() {
-    this.getData();
+  async ionViewDidEnter() {
+    await this.getData();
   }
 
   segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
+    //console.log('Segment changed', ev);
   }
 
   async getData() {
-    this.sub = await this.dataService.getSchedule().subscribe(res => {
-      this.data = Object.values(res[0]).filter(element => typeof(element) === 'object');
-      this.days = Object.keys(res[0]).filter(element => element !== 'id');
+    const data = await this.dataService.getSchedule();
+    data.forEach(document =>{
+      this.scheduleData[document.id] = Object.values(document.data());
     });
+    console.log(this.scheduleData);
+      /*this.data = Object.values(res[0]).filter(element => typeof(element) === 'object');
+      this.days = Object.keys(res[0]).filter(element => element !== 'id');*/
   }
 
   goToLocation(currentObject: any) {
-    // eslint-disable-next-line max-len
+    console.log(currentObject);
     const googleLocation = `https://www.google.com/maps/search/?api=1&query=${currentObject.location}&query_place_id=${currentObject.placeId}`;
     window.open(googleLocation);
   }

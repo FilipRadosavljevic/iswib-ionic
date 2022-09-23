@@ -39,7 +39,7 @@ export class AuthenticationService {
           data.profilePic
         );
     }
-};
+  };
 
   constructor(
     private auth: Auth,

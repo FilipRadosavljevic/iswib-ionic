@@ -40,6 +40,18 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <p *ngIf="!orders || orders.length === 0">No orders yet</p>
+  <ion-list *ngIf="huddles && huddles.length > 0">
+    <ion-item-sliding *ngFor="let huddle of huddles">
+      <ion-item>
+        <ion-label>{{huddle.time | date: 'dd.MM.yyyy HH.mm'}}</ion-label>
+        <ion-label>{{huddle.title}}</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ng-container>
 </ion-content>

@@ -16,6 +16,7 @@ import {
   updateDoc } from '@angular/fire/firestore';
 import { companyStoreProducts } from 'src/data/storeData';
 import { Product } from '../models/product.model';
+import { DataService } from './data.service';
 
 export interface OrderData {
   orderID: string;
@@ -32,24 +33,11 @@ export class StoreService {
   constructor(
     private auth: Auth,
     private firestore: Firestore,
+    private dataService: DataService,
   ) { }
 
   async fetchUserOrders(userID: string) {
-    const orders: OrderData[] = [];
-    const q = query(collection(this.firestore,`orders/${userID}/orders`), orderBy('timestamp', 'desc'));
-    const dataSnapshot = await getDocs(q);
-    dataSnapshot.forEach((document) => {
-      console.log(document.id);
-      const order: OrderData = {
-        orderID: document.id,
-        timestamp: document.data().timestamp.toDate(),
-        total: document.data().total,
-        products: document.data().products
-
-      };
-      orders.push(order);
-    });
-    return [...orders];
+    return await this.dataService.getUserOrdersByID(userID);
   }
 
   fetchProducts() {
@@ -57,15 +45,7 @@ export class StoreService {
   }
 
   async fetchCart() {
-    const dataSnapshot = await getDoc(doc(this.firestore,`carts/${this.auth.currentUser.uid}`));
-    if (dataSnapshot.exists()) {
-      console.log(dataSnapshot.data());
-      const cart = dataSnapshot.data().products as Product[];
-      return [...cart];
-    } else {
-      console.log('No such document!');
-      return [];
-    }
+    return await this.dataService.getUserCartByID(this.auth.currentUser.uid);
   }
 
   async placeOrder(products: Product[]) {

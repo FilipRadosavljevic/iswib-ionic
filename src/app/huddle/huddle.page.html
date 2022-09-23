@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding-horizontal">
+  <h1 *ngIf="times">{{times.timeFrom | date: 'EEEE, MMMM dd'}} Huddles</h1>
+  <ion-grid>
+    <ion-row *ngFor="let huddle of huddles; let i = index">
+      <ion-col>
+        <ion-card color="tertiary">
+          <ion-item>
+            <ion-icon name="pin" slot="start"></ion-icon>
+            <ion-label
+              >{{huddle.title}} | {{huddle.time | date: 'HH:mm'}}
+            </ion-label>
+            <ion-button
+              *ngIf="huddle.creatorID === auth.currentUser.uid"
+              color="secondary"
+              (click)="onEditHuddle(huddle.huddleID, i)"
+              slot="end"
+              >Edit
+            </ion-button>
+            <ion-button
+              *ngIf="huddle.creatorID !== auth.currentUser.uid && !hasJoined(i)"
+              color="secondary"
+              (click)="onJoinHuddle(huddle.huddleID, i)"
+              slot="end"
+              >Join
+            </ion-button>
+            <ion-button
+              *ngIf="huddle.creatorID !== auth.currentUser.uid && hasJoined(i)"
+              color="danger"
+              (click)="onLeaveHuddle(huddle.huddleID, i)"
+              slot="end"
+              >Leave
+            </ion-button>
+          </ion-item>
+
+          <ion-card-content>
+            <ion-label *ngFor="let userID of huddle.userIDs">
+              {{userID}}
+            </ion-label>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin-top">
+      <ion-col offset="3" size="6">
+        <ion-button color="secondary" (click)="openCreateHuddle()"
+        >Create Huddle</ion-button
+      >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

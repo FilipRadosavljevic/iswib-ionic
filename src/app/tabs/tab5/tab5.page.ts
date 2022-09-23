@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
@@ -10,8 +11,7 @@ import { DataService } from 'src/app/services/data.service';
 export class Tab5Page implements OnInit, OnDestroy {
 
   sponsors: any = [];
-  restaurants: any = [];
-  data: any;
+  restaurantData = {};
   sub: Subscription;
   type: string;
 
@@ -22,32 +22,38 @@ export class Tab5Page implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if(this.sub){
+      this.sub.unsubscribe();
+    }
   }
 
-  ionViewDidEnter() {
-    this.getData();
+  async ionViewDidEnter() {
+    await this.getData();
   }
 
   async getData() {
     this.sub = await this.dataService.getSponsors().subscribe(res => {
       this.sponsors = res;
     });
-    this.dataService.getRestaurants().subscribe(res => {
-      this.data = Object.values(res[0]);
+    const data = await this.dataService.getRestaurants();
+    data.forEach(document => {
+      this.restaurantData[document.id] = Object.values(document.data());
+    });
+    console.log(this.restaurantData);
+      /*this.data = Object.values(res[0]);
       console.log(this.restaurants);
 
       this.restaurants = Object.keys(res[0]).filter(element => element !== 'id');
-      console.log(this.data);
-    });
+      console.log(this.data);*/
+
   }
 
   segmentChanged(ev) {
-    console.log(ev);
+    //console.log(ev);
   }
 
   goToLocation(currentObject: any) {
-    // eslint-disable-next-line max-len
+    console.log(currentObject);
     const googleLocation = `https://www.google.com/maps/search/?api=1&query=${currentObject.location}&query_place_id=${currentObject.placeId}`;
     window.open(googleLocation);
   }

@@ -6,6 +6,9 @@ import { PhotoService, UserPhotoData } from '../services/photo.service';
 import { LoadingController, Platform } from '@ionic/angular';
 import { Product } from '../models/product.model';
 import { OrderData, StoreService } from '../services/store.service';
+import { DataService } from '../services/data.service';
+import { Huddle } from '../models/huddle.model';
+import { HuddleService } from '../services/huddle.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,10 +20,14 @@ export class ProfilePage implements OnInit, OnDestroy {
   currentUser: User | undefined;
   profilePictureUrl: string;
   userSub: Subscription;
+  huddleSub: Subscription;
   orders: OrderData[];
+  huddles: Huddle[];
 
   constructor(
+    private huddleService: HuddleService,
     private storeService: StoreService,
+    private dataService: DataService,
     private authService: AuthenticationService,
     private photoService: PhotoService,
     private loadingController: LoadingController,
@@ -35,6 +42,10 @@ export class ProfilePage implements OnInit, OnDestroy {
         console.log(user);
         this.currentUser = user;
       });
+    this.huddleSub = this.huddleService.huddles
+    .subscribe(huddles => {
+      this.huddles = huddles.filter(h => h.creatorID === this.currentUser.userID);
+    });
   }
 
   async ionViewWillEnter() {
@@ -59,6 +70,9 @@ export class ProfilePage implements OnInit, OnDestroy {
     console.log('ngOnDestroy');
     if(this.userSub){
       this.userSub.unsubscribe();
+    }
+    if(this.huddleSub){
+      this.huddleSub.unsubscribe();
     }
   }
 

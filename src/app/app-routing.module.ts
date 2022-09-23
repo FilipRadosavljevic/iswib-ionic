@@ -17,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'discovery-page',
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'converter',
     loadChildren: () => import('./converter/converter.module').then( m => m.ConverterPageModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'huddle',
+    loadChildren: () => import('./huddle/huddle.module').then( m => m.HuddlePageModule),
     canActivate: [AuthGuard],
   },
 

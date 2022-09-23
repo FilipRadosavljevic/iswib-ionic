@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-  <div *ngIf="!data" class="custom-skeleton">
+  <div *ngIf="!restaurantData" class="custom-skeleton">
     <h1>
       <ion-skeleton-text
         animated
@@ -100,7 +100,7 @@
     </div>
   </div>
 
-  <div *ngIf="data">
+  <div *ngIf="restaurantData">
     <h1>Our sponsors</h1>
     <div class="segment-wrapper">
       <ion-slides
@@ -154,9 +154,9 @@
       </ion-segment>
     </div>
 
-    <div [ngSwitch]="type" *ngFor="let restaurant of restaurants; index as i">
-      <ion-list *ngSwitchCase="restaurant">
-        <ion-grid *ngFor="let item of data[i]; index as j">
+    <div [ngSwitch]="type" *ngFor="let restaurant of restaurantData | keyvalue">
+      <ion-list *ngSwitchCase="restaurant.key">
+        <ion-grid *ngFor="let item of restaurant.value">
           <ion-card color="primary" class="restaurant-card ion-margin-bottom">
             <ion-row>
               <ion-col size="4">
@@ -169,7 +169,8 @@
                     <p>Open from: {{item.timeFrom}} - {{item.timeTo}}</p>
                     <div>
                       <ion-chip
-                        (click)="goToLocation(data[i][j])"
+                        *ngIf="item.location && item.placeId"
+                        (click)="goToLocation({location: item.location, placeId: item.placeId})"
                         class="restaurant-chip"
                       >
                         <ion-icon
