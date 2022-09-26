@@ -18,6 +18,7 @@ export class ProfilePage implements OnInit, OnDestroy {
   profilePictureUrl: string;
   userSub: Subscription;
   orders: OrderData[];
+  products: OrderData[];
 
   constructor(
     private storeService: StoreService,
@@ -50,6 +51,9 @@ export class ProfilePage implements OnInit, OnDestroy {
     //   this.profilePictureUrl = newImageData.webviewPathWeb;
     // }
     this.orders = await this.storeService.fetchUserOrders(this.currentUser.userID);
+    console.log(this.orders, 1111111);
+
+    // this.products = await this.storeService.fetchUserOrders(this)
     this.isLoading = false;
     //await loading.dismiss();
   }
