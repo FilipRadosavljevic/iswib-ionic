@@ -9,7 +9,7 @@
   div.avatar-container {
     position: absolute;
     overflow: visible;
-    bottom: -60px;
+    bottom: -50px;
     left: calc(50% - 60px);
     border-radius: 100%;
     width: 120px;
@@ -39,22 +39,23 @@ ion-icon {
   background-color: #ffd700;
   height: 120px;
   width: 120px;
-  border: 3px solid black;
+  border: 2px solid #fff;
 }
 
 .user-details {
-  padding: 16px;
   color: white;
+  margin: 16px 0;
   font-size: .9rem;
+
+  h2 {
+    font-weight: bold;
+    margin-top: 16px;
+  }
 
   p {
     margin: 0 0 3px;
     color: white;
-    &.name {
-      color: white;
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
+    font-size: 1rem;
   }
 
   ion-list {
@@ -65,8 +66,21 @@ ion-icon {
 
 }
 
+ion-item {
+  --border-style: none;
+}
+
 /* iOS style: Add top border to the 1st ion-item in ion-list */
 .top-border-line {
   margin-top: 10px;
   border-top: 1px solid #e9eaeb;
+}
+
+.order-wrapper {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 16px;
+  padding: 10px;
+  h2 {
+    font-weight: bold;
+  }
 }

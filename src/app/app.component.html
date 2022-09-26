@@ -29,8 +29,8 @@
           <ion-icon name="log-out-outline"></ion-icon>
           Logout
         </ion-item>
-        <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider>
-        <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider>
+        <!-- <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider>
+        <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider> -->
         <ion-item (click)="presentAlert()" lines="full">
           <ion-icon name="trash-outline"></ion-icon>
           Delete account

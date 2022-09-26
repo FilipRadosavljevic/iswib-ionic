@@ -34,6 +34,8 @@ export class ConverterPage implements OnInit {
     console.log('onInit');
     await this.currencyService.fetchCurrencies();
     this.currencies = await this.currencyService.fetchCurrencies();
+    console.log(this.currencies);
+
     this.searchResults = [...this.currencies];
     this.populateMaps();
   }
