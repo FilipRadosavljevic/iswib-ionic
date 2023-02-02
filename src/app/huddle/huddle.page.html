@@ -1,8 +1,86 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding-horizontal">
-  <h1 *ngIf="times">{{times.timeFrom | date: 'EEEE, MMMM dd'}} Huddles</h1>
-  <ion-grid>
+  <div *ngIf="isLoading" class="custom-skeleton">
+    <div *ngFor="let item of [].constructor(6)">
+      <ion-list>
+        <ion-grid>
+          <ion-row class="ion-align-items-stretch ion-margin-bottom">
+            <ion-col size="3">
+              <ion-text>
+                <h3>
+                  <ion-skeleton-text
+                    animated
+                    style="width: 60%"
+                  ></ion-skeleton-text>
+                </h3>
+              </ion-text>
+              <ion-text>
+                <p>
+                  <ion-skeleton-text
+                    animated
+                    style="width: 50%"
+                  ></ion-skeleton-text>
+                </p>
+              </ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-card
+                [ngStyle]="{
+                width: '100%',
+                height: '150px',
+                position: 'relative'
+              }"
+              >
+                <ion-card-header>
+                  <ion-thumbnail
+                    [ngStyle]="{
+                    width: '100%',
+                    height: '150px'
+                  }"
+                  >
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-item slot="start" lines="none">
+                    <ion-skeleton-text
+                      animated
+                      style="width: 60%"
+                    ></ion-skeleton-text>
+                  </ion-item>
+                  <ion-item slot="start" lines="none">
+                    <ion-skeleton-text
+                      animated
+                      style="width: 60%"
+                    ></ion-skeleton-text>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </div>
+  </div>
+  <ion-grid *ngIf="!isLoading">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button
+          *ngIf="huddles.length > 1"
+          color="secondary"
+          (click)="presentSortActionSheet()"
+        >
+          <ion-icon slot="icon-only" name="filter"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Huddles</ion-title>
+      <ion-buttons slot="end">
+        <ion-button color="secondary" (click)="openCreateHuddle()">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
     <ion-row *ngFor="let huddle of huddles; let i = index">
       <ion-col>
         <ion-card color="tertiary">
@@ -12,21 +90,21 @@
               >{{huddle.title}} | {{huddle.time | date: 'HH:mm'}}
             </ion-label>
             <ion-button
-              *ngIf="huddle.creatorID === auth.currentUser.uid"
+              *ngIf="huddle.creatorID === auth.currentUser.uid && hasJoined(i)"
               color="secondary"
               (click)="onEditHuddle(huddle.huddleID, i)"
               slot="end"
               >Edit
             </ion-button>
             <ion-button
-              *ngIf="huddle.creatorID !== auth.currentUser.uid && !hasJoined(i)"
+              *ngIf="!hasJoined(i)"
               color="secondary"
               (click)="onJoinHuddle(huddle.huddleID, i)"
               slot="end"
               >Join
             </ion-button>
             <ion-button
-              *ngIf="huddle.creatorID !== auth.currentUser.uid && hasJoined(i)"
+              *ngIf="hasJoined(i)"
               color="danger"
               (click)="onLeaveHuddle(huddle.huddleID, i)"
               slot="end"
@@ -38,15 +116,11 @@
             <ion-label *ngFor="let userID of huddle.userIDs">
               {{userID}}
             </ion-label>
+            <ion-label>
+              {{huddle.huddleID}}
+            </ion-label>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-top">
-      <ion-col offset="3" size="6">
-        <ion-button color="secondary" (click)="openCreateHuddle()"
-        >Create Huddle</ion-button
-      >
       </ion-col>
     </ion-row>
   </ion-grid>

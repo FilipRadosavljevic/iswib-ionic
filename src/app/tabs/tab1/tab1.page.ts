@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 import { DataService } from '../../services/data.service';
@@ -20,7 +20,7 @@ export class Tab1Page implements OnInit, OnDestroy {
   constructor(
     public authService: AuthenticationService,
     private dataService: DataService,
-    private alertController: AlertController,
+    private loadingCtrl: LoadingController,
     private router: Router) {
   }
 
@@ -35,7 +35,12 @@ export class Tab1Page implements OnInit, OnDestroy {
   }
 
   async ionViewDidEnter() {
+    const loadingEl = await this.loadingCtrl.create({
+      message: 'Loading...',
+    });
+    loadingEl.present();
     await this.getData();
+    loadingEl.dismiss();
   }
 
   segmentChanged(ev: any) {
@@ -48,8 +53,6 @@ export class Tab1Page implements OnInit, OnDestroy {
       this.scheduleData[document.id] = Object.values(document.data());
     });
     console.log(this.scheduleData);
-      /*this.data = Object.values(res[0]).filter(element => typeof(element) === 'object');
-      this.days = Object.keys(res[0]).filter(element => element !== 'id');*/
   }
 
   goToLocation(currentObject: any) {

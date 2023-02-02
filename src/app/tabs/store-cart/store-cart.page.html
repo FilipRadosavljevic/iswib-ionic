@@ -5,31 +5,65 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let product of productsInCart" lines="none" class="product-items">
-      <ion-thumbnail slot="start" class="thumbnail">
-        <ion-img [src]="product.image"></ion-img>
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{ product.name }}</h2>
-        <p>
-          <span>Qty {{ product.quantity }}</span>
-          <span style="float: right;">${{ product.price * product.quantity }}</span>
-        </p>
-      </ion-label>
-      </ion-item>
-    </ion-list>
-    <hr class="solid-divider">
-    <ion-item lines="none">
-      <ion-label class="label-margin" color="dark"><strong>Total</strong></ion-label>
-      <ion-note color="dark" slot="end"><strong>{{ total | currency: 'EUR'}}</strong></ion-note>
-    </ion-item>
-
-
-    <ion-button color="dark" (click)="onPlaceOrder()">
-      Place Order
-    </ion-button>
-
-    <p class="payment-note">Note: This is for demonstration purposes only.
-      Your card will not be charged and no items will be shipped.</p>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item
+            *ngFor="let product of productsInCart; let i = index"
+            lines="none"
+            class="product-items"
+          >
+            <ion-thumbnail slot="start" class="thumbnail">
+              <ion-img [src]="product.image"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2
+                [ngStyle]="{'color': errorData && errorData.errorIndexes.includes(i)? 'var(--ion-color-danger)':''}"
+              >
+                {{ product.name }}
+              </h2>
+              <p>
+                <span>Quantity: {{ product.quantity }}</span>
+                <ion-button (click)="onAddItem(i)" size="small" color="secondary">+</ion-button>
+                <ion-button (click)="onRemoveItem(i)" size="small" color="secondary">-</ion-button>
+                <span style="float: right"
+                  >{{ product.price * product.quantity | currency: 'EUR'
+                  }}</span
+                >
+              </p>
+              <p *ngIf="product.size">
+                <span>Size: {{ product.size }}</span>
+              </p>
+              <p *ngIf="errorData && errorData.errorIndexes.includes(i)">
+                <span style="color: var(--ion-color-danger)"
+                  >Left: {{ errorData.quantities[i] }}</span
+                >
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <hr class="solid-divider" />
+        <ion-item lines="none">
+          <ion-label class="label-margin" color="dark"
+            ><strong>Total</strong></ion-label
+          >
+          <ion-note color="dark" slot="end"
+            ><strong>{{ total | currency: 'EUR'}}</strong></ion-note
+          >
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button color="secondary" (click)="onPlaceOrder()">
+          Place Order
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -16,6 +16,7 @@ export const environment = {
     measurementId: 'G-XRYWSCL1DV'
   },
   currencyAPI: '5NLdjaD07CVXo9ekc7yIXsuRAcnffOzW',
+  mapsAPI: 'AIzaSyDy_oXMi9jjWyEqilFwDIq4aEuEbWtV7Vg',
 };
 
 /*

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
@@ -15,7 +16,10 @@ export class Tab5Page implements OnInit, OnDestroy {
   sub: Subscription;
   type: string;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private loadingCtrl: LoadingController,
+    private dataService: DataService
+    ) {}
 
   ngOnInit() {
     this.type = 'restaurants';
@@ -28,24 +32,24 @@ export class Tab5Page implements OnInit, OnDestroy {
   }
 
   async ionViewDidEnter() {
+    const loadingEl = await this.loadingCtrl.create({
+      message: 'Loading...',
+    });
+    loadingEl.present();
     await this.getData();
+    loadingEl.dismiss();
   }
 
   async getData() {
-    this.sub = await this.dataService.getSponsors().subscribe(res => {
-      this.sponsors = res;
+    const sponsorsData = await this.dataService.getSponsors();
+    sponsorsData.forEach(document => {
+      this.sponsors.push(document.data());
     });
-    const data = await this.dataService.getRestaurants();
-    data.forEach(document => {
+    const restData = await this.dataService.getRestaurants();
+    restData.forEach(document => {
       this.restaurantData[document.id] = Object.values(document.data());
     });
     console.log(this.restaurantData);
-      /*this.data = Object.values(res[0]);
-      console.log(this.restaurants);
-
-      this.restaurants = Object.keys(res[0]).filter(element => element !== 'id');
-      console.log(this.data);*/
-
   }
 
   segmentChanged(ev) {

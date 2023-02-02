@@ -9,10 +9,10 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { HeaderModule } from 'src/app/components/header/header.component.module';
 @NgModule({
   imports: [
-    IonicModule,
+    IonicModule.forRoot({animated: false}),
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab1Page }]),
+    //RouterModule.forChild([{ path: '', component: Tab1Page }]),
     Tab1PageRoutingModule,
     HeaderModule
   ],

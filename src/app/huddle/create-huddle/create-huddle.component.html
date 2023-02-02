@@ -9,8 +9,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-text-center ion-padding">
-  <form [formGroup]="form">
+<ion-content class="ion-text-center">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -31,16 +31,15 @@
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-label position="floating">Meeting Time</ion-label>
-            <ion-datetime-button datetime="time" class="ion-margin">
+            <ion-label position="stacked">Meeting Time</ion-label>
+            <ion-datetime-button datetime="datetime" class="ion-margin">
             </ion-datetime-button>
             <ion-popover [keepContentsMounted]="true">
               <ng-template>
                 <ion-datetime
+                  color="date"
                   [showDefaultButtons]="true"
-                  [showDefaultTitle]="true"
-                  presentation="time"
-                  id="time"
+                  id="datetime"
                   hourCycle="h23"
                   formControlName="time"
                 >
@@ -53,14 +52,20 @@
       <ion-row>
         <ion-col sizeSm="6" offsetSm="3">
           <ion-button
-            (click)="onSubmit()"
+            type="submit"
             expand="block"
             color="primary"
-            [disabled]="!form.valid || !timesValid()">
+            [disabled]="!form.valid">
             {{huddle? 'Save' : 'Create'}}
+          </ion-button>
+          <ion-button
+            (click)="initMap()"
+          >
+            Map
           </ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </form>
+  <div id="map"></div>
 </ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
@@ -9,25 +10,36 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class Tab2Page implements OnInit, OnDestroy {
 
-  data: any;
+  data: any = [];
   sub: Subscription;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private loadingCtrl: LoadingController,
+    private dataService: DataService
+    ) {}
 
   ngOnInit() {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if(this.sub){
+      this.sub.unsubscribe();
+    }
   }
 
-  ionViewDidEnter() {
-    this.getData();
+  async ionViewDidEnter() {
+    const loadingEl = await this.loadingCtrl.create({
+      message: 'Loading...',
+    });
+    loadingEl.present();
+    await this.getData();
+    loadingEl.dismiss();
   }
 
   async getData() {
-    this.sub = await this.dataService.getWorkshops().subscribe(res => {
-      this.data = res;
+    const workshopData = await this.dataService.getWorkshops();
+    workshopData.forEach(document => {
+      this.data.push(document.data());
     });
   }
 

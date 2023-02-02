@@ -47,6 +47,12 @@ const routes: Routes = [
     loadChildren: () => import('./huddle/huddle.module').then( m => m.HuddlePageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'orders',
+    loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule),
+    canActivate: [AuthGuard],
+  },
+
 
 ];
 @NgModule({

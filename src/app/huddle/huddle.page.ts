@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { ActionSheetController, AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Huddle } from '../models/huddle.model';
 import { HuddleService } from '../services/huddle.service';
@@ -11,9 +11,9 @@ import { CreateHuddleComponent } from './create-huddle/create-huddle.component';
   selector: 'app-huddle',
   templateUrl: './huddle.page.html',
   styleUrls: ['./huddle.page.scss'],
-  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HuddlePage implements OnInit, OnDestroy {
+  isLoading = false;
   huddles: Huddle[];
   huddlesSub: Subscription;
   huddleDay: number;
@@ -23,10 +23,10 @@ export class HuddlePage implements OnInit, OnDestroy {
   };
 
   constructor(
-    private cd: ChangeDetectorRef,
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
+    private actionSheetCtrl: ActionSheetController,
     private huddleService: HuddleService,
     private route: ActivatedRoute,
     private router: Router,
@@ -41,14 +41,7 @@ export class HuddlePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.huddlesSub = this.huddleService.huddles.subscribe(huddles => {
-      console.log(this.huddleDay);
-      console.log(huddles);
-      const newHuddles = [];
-      huddles.forEach(h => {
-        newHuddles.push(h);
-      });
-      this.huddles = [...newHuddles];
-      //this.cd.markForCheck();
+      this.huddles =huddles;
     });
     this.route.paramMap.subscribe(paramMap => {
       if(!paramMap.has('huddleDay')){
@@ -62,13 +55,52 @@ export class HuddlePage implements OnInit, OnDestroy {
     });
   }
 
+  async presentSortActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: 'Sort By',
+      buttons: [
+        {
+          text: 'Ascending',
+          handler: () => {
+            this.sort('ASC');
+          }
+        },
+        {
+          text: 'Descending',
+          handler: () => {
+            this.sort('DESC');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        }
+      ],
+    });
+    await actionSheet.present();
+  }
+
+  sort(order: 'ASC' | 'DESC') {
+    this.huddles.sort((a, b) => {
+      const offset = new Date().getTimezoneOffset() * 60000;
+      const aMilli = new Date(a.time).getTime() - offset;
+      const bMilli = new Date(b.time).getTime() - offset;
+      return order === 'ASC' ? aMilli - bMilli : bMilli - aMilli;
+    });
+  }
+
   async ionViewWillEnter() {
+    this.isLoading = true;
     console.log(this.huddleDay);
     console.log(this.huddles);
+
     try{
-      this.times = await this.huddleService.fetchHuddlesByDay(this.huddleDay);
-      console.log(this.times);
+      await this.huddleService.fetchAllHuddles();
+      this.sort('DESC');
+      this.isLoading = false;
     } catch(error) {
+      this.isLoading = false;
+      //loadingEl.dismiss();
       console.log(error);
       const alert = await this.alertCtrl.create({
         header: 'An error occured',
@@ -77,12 +109,12 @@ export class HuddlePage implements OnInit, OnDestroy {
           {
             text: 'Okay',
             handler: () => {
-              this.router.navigateByUrl('/tabs/tab1', {replaceUrl: true});
+              //this.router.navigateByUrl('/tabs/tab1', {replaceUrl: true});
             }
           }
         ]
       });
-      await alert.present();
+      //await alert.present();
     }
   }
 
@@ -113,7 +145,7 @@ export class HuddlePage implements OnInit, OnDestroy {
         }).then(loadingEl => {
           loadingEl.present();
           const data = resultsData.data.huddleData;
-          this.huddleService.updateHuddle(
+          this.huddleService.editHuddle(
             index,
             huddleID,
             this.huddleDay,
@@ -139,13 +171,21 @@ export class HuddlePage implements OnInit, OnDestroy {
   }
 
   onLeaveHuddle(huddleID: string, index: number) {
-    this.huddleService.updateHuddleUsers(
-      this.huddleDay,
-      huddleID,
-      this.auth.currentUser.uid,
-      index,
-      'leave'
-    ).subscribe();
+    if(this.huddles[index].userIDs.length === 1){
+      this.huddleService.deleteHuddle(
+        index,
+        huddleID,
+        this.huddleDay
+      ).subscribe();
+    } else {
+      this.huddleService.updateHuddleUsers(
+        this.huddleDay,
+        huddleID,
+        this.auth.currentUser.uid,
+        index,
+        'leave'
+      ).subscribe();
+    }
   }
 
   openCreateHuddle() {
@@ -176,7 +216,7 @@ export class HuddlePage implements OnInit, OnDestroy {
             data.time.toISOString(),
             data.title,
             data.description,
-            []
+            [this.auth.currentUser.uid]
           ).subscribe(() => {
             loadingEl.dismiss();
           });

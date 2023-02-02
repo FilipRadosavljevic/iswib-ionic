@@ -26,8 +26,8 @@ export class AppComponent {
 
 
   myCustomPageTransition = ((baseEl: any, opts?: any) => {
-      //console.log('opts.enteringEl:'  + opts.enteringEl); //Entering Element - New Page
-      //console.log('opts.leavingEl:'  + opts.leavingEl);   //Leaving Element - Current Page
+      console.log(opts.enteringEl); //Entering Element - New Page
+      console.log(opts.leavingEl);   //Leaving Element - Current Page
       const anim1 = this.animationCtrl.create()
         .addElement(opts.leavingEl)
         .duration(600)
@@ -59,26 +59,19 @@ export class AppComponent {
 
     if(user) {
       await this.authService.logout();
-      this.router.navigate(['/']);
-    } else {
-      this.router.navigate(['/']);
     }
-
+    this.router.navigate(['']);
   }
 
-  deleteAccount() {
-    let userId = null;
-    userId = this.auth.currentUser.uid;
+  async deleteAccount() {
+    const user = this.auth.currentUser;
     this.menu.close();
 
-    if(userId) {
-      userId.delete().then(() => {
-        this.router.navigate(['']);
-        this.presentToast('Your account has been successfully deleted.', 'bottom', 4000);
-      }).catch((error) => {
-        console.log(error);
-      });
+    if(user) {
+      await this.authService.deleteUser();
+      await this.presentToast('Your account has been successfully deleted.', 'bottom', 4000);
     }
+    this.router.navigate(['']);
   }
 
   async presentToast(message, position, duration) {
@@ -86,9 +79,9 @@ export class AppComponent {
       message,
       duration,
       position,
-      color: 'light',
+      color: 'secondary',
     });
-    toast.present();
+    await toast.present();
   }
 
   async presentAlert() {

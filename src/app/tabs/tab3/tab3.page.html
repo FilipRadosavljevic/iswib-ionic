@@ -15,17 +15,33 @@
     </ion-toolbar>
 
     <ion-grid>
-      <ion-row *ngFor="let product of products" class="ion-margin-vertical">
-        <ion-col size="8" offset="2">
-          <ion-img
-            [src]="product.image"
-            (click)="addToCart(product)"
-            class="grid-img"
-          ></ion-img>
-          <p class="detail-name">{{ product.name }}</p>
+      <ion-row *ngFor="let product of showcasedProducts" class="ion-margin-vertical">
+        <ion-card
+          (click)="product.size !== undefined ? chooseSize() : addToCart(product)"
+        >
+          <ion-col size="12">
+            <ion-img [src]="product.image" class="grid-img"></ion-img>
+            <p
+              [ngClass]="product.quantity > 0 ? 'detail-name': 'detail-name-sold'"
+              class="detail-name"
+            >
+              {{ product.name }}
+            </p>
 
-          <p class="detail-price">{{product.price | currency:'EUR'}}</p>
-        </ion-col>
+            <p *ngIf="product.quantity > 0" class="detail-price">
+              {{product.price | currency:'EUR'}}
+            </p>
+            <p class="detail-price-sold"
+            *ngIf="product.quantity > 0 && product.quantity <= 10"
+            style="text-align: right;"
+            >
+              {{product.quantity}} left
+            </p>
+            <p *ngIf="product.quantity <= 0" class="detail-price-sold">
+              SOLD OUT
+            </p>
+          </ion-col>
+        </ion-card>
       </ion-row>
     </ion-grid>
   </ng-container>
@@ -46,16 +62,18 @@
 
     <ion-grid>
       <ion-row *ngFor="let product of products" class="ion-margin-vertical">
-        <ion-col size="8" offset="2">
-          <ion-img
-            [src]="product.image"
-            (click)="redirectLogin('Login to order this product')"
-            class="grid-img"
-          ></ion-img>
-          <p class="detail-name">{{ product.name }}</p>
+        <ion-card>
+          <ion-col size="12">
+            <ion-img
+              [src]="product.image"
+              (click)="redirectLogin('Login to order this product')"
+              class="grid-img"
+            ></ion-img>
+            <p class="detail-name">{{ product.name }}</p>
 
-          <p class="detail-price">{{product.price | currency:'EUR'}}</p>
-        </ion-col>
+            <p class="detail-price">{{product.price | currency:'EUR'}}</p>
+          </ion-col>
+        </ion-card>
       </ion-row>
     </ion-grid>
   </ng-container>

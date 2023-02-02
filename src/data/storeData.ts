@@ -1,4 +1,4 @@
-import { Product } from 'src/app/models/product.model';
+/* import { Product } from 'src/app/models/product.model';
 
 export const companyStoreProducts: Product[] = [
 {
@@ -26,4 +26,4 @@ export const companyStoreProducts: Product[] = [
   price: 6,
   image: '/assets/images/store/Rokovnik.jpeg'
 },
-];
+]; */

@@ -19,6 +19,12 @@
             <ion-label>ISWiB</ion-label>
           </ion-item>
         </ion-menu-toggle>
+        <ion-menu-toggle *ngIf="authService.userORG | async" menu="top-menu">
+          <ion-item lines="full" routerLink="/orders">
+            <ion-icon name="clipboard-outline" slot="start"></ion-icon>
+            <ion-label>All Orders</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
         <ion-menu-toggle menu="top-menu">
           <ion-item lines="full" routerLink="/converter">
             <ion-icon name="cash" slot="start"></ion-icon>
@@ -29,8 +35,8 @@
           <ion-icon name="log-out-outline"></ion-icon>
           Logout
         </ion-item>
-        <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider>
-        <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider>
+        <!-- <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider>
+        <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider> -->
         <ion-item (click)="presentAlert()" lines="full">
           <ion-icon name="trash-outline"></ion-icon>
           Delete account

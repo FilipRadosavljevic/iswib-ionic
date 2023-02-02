@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
@@ -10,12 +11,13 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class Tab4Page implements OnInit, OnDestroy {
 
-  data: any;
+  data: any = [];
   sub: Subscription;
   userID: any;
   hasLiked: any;
 
   constructor(
+    private loadingCtrl: LoadingController,
     private router: Router,
     private dataService: DataService
     ) {}
@@ -24,16 +26,24 @@ export class Tab4Page implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if(this.sub){
+      this.sub.unsubscribe();
+    }
   }
 
-  ionViewDidEnter() {
-    this.getData();
+  async ionViewDidEnter() {
+    const loadingEl = await this.loadingCtrl.create({
+      message: 'Loading...',
+    });
+    loadingEl.present();
+    await this.getData();
+    loadingEl.dismiss();
   }
 
   async getData() {
-    this.sub = await this.dataService.getDiscovery().subscribe(res => {
-      this.data = res;
+    const discoveryData = await this.dataService.getDiscovery();
+    discoveryData.forEach(document => {
+      this.data.push(document.data());
     });
   }
 

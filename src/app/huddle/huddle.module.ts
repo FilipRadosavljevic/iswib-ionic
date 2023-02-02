@@ -14,7 +14,7 @@ import { CreateHuddleComponent } from './create-huddle/create-huddle.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    IonicModule,
+    IonicModule.forRoot({animated: false}),
     HuddlePageRoutingModule,
     HeaderModule,
   ],

@@ -1,4 +1,6 @@
+/* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   Auth,
@@ -11,11 +13,13 @@ import { Preferences } from '@capacitor/preferences';
 import { BehaviorSubject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
+  token: string;
   private storageKey = 'authData';
   private _user = new BehaviorSubject<User>(null);
 
@@ -43,7 +47,8 @@ export class AuthenticationService {
 
   constructor(
     private auth: Auth,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private http: HttpClient,
     ) { }
 
   get user() {
@@ -70,6 +75,13 @@ export class AuthenticationService {
       );
   }
 
+  get userORG() {
+    return this._user.asObservable()
+      .pipe(
+        map(user => user.role === 'ORG')
+      );
+  }
+
   async autoLogin() {
     console.log('Entered autoLogin');
     try{
@@ -87,8 +99,22 @@ export class AuthenticationService {
     }
   }
 
+  async deleteUser() {
+    await Preferences.remove({ key: this.storageKey });
+    this._user.next(null);
+    await this.auth.currentUser.delete();
+  }
+
   async register({email,password,firstName,lastName,confirmPassword}) {
     try {
+      const resData: any = await this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseConfig.apiKey}`,
+      {
+        email,
+        password,
+        returnSecureToken: true
+      }).toPromise();
+      this.token = resData.idToken;
+      console.log(resData.idToken);
       const userCredentials = await createUserWithEmailAndPassword(this.auth, email, password);
       const newUser = new User(
         userCredentials.user.uid,
@@ -98,7 +124,6 @@ export class AuthenticationService {
         userCredentials.user.email,
         'default'
       );
-      //await set(ref(getDatabase(), 'users/' + userCredentials.user.uid), newUser);
       await setDoc(
         doc(this.firestore,`users/${userCredentials.user.uid}`)
         .withConverter(this.userConverter),
@@ -120,7 +145,6 @@ export class AuthenticationService {
   async login({ email, password }) {
     try {
       const userCredentials = await signInWithEmailAndPassword(this.auth, email, password);
-      //const dataSnapshot = await get(ref(getDatabase(), 'users/' + userCredentials.user.uid));
       const dataSnapshot = await getDoc(
         doc(this.firestore,`users/${userCredentials.user.uid}`)
         .withConverter(this.userConverter)
@@ -138,7 +162,7 @@ export class AuthenticationService {
       return null;
     }
   }
-
+  //DELETE ACCOUTN
   async recover({ email }): Promise<void> {
     try {
       const resetEmail = await sendPasswordResetEmail(this.auth, email);

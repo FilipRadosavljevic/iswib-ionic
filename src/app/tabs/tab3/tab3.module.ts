@@ -13,7 +13,7 @@ import { HeaderModule } from 'src/app/components/header/header.component.module'
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule.forRoot({animated: false}),
     Tab3PageRoutingModule,
     HeaderModule
   ],

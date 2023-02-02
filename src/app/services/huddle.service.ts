@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable no-underscore-dangle */
 import { Injectable } from '@angular/core';
-import { addDoc, arrayRemove, arrayUnion, collection, doc, Firestore, updateDoc } from '@angular/fire/firestore';
+import { addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc, Firestore, getDocs, updateDoc } from '@angular/fire/firestore';
+import { setDoc } from 'firebase/firestore';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { switchMap, take, tap } from 'rxjs/operators';
 import { Huddle } from '../models/huddle.model';
@@ -14,6 +15,30 @@ import { DataService } from './data.service';
 })
 export class HuddleService {
   private _huddles = new BehaviorSubject<Huddle[]>([]);
+
+  private huddleConverter = {
+    toFirestore: (huddle: Huddle) => ({
+      //huddleID: huddle.huddleID,
+      creatorID: huddle.creatorID,
+      huddleDay: huddle.huddleDay,
+      time: huddle.time,
+      title: huddle.title,
+      description: huddle.description,
+      userIDs: huddle.userIDs,
+    }),
+    fromFirestore: (snapshot, options) => {
+        const data = snapshot.data(options);
+        return new Huddle(
+          snapshot.id,
+          data.creatorID,
+          data.huddleDay,
+          data.time,
+          data.title,
+          data.description,
+          data.userIDs,
+        );
+    }
+  };
 
   constructor(
     private dataService: DataService,
@@ -31,7 +56,35 @@ export class HuddleService {
     return huddlesData;
   }
 
-  updateHuddle(
+  async fetchHuddlesByUserID(userID: string) {
+    const huddles = await this.dataService.getHuddlesByUserID(userID);
+    this._huddles.next(huddles);
+  }
+
+  async fetchAllHuddles() {
+    const huddlesSnapshot = await getDocs(collection(this.firestore, 'huddles').withConverter(this.huddleConverter));
+    const huddles = [];
+    huddlesSnapshot.forEach(huddleDoc => {
+      console.log(huddleDoc.id, ' => ', huddleDoc.data());
+      huddles.push(huddleDoc.data());
+    });
+    console.log(huddles);
+    this._huddles.next(huddles);
+  }
+
+  deleteHuddle(index: number, huddleID: string, huddleDay: number,) {
+    return from(deleteDoc(doc(this.firestore,`huddles/${huddleDay}/huddles/${huddleID}`)))
+    .pipe(
+      switchMap(_ => this.huddles),
+      take(1),
+      tap(huddles => {
+        huddles.splice(index, 1);
+        this._huddles.next(huddles);
+      })
+    );
+  }
+
+  editHuddle(
     index: number,
     huddleID: string,
     huddleDay: number,
@@ -66,27 +119,24 @@ export class HuddleService {
     userIDs: string[],
     //image: string
   ) {
+
+    const newHuddleRef = doc(collection(this.firestore, `huddles`))
+    .withConverter(this.huddleConverter);
+
     const newHuddle = new Huddle(
-      null,
+      newHuddleRef.id,
       creatorID,
+      huddleDay,
       time,
       title,
       description,
       userIDs,
      // image
     );
-    return from(addDoc(collection(this.firestore,`huddles/${huddleDay}/huddles`),
-    {
-      creatorID,
-      description,
-      time,
-      title,
-      userIDs,
-    })).pipe(
-      switchMap(docRef => {
-        newHuddle.huddleID = docRef.id;
-        return this.huddles;
-      }),
+
+    return from(setDoc(newHuddleRef, newHuddle))
+    .pipe(
+      switchMap(_ => this.huddles),
       take(1),
       tap(huddles => {
         this._huddles.next(huddles.concat(newHuddle));
@@ -118,60 +168,4 @@ export class HuddleService {
       })
     );
   }
-
-  /*cancelBooking(bookingId: string) {
-    return this.authService.token.pipe(
-      take(1),
-      switchMap(token => {
-        return this.http.delete(`https://bookingapp-a6b80-default-rtdb.europe-west1.firebasedatabase.app/bookings/${bookingId}.json?auth=${token}`);
-      }),
-      switchMap(() => this.bookings),
-      take(1),
-      tap(bookings => {
-        this._bookings.next(bookings.filter(b => b.id !== bookingId));
-      })
-    );
-  }
-
-  fetchBookings() {
-    let fetchedUserId: string;
-    return this.authService.userId.pipe(
-      take(1),
-      switchMap(userId => {
-        if (!userId) {
-          throw new Error('Found no user.');
-        }
-        fetchedUserId = userId;
-        return this.authService.token;
-      }),
-      take(1),
-      switchMap(token => {
-        return this.http
-          .get<{ [key: string]: BookingData }>(`https://bookingapp-a6b80-default-rtdb.europe-west1.firebasedatabase.app/bookings.json?orderBy="userId"&equalTo="${fetchedUserId}"&auth=${token}`);
-      }),
-      map(bookingData => {
-        const bookings = [];
-        for (const key in bookingData) {
-          if (bookingData.hasOwnProperty(key)) {
-            bookings.push(new Booking(
-              key,
-              bookingData[key].placeId,
-              bookingData[key].userId,
-              bookingData[key].placeTitle,
-              bookingData[key].placeImage,
-              bookingData[key].firstName,
-              bookingData[key].lastName,
-              bookingData[key].guestNumber,
-              new Date(bookingData[key].bookedFrom),
-              new Date(bookingData[key].bookedTo)
-            ));
-          }
-        }
-        return bookings;
-      }),
-      tap(bookings => {
-        this._bookings.next(bookings);
-      })
-    );
-  }*/
 }

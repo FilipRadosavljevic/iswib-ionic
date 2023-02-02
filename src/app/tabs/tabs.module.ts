@@ -9,7 +9,7 @@ import { TabsPage } from './tabs.page';
 
 @NgModule({
   imports: [
-    IonicModule,
+    IonicModule.forRoot({animated: false}),
     CommonModule,
     FormsModule,
     TabsPageRoutingModule

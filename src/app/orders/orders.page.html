@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-searchbar></ion-searchbar>
+        <ion-list *ngIf="orders && orders.length > 0">
+          <ion-item *ngFor="let order of orders; let i = index;">
+            <h2>Order date:</h2>
+            <p>{{order.timestamp | date: 'dd.MM.yyyy'}}</p>
+
+            <p>{{order.userEmail}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-button color="secondary">
+        Write to Sheet
+      </ion-button>
+    </ion-row>
+    <ion-row>
+      <ion-button color="secondary" (click)="onInitializeShards('test')">
+        Initialize shards
+      </ion-button>
+    </ion-row>
+    <ion-row>
+      <ion-button color="secondary" (click)="increment('test')">
+        Increment shards
+      </ion-button>
+    </ion-row>
+    <ion-row>
+      <ion-button color="secondary" (click)="getCount('test')">
+        Get Count
+      </ion-button>
+    </ion-row>
+    <ion-row>
+      <ion-label>
+        Count: {{ total }}
+      </ion-label>
+    </ion-row>
+  </ion-grid>
+</ion-content>

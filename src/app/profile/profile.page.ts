@@ -20,8 +20,10 @@ export class ProfilePage implements OnInit, OnDestroy {
   currentUser: User | undefined;
   profilePictureUrl: string;
   userSub: Subscription;
+  orderSub: Subscription;
   huddleSub: Subscription;
   orders: OrderData[];
+  products: OrderData[];
   huddles: Huddle[];
 
   constructor(
@@ -30,40 +32,41 @@ export class ProfilePage implements OnInit, OnDestroy {
     private dataService: DataService,
     private authService: AuthenticationService,
     private photoService: PhotoService,
-    private loadingController: LoadingController,
+    private loadingCtrl: LoadingController,
     private platform: Platform
   ) {}
 
   ngOnInit() {
-    console.log('ngOnInit');
-    console.log(this.currentUser);
     this.userSub = this.authService.user
     .subscribe(user => {
         console.log(user);
         this.currentUser = user;
       });
+
     this.huddleSub = this.huddleService.huddles
     .subscribe(huddles => {
-      this.huddles = huddles.filter(h => h.creatorID === this.currentUser.userID);
+      this.huddles = huddles;
+      //this.huddles = huddles.filter(h => h.creatorID === this.currentUser.userID);
     });
   }
 
   async ionViewWillEnter() {
-    this.isLoading = true;
-    //const loading = await this.loadingController.create();
-    //await loading.present();
+    /*const loadingEl = await this.loadingCtrl.create({
+      message: 'Loading...',
+    });
+    loadingEl.present();*/
 
-    console.log('ionViewWillEnter');
-    console.log(this.currentUser);
     const newImageData = await this.photoService.loadSaved(this.currentUser.profilePic);
     if(this.platform.is('hybrid')){
       this.profilePictureUrl = newImageData.webviewPathNative;
     } else {
+      console.log('desktop');
       this.profilePictureUrl = newImageData.webviewPathWeb;
+      console.log(this.profilePictureUrl);
     }
+    //await this.huddleService.fetchHuddlesByUserID(this.currentUser.userID);
     this.orders = await this.storeService.fetchUserOrders(this.currentUser.userID);
-    this.isLoading = false;
-    //await loading.dismiss();
+    //loadingEl.dismiss();
   }
 
   ngOnDestroy() {
@@ -78,6 +81,7 @@ export class ProfilePage implements OnInit, OnDestroy {
 
   async onChooseNewProfilePic() {
     const newImageData = await this.photoService.addNewProfilePic();
+    console.log(newImageData);
     this.currentUser.profilePic = JSON.stringify(newImageData);
     if(this.platform.is('hybrid')){
       this.profilePictureUrl = newImageData.webviewPathNative;

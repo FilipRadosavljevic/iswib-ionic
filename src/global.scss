@@ -86,3 +86,30 @@ ion-content {
   $alert-md-background-color: #fff;
   $alert-ios-background: #fff;
 }
+
+ion-action-sheet.my-custom-class {
+  --background: #f58840;
+  --backdrop-opacity: 0.6;
+  --button-background-selected: #e97223;
+  --button-color: #000000;
+  --color: #fff;
+  /* role: "destructive" button iOS styling override */
+  --ion-color-danger: #000000;
+}
+:root {
+	--ion-color-date: #ffd700;
+	--ion-color-date-rgb: 255,215,0;
+	--ion-color-date-contrast: #000000;
+	--ion-color-date-contrast-rgb: 0,0,0;
+	--ion-color-date-shade: #e0bd00;
+	--ion-color-date-tint: #ffdb1a;
+}
+
+.ion-color-date {
+	--ion-color-base: var(--ion-color-date);
+	--ion-color-base-rgb: var(--ion-color-date-rgb);
+	--ion-color-contrast: var(--ion-color-date-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-date-contrast-rgb);
+	--ion-color-shade: var(--ion-color-date-shade);
+	--ion-color-tint: var(--ion-color-date-tint);
+}

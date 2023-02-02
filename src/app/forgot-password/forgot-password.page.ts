@@ -51,7 +51,7 @@ export class ForgotPasswordPage implements OnInit {
       message,
       duration,
       position,
-      color: 'light',
+      color: 'secondary',
     });
     toast.present();
   }
