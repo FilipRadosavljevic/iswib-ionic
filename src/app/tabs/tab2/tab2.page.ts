@@ -27,6 +27,7 @@ export class Tab2Page implements OnInit, OnDestroy {
     this.sub = await this.dataService.getWorkshops().subscribe((res) => {
       this.data = res;
       console.log(1);
+      //Ducha was here (domaci)
     });
   }
 }
