@@ -10,12 +10,7 @@
   <div id="wrapper">
     <form (ngSubmit)="register()" [formGroup]="credentialsForm">
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-        <ion-input
-          type="text"
-          placeholder="First Name"
-          formControlName="firstName"
-        >
-        </ion-input>
+        <ion-input type="text" placeholder="First Name" formControlName="firstName"> </ion-input>
       </ion-item>
       <ion-note
         color="danger"
@@ -26,11 +21,7 @@
         First name is required
       </ion-note>
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-        <ion-input
-          type="text"
-          placeholder="Last Name"
-          formControlName="lastName"
-        ></ion-input>
+        <ion-input type="text" placeholder="Last Name" formControlName="lastName"></ion-input>
       </ion-item>
       <ion-note
         color="danger"
@@ -41,11 +32,7 @@
         Last name is required
       </ion-note>
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-        <ion-input
-          type="email"
-          placeholder="Email"
-          formControlName="email"
-        ></ion-input>
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
       </ion-item>
       <ion-note
         color="danger"
@@ -61,16 +48,8 @@
         *ngIf="email.touched && !email.valid && email.errors?.['required']"
         >Email is required
       </ion-note>
-      <ion-item
-        color="primary"
-        class="ion-margin-horizontal ion-margin-vertical"
-        lines="none"
-      >
-        <ion-input
-          type="password"
-          placeholder="Password"
-          formControlName="password"
-        ></ion-input>
+      <ion-item color="primary" class="ion-margin-horizontal ion-margin-vertical" lines="none">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
       </ion-item>
       <ion-note
         color="danger"
@@ -110,10 +89,6 @@
         >Sign Up
       </ion-button>
     </form>
-    <img
-      alt="logo"
-      id="header_picture"
-      src="assets/images/background/register.png"
-    />
+    <img alt="logo" id="header_picture" src="assets/images/background/register.png" />
   </div>
 </ion-content>

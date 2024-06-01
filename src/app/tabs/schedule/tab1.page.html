@@ -1,60 +1,59 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-
   <div class="segment-wrapper">
     <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
       <ion-segment-button value="day0" checked>
         <ion-label>
-          Mon<br>
+          Mon<br />
           <b>18</b>
         </ion-label>
       </ion-segment-button>
       <ion-segment-button value="day1">
         <ion-label>
-          Tue<br>
+          Tue<br />
           <b>19</b>
         </ion-label>
       </ion-segment-button>
       <ion-segment-button value="day2">
         <ion-label>
-          Wed<br>
+          Wed<br />
           <b>20</b>
         </ion-label>
       </ion-segment-button>
       <ion-segment-button value="day3">
         <ion-label>
-          Thu<br>
+          Thu<br />
           <b>21</b>
         </ion-label>
       </ion-segment-button>
       <ion-segment-button value="day4">
         <ion-label>
-          Fri<br>
+          Fri<br />
           <b>22</b>
         </ion-label>
       </ion-segment-button>
       <ion-segment-button value="day5">
         <ion-label>
-          Sat<br>
+          Sat<br />
           <b>23</b>
         </ion-label>
       </ion-segment-button>
       <ion-segment-button value="day6">
         <ion-label>
-          Sun<br>
+          Sun<br />
           <b>24</b>
         </ion-label>
       </ion-segment-button>
       <ion-segment-button value="day7">
         <ion-label>
-          Mon<br>
+          Mon<br />
           <b>25</b>
         </ion-label>
       </ion-segment-button>
       <ion-segment-button value="day8">
         <ion-label>
-          Tue<br>
+          Tue<br />
           <b>26</b>
         </ion-label>
       </ion-segment-button>
@@ -79,23 +78,26 @@
               </ion-text>
             </ion-col>
             <ion-col>
-              <ion-card [ngStyle]="{
-                width: '100%',
-                height: '150px',
-                position: 'relative'
-              }">
+              <ion-card
+                [ngStyle]="{
+                  width: '100%',
+                  height: '150px',
+                  position: 'relative'
+                }"
+              >
                 <ion-card-header>
-                  <ion-thumbnail [ngStyle]="{
-                    width: '100%',
-                    height: '150px'
-                  }">
+                  <ion-thumbnail
+                    [ngStyle]="{
+                      width: '100%',
+                      height: '150px'
+                    }"
+                  >
                     <ion-skeleton-text animated></ion-skeleton-text>
                   </ion-thumbnail>
                 </ion-card-header>
                 <ion-card-content>
                   <ion-item slot="start" lines="none">
                     <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-
                   </ion-item>
                   <ion-item slot="start" lines="none">
                     <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
@@ -111,7 +113,7 @@
   <div *ngIf="data">
     <div [ngSwitch]="type" *ngFor="let day of days; index as i">
       <ion-list *ngSwitchCase="day">
-        <ion-grid *ngFor="let item of data[i], index as j">
+        <ion-grid *ngFor="let item of data[i]; index as j">
           <ion-row class="ion-align-items-stretch ion-margin-bottom">
             <ion-col size="3">
               <ion-text>
@@ -128,7 +130,11 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-item color="secondary" slot="start" lines="none">
-                    <ion-chip *ngIf="item.location" (click)="goToLocation(data[i][j])" class="restaurant-chip">
+                    <ion-chip
+                      *ngIf="item.location"
+                      (click)="goToLocation(data[i][j])"
+                      class="restaurant-chip"
+                    >
                       <ion-icon color="primary" name="location-sharp"></ion-icon>
                       <ion-label color="primary">See location</ion-label>
                     </ion-chip>
@@ -141,5 +147,4 @@
       </ion-list>
     </div>
   </div>
-
 </ion-content>

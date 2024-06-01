@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AuthenticationService } from '../services/auth/authentication.service';
-import { User } from '../models/user.model';
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs'
+import { AuthenticationService } from '../services/auth/authentication.service'
+import { User } from '../models/user.model'
 // import { PhotoService, UserPhotoData } from '../services/photo.service';
-import { LoadingController, Platform } from '@ionic/angular';
-import { Product } from '../models/product.model';
-import { OrderData, StoreService } from '../services/store.service';
+import { LoadingController, Platform } from '@ionic/angular'
+import { Product } from '../models/product.model'
+import { OrderData, StoreService } from '../services/store.service'
 
 @Component({
   selector: 'app-profile',
@@ -13,12 +13,12 @@ import { OrderData, StoreService } from '../services/store.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit, OnDestroy {
-  isLoading = false;
-  currentUser: User | undefined;
-  profilePictureUrl: string;
-  userSub: Subscription;
-  orders: OrderData[];
-  products: OrderData[];
+  isLoading = false
+  currentUser: User | undefined
+  profilePictureUrl: string
+  userSub: Subscription
+  orders: OrderData[]
+  products: OrderData[]
 
   constructor(
     private storeService: StoreService,
@@ -38,23 +38,23 @@ export class ProfilePage implements OnInit, OnDestroy {
   }
 
   async ionViewWillEnter() {
-    this.isLoading = true;
+    this.isLoading = true
     //const loading = await this.loadingController.create();
     //await loading.present();
 
-    console.log('ionViewWillEnter');
-    console.log(this.currentUser);
+    console.log('ionViewWillEnter')
+    console.log(this.currentUser)
     // const newImageData = await this.photoService.loadSaved(this.currentUser.profilePic);
     // if(this.platform.is('hybrid')){
     //   this.profilePictureUrl = newImageData.webviewPathNative;
     // } else {
     //   this.profilePictureUrl = newImageData.webviewPathWeb;
     // }
-    this.orders = await this.storeService.fetchUserOrders(this.currentUser.userID);
-    console.log(this.orders, 1111111);
+    this.orders = await this.storeService.fetchUserOrders(this.currentUser.userID)
+    console.log(this.orders, 1111111)
 
     // this.products = await this.storeService.fetchUserOrders(this)
-    this.isLoading = false;
+    this.isLoading = false
     //await loading.dismiss();
   }
 
@@ -76,7 +76,7 @@ export class ProfilePage implements OnInit, OnDestroy {
   // }
 
   async onDeleteOrder(orderID: string) {
-    this.orders = this.orders.filter(order => order.orderID !== orderID);
-    await this.storeService.deleteOrder(orderID);
+    this.orders = this.orders.filter((order) => order.orderID !== orderID)
+    await this.storeService.deleteOrder(orderID)
   }
 }

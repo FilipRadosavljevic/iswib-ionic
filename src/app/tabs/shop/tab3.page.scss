@@ -33,18 +33,17 @@
   margin-top: 1rem;
 
   ion-slide {
+    width: 60%;
+    margin-right: 10px;
+    margin-left: 16px;
 
-      width: 60%;
-      margin-right: 10px;
-      margin-left: 16px;
+    display: inline;
+    flex-direction: column;
+    justify-content: center;
 
-      display: inline;
-      flex-direction: column;
-      justify-content: center;
-
-      img {
-          border-radius: 22px;
-      }
+    img {
+      border-radius: 22px;
+    }
   }
 }
 
@@ -52,14 +51,14 @@
   margin-top: 16px;
   font-size: 20px;
   font-weight: bold;
-  color: #150F38;
+  color: #150f38;
 }
 
 .detail-price {
   margin-top: 8px;
   color: #888;
   font-size: 16px;
-  color: #150F38;
+  color: #150f38;
 }
 
 h1 {
@@ -83,7 +82,7 @@ h1 {
 
 ion-card {
   padding: 0 0 16px 0;
-  background: #F5F9FC;
+  background: #f5f9fc;
   width: 250px;
   margin: auto;
 }

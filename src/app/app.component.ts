@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core'
+import { Auth } from '@angular/fire/auth'
+import { Router } from '@angular/router'
 
-import { AlertController, AnimationController, MenuController, ToastController } from '@ionic/angular';
-import { take } from 'rxjs/operators';
-import { AuthenticationService } from './services/auth/authentication.service';
+import {
+  AlertController,
+  AnimationController,
+  MenuController,
+  ToastController,
+} from '@ionic/angular'
+import { take } from 'rxjs/operators'
+import { AuthenticationService } from './services/auth/authentication.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-
   constructor(
     private animationCtrl: AnimationController,
     private auth: Auth,
@@ -20,64 +24,63 @@ export class AppComponent {
     private menu: MenuController,
     private toastController: ToastController,
     private alertController: AlertController,
-    public authService: AuthenticationService
+    public authService: AuthenticationService,
   ) {}
 
-
-
-  myCustomPageTransition = ((baseEl: any, opts?: any) => {
-      //console.log('opts.enteringEl:'  + opts.enteringEl); //Entering Element - New Page
-      //console.log('opts.leavingEl:'  + opts.leavingEl);   //Leaving Element - Current Page
-      const anim1 = this.animationCtrl.create()
-        .addElement(opts.leavingEl)
-        .duration(600)
-        .iterations(1)
-        .easing('ease-out')
-        .fromTo('transform', 'translateX(0px)', 'translateX(100%)')
-        .fromTo('opacity', '1', '0.2');
-      let anim2 = this.animationCtrl.create()
-        .addElement(opts.enteringEl)
-        .duration(600)
-        .iterations(1)
-        .easing('ease-out')
-        .fromTo('opacity', '0.0', '1');
-        anim2 = this.animationCtrl.create()
-        .duration(600)
-        .iterations(1)
-        .addAnimation([anim1, anim2]);
-      return anim2;
-  });
+  myCustomPageTransition = (baseEl: any, opts?: any) => {
+    //console.log('opts.enteringEl:'  + opts.enteringEl); //Entering Element - New Page
+    //console.log('opts.leavingEl:'  + opts.leavingEl);   //Leaving Element - Current Page
+    const anim1 = this.animationCtrl
+      .create()
+      .addElement(opts.leavingEl)
+      .duration(600)
+      .iterations(1)
+      .easing('ease-out')
+      .fromTo('transform', 'translateX(0px)', 'translateX(100%)')
+      .fromTo('opacity', '1', '0.2')
+    let anim2 = this.animationCtrl
+      .create()
+      .addElement(opts.enteringEl)
+      .duration(600)
+      .iterations(1)
+      .easing('ease-out')
+      .fromTo('opacity', '0.0', '1')
+    anim2 = this.animationCtrl.create().duration(600).iterations(1).addAnimation([anim1, anim2])
+    return anim2
+  }
 
   isUserLoggedIn() {
     //console.log(this.auth.currentUser);
-    return !!this.auth.currentUser;
+    return !!this.auth.currentUser
   }
 
   async logout() {
-    const user = this.auth.currentUser;
-    this.menu.close();
+    const user = this.auth.currentUser
+    this.menu.close()
 
-    if(user) {
-      await this.authService.logout();
-      this.router.navigate(['/']);
+    if (user) {
+      await this.authService.logout()
+      this.router.navigate(['/'])
     } else {
-      this.router.navigate(['/']);
+      this.router.navigate(['/'])
     }
-
   }
 
   deleteAccount() {
-    let userId = null;
-    userId = this.auth.currentUser.uid;
-    this.menu.close();
+    let userId = null
+    userId = this.auth.currentUser.uid
+    this.menu.close()
 
-    if(userId) {
-      userId.delete().then(() => {
-        this.router.navigate(['']);
-        this.presentToast('Your account has been successfully deleted.', 'bottom', 4000);
-      }).catch((error) => {
-        console.log(error);
-      });
+    if (userId) {
+      userId
+        .delete()
+        .then(() => {
+          this.router.navigate([''])
+          this.presentToast('Your account has been successfully deleted.', 'bottom', 4000)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 
@@ -87,8 +90,8 @@ export class AppComponent {
       duration,
       position,
       color: 'light',
-    });
-    toast.present();
+    })
+    toast.present()
   }
 
   async presentAlert() {
@@ -99,15 +102,17 @@ export class AppComponent {
         {
           text: 'No',
           role: 'cancel',
-          handler: () => { this.menu.close();}
+          handler: () => {
+            this.menu.close()
+          },
         },
         {
           text: 'Yes',
           role: 'confirm',
-          handler: this.deleteAccount.bind(this)
-        }
-      ]
-    });
-    await alert.present();
+          handler: this.deleteAccount.bind(this),
+        },
+      ],
+    })
+    await alert.present()
   }
 }

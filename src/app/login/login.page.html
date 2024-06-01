@@ -16,11 +16,7 @@
 
     <form (ngSubmit)="login()" [formGroup]="credentialsForm">
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-        <ion-input
-          type="email"
-          placeholder="Email"
-          formControlName="email"
-        ></ion-input>
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
       </ion-item>
       <ion-note
         color="danger"
@@ -30,11 +26,7 @@
         >Email is invalid</ion-note
       >
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-        <ion-input
-          type="password"
-          placeholder="Password"
-          formControlName="password"
-        ></ion-input>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
       </ion-item>
       <ion-note
         color="danger"
@@ -65,9 +57,7 @@
 
     <div class="ion-text-center">
       <ion-label>
-        <a [routerLink]="['/forgot-password']" class="small-text"
-          >Forgot Password?</a
-        >
+        <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
       </ion-label>
       <br />
       <ion-label>

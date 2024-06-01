@@ -4,22 +4,21 @@
 /** Ionic CSS Variables **/
 @font-face {
   font-family: 'FontRegular';
-  src: url("../assets/font/Montserrat-Regular.ttf");
+  src: url('../assets/font/Montserrat-Regular.ttf');
   font-display: swap;
 }
 @font-face {
   font-family: 'FontSemibold';
-  src: url("../assets/font/Montserrat-SemiBold.ttf");
+  src: url('../assets/font/Montserrat-SemiBold.ttf');
   font-display: swap;
 }
 @font-face {
   font-family: 'FontBold';
-  src: url("../assets/font/Montserrat-Bold.ttf");
+  src: url('../assets/font/Montserrat-Bold.ttf');
   font-display: swap;
 }
 
 :root {
-
   --ion-background-color: #150f38;
   --ion-text-color: #fff;
   --ion-text-color-rgb: #fff;
@@ -93,7 +92,6 @@
 
   --ion-safe-area-top: 5px;
   --ion-safe-area-bottom: 5px;
-  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -202,7 +200,7 @@
     --ion-item-background: #150f38;
 
     --ion-toolbar-background: #150f38;
-    
+
     --ion-tab-bar-background: #150f38;
     --ion-tab-bar-color: #ffffff70;
     --ion-tab-bar-color-selected: #fff;
@@ -259,6 +257,5 @@
     --ion-tab-bar-color-selected: #fff;
 
     --ion-card-background: #1e1e1e;
-
   }
 }

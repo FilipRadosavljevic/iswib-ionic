@@ -3,21 +3,25 @@
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
   <div *ngIf="!data" class="custom-skeleton">
     <h1>
-      <ion-skeleton-text animated style="width: 60%; height: 25px;"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 60%; height: 25px"></ion-skeleton-text>
     </h1>
     <ion-grid>
       <ion-row *ngFor="let item of [].constructor(5)">
         <ion-col>
-          <ion-card [ngStyle]="{
-            width: '100%',
-            height: '400px',
-            position: 'relative'
-          }">
+          <ion-card
+            [ngStyle]="{
+              width: '100%',
+              height: '400px',
+              position: 'relative'
+            }"
+          >
             <ion-card-header>
-              <ion-thumbnail [ngStyle]="{
-                width: '100%',
-                height: '400px'
-              }">
+              <ion-thumbnail
+                [ngStyle]="{
+                  width: '100%',
+                  height: '400px'
+                }"
+              >
                 <ion-skeleton-text animated></ion-skeleton-text>
               </ion-thumbnail>
             </ion-card-header>
@@ -40,14 +44,17 @@
     <ion-grid>
       <ion-row *ngFor="let item of data; index as i">
         <ion-col>
-          <ion-card [ngStyle]="{
-            'background': 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .9)), url(' + item.image + ')',
-            'background-size': '100% 100%',
-            'background-repeat': 'no-repeat',
-            width: '100%',
-            height: '400px',
-            position: 'relative'
-          }">
+          <ion-card
+            [ngStyle]="{
+              background:
+                'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .9)), url(' + item.image + ')',
+              'background-size': '100% 100%',
+              'background-repeat': 'no-repeat',
+              width: '100%',
+              height: '400px',
+              position: 'relative'
+            }"
+          >
             <ion-card-header>
               <ion-list class="bg-transparent">
                 <!-- <ion-item color="none" lines="none">
@@ -61,9 +68,13 @@
               </ion-list>
             </ion-card-header>
             <ion-card-content>
-              <h1 class="ion-text-start">{{item.name}}</h1>
+              <h1 class="ion-text-start">{{ item.name }}</h1>
               <ion-list class="bg-transparent flex">
-                <ion-chip *ngIf="item.location" (click)="goToLocation(data[i])" class="restaurant-chip">
+                <ion-chip
+                  *ngIf="item.location"
+                  (click)="goToLocation(data[i])"
+                  class="restaurant-chip"
+                >
                   <ion-icon color="primary" name="location-sharp"></ion-icon>
                   <ion-label color="primary">See location</ion-label>
                 </ion-chip>
@@ -78,5 +89,4 @@
       </ion-row>
     </ion-grid>
   </div>
-
 </ion-content>

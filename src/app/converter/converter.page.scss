@@ -1,53 +1,53 @@
 ion-col {
-    display: flex;
-    margin-left: 16px;
-    ion-chip {
-        align-self: center;
-        ion-label {
-            margin-right: 6px;
-        }
+  display: flex;
+  margin-left: 16px;
+  ion-chip {
+    align-self: center;
+    ion-label {
+      margin-right: 6px;
     }
+  }
 }
 
 ion-modal {
-    --ion-background-color: #150f38;
-    --ion-toolbar-background: #150f38;
-    --ion-toolbar-border-color: #150f38;
-    ion-label {
-        color: #fff;
-    }
-    ion-button {
-        --color: #fff;
-    }
+  --ion-background-color: #150f38;
+  --ion-toolbar-background: #150f38;
+  --ion-toolbar-border-color: #150f38;
+  ion-label {
+    color: #fff;
+  }
+  ion-button {
+    --color: #fff;
+  }
 }
 
 .switch {
-    padding: 20px 16px;
-    ion-label {
-        margin-left: 6px;
-    }
+  padding: 20px 16px;
+  ion-label {
+    margin-left: 6px;
+  }
 }
 
 ion-row {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 ion-chip {
-    padding: 16px;
+  padding: 16px;
 }
 
 ion-item {
-    --background: transparent;
-    color: black;
+  --background: transparent;
+  color: black;
 }
 
 ion-card {
-    background: rgba(255, 255, 255, 0.8);
-    margin: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  margin: 16px;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 32px;
-    font-weight: bold;
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: bold;
 }

@@ -3,59 +3,42 @@
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
   <div *ngIf="!data" class="custom-skeleton">
     <h1>
-      <ion-skeleton-text
-        animated
-        style="width: 60%; height: 25px"
-      ></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 60%; height: 25px"></ion-skeleton-text>
     </h1>
 
     <div class="segment-wrapper">
       <ion-col size="4" *ngFor="let item of [].constructor(5)">
         <ion-card
           [ngStyle]="{
-          width: '120px',
-          height: '130px',
-          position: 'relative'
-        }"
+            width: '120px',
+            height: '130px',
+            position: 'relative'
+          }"
         >
           <ion-card-header>
             <ion-thumbnail
               [ngStyle]="{
-              width: '120px',
-              height: '130px'
-            }"
+                width: '120px',
+                height: '130px'
+              }"
             >
               <ion-skeleton-text animated></ion-skeleton-text>
             </ion-thumbnail>
           </ion-card-header>
           <ion-card-content>
-            <ion-skeleton-text
-              animated
-              style="height: 20px"
-            ></ion-skeleton-text>
+            <ion-skeleton-text animated style="height: 20px"></ion-skeleton-text>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </div>
 
     <h1>
-      <ion-skeleton-text
-        animated
-        style="width: 60%; height: 25px"
-      ></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 60%; height: 25px"></ion-skeleton-text>
     </h1>
 
     <div class="segment-wrapper">
-      <ion-segment
-        scrollable
-        (ionChange)="segmentChanged($event)"
-        [(ngModel)]="type"
-      >
-        <ion-segment-button
-          class="categories-button"
-          value="restaurants"
-          checked
-        >
+      <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
+        <ion-segment-button class="categories-button" value="restaurants" checked>
           <ion-skeleton-text animated style="height: 20px"></ion-skeleton-text>
         </ion-segment-button>
         <ion-segment-button class="categories-button" value="fastfood">
@@ -73,10 +56,10 @@
           <ion-card
             class="restaurant-card ion-margin-bottom"
             [ngStyle]="{
-            width: '100%',
-            height: '130px',
-            position: 'relative'
-          }"
+              width: '100%',
+              height: '130px',
+              position: 'relative'
+            }"
           >
             <ion-row style="height: 130px">
               <ion-col size="4"> </ion-col>
@@ -84,9 +67,9 @@
                 <ion-card-header>
                   <ion-thumbnail
                     [ngStyle]="{
-                    width: '350px',
-                    height: '130px'
-                  }"
+                      width: '350px',
+                      height: '130px'
+                    }"
                   >
                     <ion-skeleton-text animated></ion-skeleton-text>
                   </ion-thumbnail>
@@ -103,15 +86,13 @@
   <div *ngIf="data">
     <h1>Our sponsors</h1>
     <div class="segment-wrapper">
-      <ion-slides
-        [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }"
-      >
+      <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
         <ion-slide *ngFor="let sponsor of sponsors; index as i">
           <ion-col>
             <ion-card class="sponsors" color="light">
               <img class="sponsors-img" [src]="sponsor.image" />
               <ion-card-header>
-                <ion-card-title>{{sponsor.name}}</ion-card-title>
+                <ion-card-title>{{ sponsor.name }}</ion-card-title>
                 <ion-card-subtitle [hidden]="!sponsor.link">
                   <a (click)="seeMore(sponsor.link)">See more</a>
                 </ion-card-subtitle>
@@ -124,29 +105,21 @@
 
     <h1>Search by categories</h1>
     <div class="segment-wrapper">
-      <ion-segment
-        scrollable
-        (ionChange)="segmentChanged($event)"
-        [(ngModel)]="type"
-      >
-        <ion-segment-button
-          class="categories-button"
-          value="restaurants"
-          checked
-        >
-          <ion-chip [ngClass]="type ==='restaurants'? 'checked': ''">
+      <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
+        <ion-segment-button class="categories-button" value="restaurants" checked>
+          <ion-chip [ngClass]="type === 'restaurants' ? 'checked' : ''">
             <ion-icon name="restaurant-sharp" color="primary"></ion-icon>
             <ion-label color="primary">Restaurants</ion-label>
           </ion-chip>
         </ion-segment-button>
         <ion-segment-button class="categories-button" value="fastfood">
-          <ion-chip [ngClass]="type ==='fastfood'? 'checked': ''">
+          <ion-chip [ngClass]="type === 'fastfood' ? 'checked' : ''">
             <ion-icon name="fast-food" color="primary"></ion-icon>
             <ion-label color="primary">Fast-food</ion-label>
           </ion-chip>
         </ion-segment-button>
         <ion-segment-button class="categories-button" value="vegan">
-          <ion-chip [ngClass]="type ==='vegan'? 'checked': ''">
+          <ion-chip [ngClass]="type === 'vegan' ? 'checked' : ''">
             <ion-icon name="leaf" color="primary"></ion-icon>
             <ion-label color="primary">Vegan</ion-label>
           </ion-chip>
@@ -164,25 +137,15 @@
               </ion-col>
               <ion-col>
                 <ion-card-content>
-                  <h1>{{item.name}}</h1>
+                  <h1>{{ item.name }}</h1>
                   <div id="wrapper">
-                    <p>Open from: {{item.timeFrom}} - {{item.timeTo}}</p>
+                    <p>Open from: {{ item.timeFrom }} - {{ item.timeTo }}</p>
                     <div>
-                      <ion-chip
-                        (click)="goToLocation(data[i][j])"
-                        class="restaurant-chip"
-                      >
-                        <ion-icon
-                          color="primary"
-                          name="location-sharp"
-                        ></ion-icon>
+                      <ion-chip (click)="goToLocation(data[i][j])" class="restaurant-chip">
+                        <ion-icon color="primary" name="location-sharp"></ion-icon>
                         <ion-label color="primary">See location</ion-label>
                       </ion-chip>
-                      <ion-icon
-                        *ngIf="item.vegan"
-                        id="vegan"
-                        name="leaf"
-                      ></ion-icon>
+                      <ion-icon *ngIf="item.vegan" id="vegan" name="leaf"></ion-icon>
                     </div>
                   </div>
                 </ion-card-content>

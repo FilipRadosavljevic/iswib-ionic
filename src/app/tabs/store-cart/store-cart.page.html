@@ -14,22 +14,23 @@
         <h2>{{ product.name }}</h2>
         <p>
           <span>Qty {{ product.quantity }}</span>
-          <span style="float: right;">${{ product.price * product.quantity }}</span>
+          <span style="float: right">${{ product.price * product.quantity }}</span>
         </p>
       </ion-label>
-      </ion-item>
-    </ion-list>
-    <hr class="solid-divider">
-    <ion-item lines="none">
-      <ion-label class="label-margin" color="dark"><strong>Total</strong></ion-label>
-      <ion-note color="dark" slot="end"><strong>{{ total | currency: 'EUR'}}</strong></ion-note>
     </ion-item>
+  </ion-list>
+  <hr class="solid-divider" />
+  <ion-item lines="none">
+    <ion-label class="label-margin" color="dark"><strong>Total</strong></ion-label>
+    <ion-note color="dark" slot="end"
+      ><strong>{{ total | currency: 'EUR' }}</strong></ion-note
+    >
+  </ion-item>
 
+  <ion-button color="dark" (click)="onPlaceOrder()"> Place Order </ion-button>
 
-    <ion-button color="dark" (click)="onPlaceOrder()">
-      Place Order
-    </ion-button>
-
-    <p class="payment-note">Note: This is for demonstration purposes only.
-      Your card will not be charged and no items will be shipped.</p>
+  <p class="payment-note">
+    Note: This is for demonstration purposes only. Your card will not be charged and no items will
+    be shipped.
+  </p>
 </ion-content>

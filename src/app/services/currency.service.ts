@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { environment } from 'src/environments/environment'
+import { environment } from 'environments/environment'
 import { switchMap, tap } from 'rxjs/operators'
 import { writeBatch, doc, Firestore, getDocs, collection } from '@angular/fire/firestore'
 

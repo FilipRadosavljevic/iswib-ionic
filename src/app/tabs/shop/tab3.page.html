@@ -6,30 +6,25 @@
       <ion-buttons collapse="true" slot="end">
         <ion-button class="badge-button" fill="clear" (click)="openCartModal()">
           <ion-icon class="icon" size="large" name="cart"></ion-icon>
-          <ion-badge class="badge-single-digits" color="danger"
-            >{{ calculateCartQuantity() }}</ion-badge
-          >
+          <ion-badge class="badge-single-digits" color="danger">{{
+            calculateCartQuantity()
+          }}</ion-badge>
         </ion-button>
       </ion-buttons>
       <h1>ISWiB Store</h1>
     </ion-toolbar>
 
     <ion-grid>
-        <ion-row *ngFor="let product of products" class="ion-margin-vertical">
-          <ion-card>
-            <ion-col size="12">
-              <ion-img
-                [src]="product.image"
-                (click)="addToCart(product)"
-                class="grid-img"
-              ></ion-img>
-              <p class="detail-name">{{ product.name }}</p>
-    
-              <p class="detail-price">{{product.price | currency:'EUR'}}</p>
-            </ion-col>
+      <ion-row *ngFor="let product of products" class="ion-margin-vertical">
+        <ion-card>
+          <ion-col size="12">
+            <ion-img [src]="product.image" (click)="addToCart(product)" class="grid-img"></ion-img>
+            <p class="detail-name">{{ product.name }}</p>
 
-          </ion-card>
-        </ion-row>
+            <p class="detail-price">{{ product.price | currency: 'EUR' }}</p>
+          </ion-col>
+        </ion-card>
+      </ion-row>
     </ion-grid>
   </ng-container>
 
@@ -50,7 +45,6 @@
     <ion-grid>
       <ion-row *ngFor="let product of products" class="ion-margin-vertical">
         <ion-card>
-
           <ion-col size="12">
             <ion-img
               [src]="product.image"
@@ -58,8 +52,8 @@
               class="grid-img"
             ></ion-img>
             <p class="detail-name">{{ product.name }}</p>
-  
-            <p class="detail-price">{{product.price | currency:'EUR'}}</p>
+
+            <p class="detail-price">{{ product.price | currency: 'EUR' }}</p>
           </ion-col>
         </ion-card>
       </ion-row>

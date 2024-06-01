@@ -16,7 +16,7 @@
     height: 120px;
 
     .inner {
-      background-color: #1B6C5F;
+      background-color: #1b6c5f;
       width: 40px;
       height: 40px;
       border-radius: 100%;
@@ -45,7 +45,7 @@ ion-icon {
 .user-details {
   color: white;
   margin: 16px 0;
-  font-size: .9rem;
+  font-size: 0.9rem;
 
   h2 {
     font-weight: bold;
@@ -63,7 +63,6 @@ ion-icon {
       color: var(--ion-color-primary-tint);
     }
   }
-
 }
 
 ion-item {

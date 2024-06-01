@@ -1,57 +1,57 @@
 #header_picture {
-    width: 100%;
+  width: 100%;
 }
 
 #wrapper {
-    margin-top: env(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
 }
 
 .block {
-    display: block;
+  display: block;
 }
 
 .small-text {
-    color: #FFD700;
-    text-decoration: none;
-    font-weight: 600;
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 ion-label {
-    display: block;
-    margin: 10px;
+  display: block;
+  margin: 10px;
 }
 
 ion-icon {
-    margin-right: 10px;
-    font-size: 25px;
+  margin-right: 10px;
+  font-size: 25px;
 }
 
 ion-button {
-    font-family: 'FontSemibold';
-    text-transform: uppercase;
-    letter-spacing: 0.75px;
-    font-size: 16px;
+  font-family: 'FontSemibold';
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  font-size: 16px;
 }
 
 ion-item {
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 5px;
-    margin: 8px 16px;
-    background: #150f38;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  margin: 8px 16px;
+  background: #150f38;
 }
 
 h1 {
-    font-family: 'FontBold';
+  font-family: 'FontBold';
 }
 
 p {
-    font-family: 'FontSemibold';
+  font-family: 'FontSemibold';
 }
 
 a {
-    font-family: 'FontBold';
+  font-family: 'FontBold';
 }
 
 ion-note {
-    margin-left: 24px;
+  margin-left: 24px;
 }
