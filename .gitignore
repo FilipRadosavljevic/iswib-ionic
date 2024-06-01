@@ -33,4 +33,4 @@ npm-debug.log*
 /android
 /ios
 /e2e
-/src/environments/
+environments/

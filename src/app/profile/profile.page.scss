@@ -1,0 +1,85 @@
+.detail-header {
+  position: relative;
+  height: 150px;
+  background-position: center;
+  background-size: 100%;
+  margin-bottom: 50px;
+  background-image: url('/assets/images/background/login.png');
+
+  div.avatar-container {
+    position: absolute;
+    overflow: visible;
+    bottom: -50px;
+    left: calc(50% - 60px);
+    border-radius: 100%;
+    width: 120px;
+    height: 120px;
+
+    .inner {
+      background-color: #1b6c5f;
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      //border: 1px solid black;
+    }
+  }
+}
+
+ion-icon {
+  font-size: 24px;
+}
+
+.profile {
+  background-color: #ffd700;
+  height: 120px;
+  width: 120px;
+  border: 2px solid #fff;
+}
+
+.user-details {
+  color: white;
+  margin: 16px 0;
+  font-size: 0.9rem;
+
+  h2 {
+    font-weight: bold;
+    margin-top: 16px;
+  }
+
+  p {
+    margin: 0 0 3px;
+    color: white;
+    font-size: 1rem;
+  }
+
+  ion-list {
+    ion-icon {
+      color: var(--ion-color-primary-tint);
+    }
+  }
+}
+
+ion-item {
+  --border-style: none;
+}
+
+/* iOS style: Add top border to the 1st ion-item in ion-list */
+.top-border-line {
+  margin-top: 10px;
+  border-top: 1px solid #e9eaeb;
+}
+
+.order-wrapper {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 16px;
+  padding: 10px;
+  h2 {
+    font-weight: bold;
+  }
+}

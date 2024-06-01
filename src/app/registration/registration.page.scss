@@ -1,46 +1,46 @@
 ion-item {
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 5px;
-    margin: 8px 16px;
-    background: #150f38;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  margin: 8px 16px;
+  background: #150f38;
 }
 
 ion-buttons {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 ion-back-button {
-    --color: #ffffff;
-    --icon-font-size: 20px;
-    --icon-padding-end: 6px;
+  --color: #ffffff;
+  --icon-font-size: 20px;
+  --icon-padding-end: 6px;
 }
 
 form {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #wrapper {
-    width: 100%;
-    height: 94vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 100%;
+  height: 94vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .ios #wrapper {
-    height: 89vh;
+  height: 89vh;
 }
 
 ion-toolbar {
-    margin-top: env(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
 }
 
 ion-title {
-    font-family: 'FontBold';
-    margin-left: 15px;
+  font-family: 'FontBold';
+  margin-left: 15px;
 }
 
 ion-button {
-    font-family: 'FontSemibold';
-    letter-spacing: 0.75px;
+  font-family: 'FontSemibold';
+  letter-spacing: 0.75px;
 }

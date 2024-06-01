@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-discovery-page',
@@ -8,22 +7,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./discovery-page.page.scss'],
 })
 export class DiscoveryPagePage implements OnInit {
-
-  data: any;
+  data: any
 
   constructor(private router: Router) {
-    this.data = this.router.getCurrentNavigation().extras.state;
-   }
-
-  ngOnInit() {
+    this.data = this.router.getCurrentNavigation().extras.state
   }
 
+  ngOnInit() {}
+
   goToPage() {
-    this.router.navigate(['/tabs/tab4']);
+    this.router.navigate(['/tabs/tab4'])
   }
 
   goToLocation() {
-    window.open(this.data.location);
+    window.open(this.data.location)
   }
-
 }

@@ -1,25 +1,25 @@
 ion-app {
-    background: #150f38;
-    color: #fff;
+  background: #150f38;
+  color: #fff;
 }
 
 ion-item {
-    --background: #150f38;
-    --inner-border-width: 0;
-    --border-color: rgba(255, 255, 255, 0.2);
-    ion-icon {
-        margin-right: 6px;
-    }
+  --background: #150f38;
+  --inner-border-width: 0;
+  --border-color: rgba(255, 255, 255, 0.2);
+  ion-icon {
+    margin-right: 6px;
+  }
 }
 
 ion-list {
-    background: #150f38;
+  background: #150f38;
 }
 
 ion-menu {
-    margin-top: env(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
 }
 
 .ios ion-toolbar {
-    --background: #150f38;
+  --background: #150f38;
 }

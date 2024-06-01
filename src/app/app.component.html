@@ -6,15 +6,50 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list>
-        <ion-item *ngIf="isUserLoggedIn()" (click)="deleteAccount()" lines="full">
-          <ion-icon name="trash-outline"></ion-icon>
-          Delete account
-        </ion-item>
+      <ion-list *ngIf="authService.userLoggedIn | async">
+        <ion-menu-toggle menu="top-menu">
+          <ion-item lines="full" routerLink="/profile">
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label>Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle menu="top-menu">
+          <ion-item lines="full" routerLink="/tabs">
+            <ion-icon name="balloon" slot="start"></ion-icon>
+            <ion-label>ISWiB</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle menu="top-menu">
+          <ion-item lines="full" routerLink="/converter">
+            <ion-icon name="cash" slot="start"></ion-icon>
+            <ion-label>Currency converter</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
         <ion-item (click)="logout()" lines="full">
           <ion-icon name="log-out-outline"></ion-icon>
           Logout
         </ion-item>
+        <!-- <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider>
+        <ion-item-divider color="secondary" *ngIf="authService.userLoggedIn | async"></ion-item-divider> -->
+        <ion-item (click)="presentAlert()" lines="full">
+          <ion-icon name="trash-outline"></ion-icon>
+          Delete account
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngIf="(authService.userLoggedIn | async) === false">
+        <ion-menu-toggle menu="top-menu">
+          <ion-item lines="full" routerLink="/converter">
+            <ion-icon name="cash" slot="start"></ion-icon>
+            <ion-label>Currency converter</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle menu="top-menu">
+          <ion-item lines="full" routerLink="/tabs">
+            <ion-icon name="balloon" slot="start"></ion-icon>
+            <ion-label>ISWiB</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
