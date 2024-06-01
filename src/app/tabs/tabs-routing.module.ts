@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AuthGuard, canActivate } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 
@@ -38,6 +39,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/tab1',
     pathMatch: 'full'
+  },
+  {
+    path: 'store-cart',
+    loadChildren: () => import('./store-cart/store-cart.module').then( m => m.StoreCartPageModule)
   }
 ];
 

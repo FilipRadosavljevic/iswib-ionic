@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IonRouterOutlet, ModalController, Platform, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController, IonRouterOutlet, ModalController, ToastController } from '@ionic/angular';
 import { Product } from 'src/app/models/product.model';
-import { companyStoreProducts } from 'src/data/storeData';
+import { AuthenticationService } from 'src/app/services/auth/authentication.service';
+import { StoreService } from 'src/app/services/store.service';
+import { StoreCartPage } from '../store-cart/store-cart.page';
 
 @Component({
   selector: 'app-tab3',
@@ -10,59 +13,77 @@ import { companyStoreProducts } from 'src/data/storeData';
 })
 export class Tab3Page implements OnInit {
 
-  slideOptions = {
-    slidesPerView: 'auto',
-    autoplay: true,
-    zoom: true,
-    grabCursor: true
-  };
-
   public cart: Product[] = [];
   public products: Product[] = [];
-  public isDesktop = false;
 
   constructor(
+    public authService: AuthenticationService,
+    private storeService: StoreService,
+    private alertController: AlertController,
     public toastController: ToastController,
     public modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
-    private platform: Platform) { }
+    private router: Router) { }
 
 
-  ngOnInit() {
-    this.initProducts();
+  async ngOnInit() {
+    this.products = this.storeService.fetchProducts();
+    this.cart = await this.storeService.fetchCart();
+  }
 
-    this.isDesktop = this.platform.is('desktop');
+  async ionViewWillEnter() {
+    this.cart = await this.storeService.fetchCart();
+  }
+
+  async redirectLogin(header: string) {
+    const alert = await this.alertController.create({
+      header,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Log In',
+          role: 'confirm',
+          handler: () => {
+            this.router.navigateByUrl('/', {replaceUrl: true});
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   public calculateCartQuantity(): number {
     return this.cart.reduce((accumulator, current) => accumulator + current.quantity, 0);
   }
 
-  async openCartModal(): Promise<void> {
+  async openCartModal() {
+    console.log(this.cart);
+    console.log(this.products);
     if (this.cart.length > 0) {
-      const modal: HTMLIonModalElement = await this.modalController.create({
-        component: Tab3Page,
+      const modal = await this.modalController.create({
+        component: StoreCartPage,
         swipeToClose: true,
         presentingElement: this.routerOutlet.nativeEl,
         componentProps: {
           productsInCart: this.cart
-        }
-      });
+        },
 
-      modal.onDidDismiss().then((result) => {
-        // Data will be undefined if cart was swiped closed or back button used
-        if (result.data) {
-          this.cart.length = 0;
-          this.presentToast(`Thanks for your order!`);
-        }
       });
-
-      return await modal.present();
+      modal.present();
+      const orderData = (await modal.onDidDismiss()).data as Product[];
+      if (orderData) {
+        console.log(orderData);
+        this.cart.length = 0;
+        this.storeService.placeOrder(orderData);
+        this.presentToast(`Thanks for your order!`);
+      }
     }
   }
 
-  async addToCart(product: Product): Promise<void> {
-    if (product.name !== 'Ionic Headband') {
+  async addToCart(product: Product) {
       const foundProduct = this.cart.find(p => p.name === product.name);
       if (foundProduct) {
         foundProduct.quantity += 1;
@@ -70,23 +91,18 @@ export class Tab3Page implements OnInit {
         product.quantity = 1;
         this.cart.push(product);
       }
+      this.storeService.placeCart(this.cart);
 
       await this.presentToast(`${product.name} added`);
-    }
   }
 
-  private async presentToast(message): Promise<void> {
+  private async presentToast(message: string) {
     const toast = await this.toastController.create({
       message,
       duration: 2000,
-      color: 'tertiary'
+      color: 'secondary'
     });
 
     await toast.present();
-  }
-
-  private initProducts() {
-    this.products = companyStoreProducts;
-    //this.recommendedProducts = companyStoreProducts.filter(p => p.saleCategory === 'recommended');
   }
 }
