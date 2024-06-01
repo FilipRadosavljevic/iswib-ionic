@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Currency Converter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3" offset="1">
+        <ion-chip id="fromModal">
+          <ion-icon color="primary" name="caret-forward"></ion-icon>
+          <ion-label>{{ fromCurr }}</ion-label>
+        </ion-chip>
+        <ion-modal trigger="fromModal" #fromModal>
+          <ng-template>
+
+            <ion-header>
+              <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-button (click)="onCancel()">Cancel</ion-button>
+                </ion-buttons>
+                <ion-title>Welcome</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="onConfirm()" [strong]="true">Confirm</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content>
+              <ion-searchbar></ion-searchbar>
+              <ion-list >
+                <ion-item *ngFor="let curr of currencies" (click)="onChooseFrom(curr.code)">
+                  <ion-label>{{curr.code}} - {{curr.name}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-content>
+
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+
+      <ion-col size="6" offset="1">
+        <ion-item>
+          <ion-input
+            placeholder="from"
+            type="number"
+            [(ngModel)]="fromValue"
+            (keyup)="calculateToValue()"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="3" offset="2">
+        <ion-chip (click)="onSwitch()">
+          <ion-icon color="primary" name="swap-vertical"></ion-icon>
+          <ion-label>Switch</ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="3" offset="1">
+        <ion-chip id="toModal">
+          <ion-label>{{ toCurr }}</ion-label>
+          <ion-icon color="primary" name="caret-back"></ion-icon>
+        </ion-chip>
+        <ion-modal trigger="toModal" #toModal>
+          <ng-template>
+
+            <ion-header>
+              <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-button (click)="onCancel()">Cancel</ion-button>
+                </ion-buttons>
+                <ion-title>Welcome</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="onConfirm()" [strong]="true">Confirm</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content>
+              <ion-searchbar></ion-searchbar>
+              <ion-list >
+                <ion-item *ngFor="let curr of currencies" (click)="onChooseTo(curr.code)">
+                  <ion-label>{{curr.code}} - {{curr.name}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-content>
+
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+      <ion-col size="6" offset="1">
+        <ion-item>
+          <ion-input
+            placeholder="to"
+            type="number"
+            [(ngModel)]="toValue"
+            (keyup)="calculateFromValue()"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

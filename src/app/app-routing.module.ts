@@ -35,7 +35,12 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
     canLoad: [AuthGuard]
-  }
+  },
+  {
+    path: 'converter',
+    loadChildren: () => import('./converter/converter.module').then( m => m.ConverterPageModule),
+    canActivate: [AuthGuard],
+  },
 
 ];
 @NgModule({
