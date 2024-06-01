@@ -20,14 +20,14 @@ export class AppComponent {
     private menu: MenuController,
     private toastController: ToastController,
     private alertController: AlertController,
-    private authService: AuthenticationService
+    public authService: AuthenticationService
   ) {}
 
 
 
   myCustomPageTransition = ((baseEl: any, opts?: any) => {
-      console.log('opts.enteringEl:'  + opts.enteringEl); //Entering Element - New Page
-      console.log('opts.leavingEl:'  + opts.leavingEl);   //Leaving Element - Current Page
+      //console.log('opts.enteringEl:'  + opts.enteringEl); //Entering Element - New Page
+      //console.log('opts.leavingEl:'  + opts.leavingEl);   //Leaving Element - Current Page
       const anim1 = this.animationCtrl.create()
         .addElement(opts.leavingEl)
         .duration(600)
@@ -59,9 +59,9 @@ export class AppComponent {
 
     if(user) {
       await this.authService.logout();
-      this.router.navigate(['']);
+      this.router.navigate(['/']);
     } else {
-      this.router.navigate(['']);
+      this.router.navigate(['/']);
     }
 
   }

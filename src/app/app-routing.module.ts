@@ -1,52 +1,48 @@
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import {
-  redirectLoggedInTo,
-  canActivate,
-} from '@angular/fire/auth-guard';
-import { AuthGuard } from './services/auth/auth.guard';
+import { NgModule } from '@angular/core'
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router'
+import { redirectLoggedInTo, canActivate } from '@angular/fire/auth-guard'
+import { AuthGuard } from './services/auth/auth.guard'
 
-//const redirectLoggedInToHome = () => redirectLoggedInTo(['tabs']);
-const redirectLoggedInToHome = () => redirectLoggedInTo(['profile']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['profile'])
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
-    ...canActivate(redirectLoggedInToHome)
+    loadChildren: () => import('./login/login.module').then((m) => m.LoginPageModule),
+    ...canActivate(redirectLoggedInToHome),
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
   {
     path: 'discovery-page',
-    loadChildren: () => import('./discovery-page/discovery-page.module').then( m => m.DiscoveryPagePageModule)
+    loadChildren: () =>
+      import('./discovery-page/discovery-page.module').then((m) => m.DiscoveryPagePageModule),
   },
   {
     path: 'registration',
-    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
+    loadChildren: () =>
+      import('./registration/registration.module').then((m) => m.RegistrationPageModule),
   },
   {
     path: 'forgot-password',
-    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+    loadChildren: () =>
+      import('./forgot-password/forgot-password.module').then((m) => m.ForgotPasswordPageModule),
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
-    canLoad: [AuthGuard]
+    loadChildren: () => import('./profile/profile.module').then((m) => m.ProfilePageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'converter',
-    loadChildren: () => import('./converter/converter.module').then( m => m.ConverterPageModule),
+    loadChildren: () => import('./converter/converter.module').then((m) => m.ConverterPageModule),
     canActivate: [AuthGuard],
   },
-
-];
+]
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
