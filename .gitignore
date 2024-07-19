@@ -34,3 +34,5 @@ npm-debug.log*
 /ios
 /e2e
 environments/
+
+/firebase-exports/*
