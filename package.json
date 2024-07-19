@@ -4,7 +4,7 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "start:emulators": "firebase emulators:start --import=C:/Users/bojan/denda --export-on-exit",
+    "start:emulators": "firebase emulators:start --import=./firebase-exports --export-on-exit",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
