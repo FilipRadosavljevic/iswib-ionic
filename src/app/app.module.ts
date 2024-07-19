@@ -8,12 +8,18 @@ import { HttpClientModule } from '@angular/common/http'
 
 // Firebase
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app'
-import { getFirestore, provideFirestore } from '@angular/fire/firestore'
+import { connectFirestoreEmulator, getFirestore, provideFirestore } from '@angular/fire/firestore'
 import { environment } from 'environments/environment'
-import { provideAuth, getAuth, initializeAuth, indexedDBLocalPersistence } from '@angular/fire/auth'
+import {
+  provideAuth,
+  getAuth,
+  initializeAuth,
+  indexedDBLocalPersistence,
+  connectAuthEmulator,
+} from '@angular/fire/auth'
 import { Capacitor } from '@capacitor/core'
-import { getDatabase, provideDatabase } from '@angular/fire/database'
-import { provideStorage, getStorage } from '@angular/fire/storage'
+import { provideStorage, getStorage, connectStorageEmulator } from '@angular/fire/storage'
+import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angular/fire/functions'
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,10 +38,36 @@ import { provideStorage, getStorage } from '@angular/fire/storage'
       }
       return app
     }),
-    provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideStorage(() => getStorage()),
+    provideAuth(() => {
+      const auth = getAuth()
+      if (location.hostname === 'localhost') {
+        connectAuthEmulator(auth, 'http://127.0.0.1:9099', { disableWarnings: true })
+      }
+      return auth
+    }),
+    provideFirestore(() => {
+      const firestore = getFirestore()
+      if (location.hostname === 'localhost') {
+        console.log('connecting to firestore emulator')
+        connectFirestoreEmulator(firestore, 'localhost', 8080)
+      }
+
+      return firestore
+    }),
+    provideStorage(() => {
+      const storage = getStorage()
+      if (location.hostname === 'localhost') {
+        connectStorageEmulator(storage, '127.0.0.1', 9199)
+      }
+      return storage
+    }),
+    provideFunctions(() => {
+      const functions = getFunctions()
+      if (location.hostname === 'localhost') {
+        connectFunctionsEmulator(functions, '127.0.0.1', 5001)
+      }
+      return functions
+    }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

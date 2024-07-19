@@ -1,5 +1,4 @@
-import { Component } from '@angular/core'
-import { Auth } from '@angular/fire/auth'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 
 import {
@@ -8,28 +7,42 @@ import {
   MenuController,
   ToastController,
 } from '@ionic/angular'
-import { take } from 'rxjs/operators'
-import { AuthenticationService } from './services/auth/authentication.service'
+import { takeUntil } from 'rxjs/operators'
+import { AuthService } from './services/auth/auth.service'
+import { Observable, Subject } from 'rxjs'
+import { User } from './models/user.model'
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
+  private _unsubscribe$ = new Subject<void>()
+
   constructor(
     private animationCtrl: AnimationController,
-    private auth: Auth,
     private router: Router,
     private menu: MenuController,
     private toastController: ToastController,
     private alertController: AlertController,
-    public authService: AuthenticationService,
+    public authService: AuthService,
   ) {}
 
-  myCustomPageTransition = (baseEl: any, opts?: any) => {
-    //console.log('opts.enteringEl:'  + opts.enteringEl); //Entering Element - New Page
-    //console.log('opts.leavingEl:'  + opts.leavingEl);   //Leaving Element - Current Page
+  user: User | null
+
+  ngOnInit() {
+    this.authService.user.pipe(takeUntil(this._unsubscribe$)).subscribe((user) => {
+      this.user = user
+    })
+  }
+
+  ngOnDestroy() {
+    this._unsubscribe$.next()
+    this._unsubscribe$.complete()
+  }
+
+  myCustomPageTransition = (_baseEl: any, opts?: any) => {
     const anim1 = this.animationCtrl
       .create()
       .addElement(opts.leavingEl)
@@ -49,42 +62,22 @@ export class AppComponent {
     return anim2
   }
 
-  isUserLoggedIn() {
-    //console.log(this.auth.currentUser);
-    return !!this.auth.currentUser
-  }
-
   async logout() {
-    const user = this.auth.currentUser
     this.menu.close()
 
-    if (user) {
-      await this.authService.logout()
-      this.router.navigate(['/'])
-    } else {
-      this.router.navigate(['/'])
-    }
+    await this.authService.logout()
+
+    this.router.navigate(['/'])
   }
 
-  deleteAccount() {
-    let userId = null
-    userId = this.auth.currentUser.uid
-    this.menu.close()
+  async deleteAccount() {
+    await this.menu.close()
 
-    if (userId) {
-      userId
-        .delete()
-        .then(() => {
-          this.router.navigate([''])
-          this.presentToast('Your account has been successfully deleted.', 'bottom', 4000)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
+    this.router.navigate([''])
+    this.presentToast('Your account has been successfully deleted.', 'bottom', 4000)
   }
 
-  async presentToast(message, position, duration) {
+  async presentToast(message: string, position: 'top' | 'bottom' | 'middle', duration: number) {
     const toast = await this.toastController.create({
       message,
       duration,

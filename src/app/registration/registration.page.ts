@@ -9,15 +9,8 @@ import {
 } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AlertController, LoadingController } from '@ionic/angular'
-import { AuthenticationService } from '../services/auth/authentication.service'
-
-/*export function createPasswordValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const confirmPass = control.value;
-    const pass = this.password?.value;
-    return pass === confirmPass ? null : { missMatch: true };
-  };
-}*/
+import { AuthService } from '../services/auth/auth.service'
+import { ToastService } from '../services/toast.service'
 
 @Component({
   selector: 'app-registration',
@@ -27,11 +20,21 @@ import { AuthenticationService } from '../services/auth/authentication.service'
 export class RegistrationPage implements OnInit {
   credentialsForm: FormGroup
 
+  roles: { value: string; label: string }[] = [
+    { value: 'ORG', label: 'Org Team' },
+    { value: 'GG', label: 'Group Guide' },
+    { value: 'INFO', label: 'Info & Host' },
+    { value: 'LOG', label: 'Logistics' },
+    { value: 'MEDIA', label: 'Media' },
+    { value: 'PARTICIPANT', label: 'Participant' },
+  ]
+
   constructor(
     private fb: FormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
-    private authService: AuthenticationService,
+    private authService: AuthService,
+    private toastService: ToastService,
     private router: Router,
   ) {}
 
@@ -56,14 +59,19 @@ export class RegistrationPage implements OnInit {
     return this.credentialsForm.get('confirmPassword')
   }
 
+  get role() {
+    return this.credentialsForm.get('role')
+  }
+
   ngOnInit() {
     this.credentialsForm = this.fb.group(
       {
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        email: ['', [Validators.required]],
+        password: ['', [Validators.required]],
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
         confirmPassword: ['', [Validators.required]],
+        role: ['', [Validators.required]],
       },
       {
         validators: [this.createPasswordValidator()],
@@ -81,16 +89,31 @@ export class RegistrationPage implements OnInit {
 
   async register() {
     const loading = await this.loadingController.create()
-    await loading.present()
 
-    const newUser = await this.authService.register(this.credentialsForm.value)
-    await loading.dismiss()
+    try {
+      await loading.present()
 
-    if (newUser) {
+      await this.authService.createUserRequest(this.credentialsForm.value)
+
       this.credentialsForm.reset()
-      this.router.navigateByUrl('/profile', { replaceUrl: true })
-    } else {
-      this.showAlert('Registration failed', 'User already exists!')
+      await this.router.navigateByUrl('', { replaceUrl: true })
+      this.toastService.presentToast('Your request has been sent for approval!', 3000)
+    } catch (error) {
+      console.log(error)
+
+      switch (error) {
+        case 'EMAIL_NOT_FOUND':
+          this.showAlert('Login failed', 'Email not found!')
+          break
+        case 'INVALID_PASSWORD':
+          this.showAlert('Login failed', 'Wrong password!')
+          break
+        default:
+          this.showAlert('Login failed', 'An error occurred!')
+          break
+      }
+    } finally {
+      await loading.dismiss()
     }
   }
 

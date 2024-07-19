@@ -1,6 +1,6 @@
 import { Product } from 'src/app/models/product.model'
 
-export const companyStoreProducts: Product[] = [
+export const companyStoreProducts = [
   {
     name: 'Backpack',
     price: 8,

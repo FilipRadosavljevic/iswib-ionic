@@ -32,13 +32,13 @@
         Last name is required
       </ion-note>
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
-        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+        <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
       </ion-item>
       <ion-note
         color="danger"
         class="ion-margin-horizontal"
         slot="error"
-        *ngIf="email.touched && !email.valid && email.errors?.['email']"
+        *ngIf="email.touched && !email.valid"
         >Email is invalid
       </ion-note>
       <ion-note
@@ -80,6 +80,15 @@
       >
         Passwords must match
       </ion-note>
+
+      <ion-item color="primary" class="ion-margin-horizontal" lines="none">
+        <ion-select interface="action-sheet" placeholder="Select Role" formControlName="role">
+          <ion-select-option *ngFor="let role of roles" [value]="role.value">{{
+            role.label
+          }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
       <ion-button
         class="ion-margin-horizontal ion-margin-vertical"
         type="submit"
@@ -89,6 +98,11 @@
         >Sign Up
       </ion-button>
     </form>
-    <img alt="logo" id="header_picture" src="assets/images/background/register.png" />
+    <img
+      class="last-image"
+      alt="logo"
+      id="header_picture"
+      src="assets/images/background/register.jpg"
+    />
   </div>
 </ion-content>

@@ -29,7 +29,7 @@ export class Tab5Page implements OnInit, OnDestroy {
   }
 
   async getData() {
-    this.sub = await this.dataService.getSponsors().subscribe((res) => {
+    this.sub = this.dataService.getSponsors().subscribe((res) => {
       this.sponsors = res
     })
     this.dataService.getRestaurants().subscribe((res) => {

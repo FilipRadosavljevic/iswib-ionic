@@ -39,19 +39,4 @@ export class DataService {
     const discoveryRef = collection(this.firestore, 'discovery')
     return collectionData(discoveryRef)
   }
-
-  getScheduleById(id) {
-    const scheduleRef = doc(this.firestore, `schedule/${id}`)
-    return docData(scheduleRef, { idField: 'id' })
-  }
-
-  updateSchedule(id) {
-    const scheduleRef = doc(this.firestore, `schedule/${id}`)
-    return updateDoc(scheduleRef, { idField: 'id' })
-  }
-
-  updateDiscovery(data, id) {
-    const discoveryRef = doc(this.firestore, `discovery/${id}`)
-    return updateDoc(discoveryRef, { isLiked: data[id - 1].isLiked, likes: data[id - 1].likes })
-  }
 }

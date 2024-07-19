@@ -22,16 +22,16 @@ export class Tab1Page implements OnInit, OnDestroy {
     this.sub.unsubscribe()
   }
 
-  ionViewDidEnter() {
-    this.getData()
-  }
+  // ionViewDidEnter() {
+  //   this.getData()
+  // }
 
   segmentChanged(ev: any) {
     console.log('Segment changed', ev)
   }
 
   async getData() {
-    this.sub = await this.dataService.getSchedule().subscribe((res) => {
+    this.sub = this.dataService.getSchedule().subscribe((res) => {
       this.data = Object.values(res[0]).filter((element) => typeof element === 'object')
       this.days = Object.keys(res[0]).filter((element) => element !== 'id')
     })
