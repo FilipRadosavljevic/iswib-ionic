@@ -1,40 +1,52 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding-horizontal">
-  <ng-container *ngIf="authService.userLoggedIn | async">
-    <ion-toolbar>
+  <ng-container *ngIf="user">
+    <ion-toolbar color="primary">
       <ion-buttons collapse="true" slot="end">
-        <ion-button class="badge-button" fill="clear" (click)="openCartModal()">
+        <ion-button class="badge-button" fill="clear" (click)="openCartModal()"  (keydown)="openCartModal()">
           <ion-icon class="icon" size="large" name="cart"></ion-icon>
           <ion-badge class="badge-single-digits" color="danger">{{
             calculateCartQuantity()
           }}</ion-badge>
         </ion-button>
       </ion-buttons>
-      <h1>ISWiB Store</h1>
+      <h1>Store</h1>
     </ion-toolbar>
 
     <ion-grid>
       <ion-row *ngFor="let product of products" class="ion-margin-vertical">
         <ion-card>
-          <ion-col size="12">
-            <ion-img [src]="product.image" (click)="addToCart(product)" class="grid-img"></ion-img>
-            <p class="detail-name">{{ product.name }}</p>
+          <ion-col size="12" >
+            <div class="image-container">
 
-            <p class="detail-price">{{ product.price | currency: 'EUR' }}</p>
+              <ion-img [src]="product.imageUrl" (click)="addToCart(product)" (keydown)="addToCart(product)" class="product-image"></ion-img>
+            </div>
+            <div class="ion-justify-content-between">
+              <p class="detail-name">{{ product.name }}</p>
+
+              <p class="detail-price">{{ product.price | currency: 'EUR' }}</p>
+            </div>
+
+            <div *ngIf="product.sizes">
+              <ion-select>
+                <ion-select-option *ngFor="let size of Object.entries(product.sizes)" [value]="size[1]">{{ size[0] }}</ion-select-option>
+              </ion-select>
+            </div>
           </ion-col>
         </ion-card>
       </ion-row>
     </ion-grid>
   </ng-container>
 
-  <ng-container *ngIf="(authService.userLoggedIn | async) === false">
+  <ng-container *ngIf="user === null">
     <ion-toolbar>
       <ion-buttons collapse="true" slot="end">
         <ion-button
           class="badge-button"
           fill="clear"
           (click)="redirectLogin('Login to view your cart')"
+          (keydown)="redirectLogin('Login to view your cart')"
         >
           <ion-icon class="icon" size="large" name="cart"></ion-icon>
         </ion-button>
@@ -47,8 +59,9 @@
         <ion-card>
           <ion-col size="12">
             <ion-img
-              [src]="product.image"
+              [src]="product.imageUrl"
               (click)="redirectLogin('Login to order this product')"
+              (keydown)="redirectLogin('Login to order this product')"
               class="grid-img"
             ></ion-img>
             <p class="detail-name">{{ product.name }}</p>

@@ -1,11 +1,5 @@
-.badge-single-digits {
-  position: absolute;
-  top: 0px;
-  right: -5px;
-  font-size: 0.6em;
-  --padding-start: 5px;
-  --padding-end: 5px;
-}
+
+
 
 .badge-double-digits {
   position: absolute;
@@ -24,8 +18,16 @@
   padding-left: 11px;
 }
 
-.grid-img {
-  height: 80%;
+
+.image-container {
+  height: 200px;
+  width: 100%;
+  background: #f5f9fc;
+}
+
+.product-image {
+  object-fit: contain;
+  height: 100%;
   width: 100%;
 }
 
@@ -47,6 +49,8 @@
   }
 }
 
+
+
 .detail-name {
   margin-top: 16px;
   font-size: 20px;
@@ -56,7 +60,6 @@
 
 .detail-price {
   margin-top: 8px;
-  color: #888;
   font-size: 16px;
   color: #150f38;
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { LoadingController, ToastController } from '@ionic/angular'
-import { AuthenticationService } from '../services/auth/authentication.service'
+import { AuthService } from '../services/auth/auth.service'
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,7 +13,7 @@ export class ForgotPasswordPage implements OnInit {
   credentials: FormGroup
 
   constructor(
-    private authService: AuthenticationService,
+    private authService: AuthService,
     private toastController: ToastController,
     private loadingController: LoadingController,
     private fb: FormBuilder,

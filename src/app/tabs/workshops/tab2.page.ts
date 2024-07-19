@@ -9,6 +9,7 @@ import { DataService } from 'src/app/services/data.service'
 })
 export class Tab2Page implements OnInit, OnDestroy {
   data: any
+  workshops: any
   sub: Subscription
 
   constructor(private dataService: DataService) {}
@@ -19,9 +20,9 @@ export class Tab2Page implements OnInit, OnDestroy {
     this.sub.unsubscribe()
   }
 
-  ionViewDidEnter() {
-    this.getData()
-  }
+  // ionViewDidEnter() {
+  //   this.getData()
+  // }
 
   async getData() {
     this.sub = this.dataService.getWorkshops().subscribe((res) => {

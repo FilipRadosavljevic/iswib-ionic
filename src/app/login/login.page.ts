@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { AlertController, LoadingController } from '@ionic/angular'
-import { AuthenticationService } from '../services/auth/authentication.service'
+import { AlertController, LoadingController, ToastController } from '@ionic/angular'
+import { AuthService } from '../services/auth/auth.service'
+import { FirebaseError } from '@angular/fire/app'
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
-    private authService: AuthenticationService,
+    private authService: AuthService,
     private router: Router,
   ) {}
 
@@ -38,21 +39,42 @@ export class LoginPage implements OnInit {
 
   async login() {
     const loading = await this.loadingController.create()
-    await loading.present()
 
-    const user = await this.authService.login(this.credentialsForm.value)
-    await loading.dismiss()
+    try {
+      await loading.present()
 
-    if (user) {
+      await this.authService.login(
+        this.credentialsForm.value.email,
+        this.credentialsForm.value.password,
+      )
+
+      this.router.navigateByUrl('tabs', { replaceUrl: true })
+    } catch (e) {
+      const error = e as FirebaseError
+
+      const code = error.code
+
+      switch (code) {
+        case 'auth/invalid-email':
+          this.showAlert('Login failed', 'Email is not valid!')
+          break
+        case 'auth/user-disabled':
+          this.showAlert('Login failed', 'Your request has not been approved yet!')
+          break
+        case 'auth/user-not-found':
+          this.showAlert('Login failed', 'There is no user corresponding to this email!')
+          break
+        case 'auth/wrong-password':
+          this.showAlert('Login failed', 'Wrong password!')
+          break
+        default:
+          this.showAlert('Login failed', 'An error occurred!')
+          break
+      }
+    } finally {
       this.credentialsForm.reset()
-      this.router.navigateByUrl('/profile', { replaceUrl: true })
-    } else {
-      this.showAlert('Login failed', 'Your email or password is not correct!')
+      await loading.dismiss()
     }
-  }
-
-  loginAsGuest() {
-    this.router.navigateByUrl('/tabs', { replaceUrl: true })
   }
 
   async showAlert(header: string, message: string) {

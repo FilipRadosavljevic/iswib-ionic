@@ -60,7 +60,6 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
   content: none;
 }
 table {
@@ -82,7 +81,7 @@ ion-content {
   div {
     color: #150f38 !important;
   }
-  background-color: #fff !important;
+
   background: #fff !important;
   $alert-md-background-color: #fff;
   $alert-ios-background: #fff;

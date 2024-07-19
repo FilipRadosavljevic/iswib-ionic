@@ -16,19 +16,15 @@ ion-back-button {
 }
 
 form {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #wrapper {
   width: 100%;
-  height: 94vh;
+  height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.ios #wrapper {
-  height: 89vh;
 }
 
 ion-toolbar {
@@ -43,4 +39,9 @@ ion-title {
 ion-button {
   font-family: 'FontSemibold';
   letter-spacing: 0.75px;
+}
+
+.last-image {
+  scale: 0.90;
+  border-radius: 15px;
 }

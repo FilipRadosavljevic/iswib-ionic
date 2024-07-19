@@ -1,10 +1,9 @@
-export class User {
+export class UserRequest {
   constructor(
     public userId: string,
-    public role: string,
+    public email: string,
     public firstName: string,
     public lastName: string,
-    public email: string,
-    public workshopId?: string,
+    public role: string,
   ) {}
 }

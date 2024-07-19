@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router'
 import { redirectLoggedInTo, canActivate } from '@angular/fire/auth-guard'
 import { AuthGuard } from './services/auth/auth.guard'
 
-const redirectLoggedInToHome = () => redirectLoggedInTo(['profile'])
+const redirectLoggedInToHome = () => redirectLoggedInTo(['tabs'])
 
 const routes: Routes = [
   {
@@ -30,11 +30,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./forgot-password/forgot-password.module').then((m) => m.ForgotPasswordPageModule),
   },
-  {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then((m) => m.ProfilePageModule),
-    canActivate: [AuthGuard],
-  },
+  // {
+  //   path: 'profile',
+  //   loadChildren: () => import('./profile/profile.module').then((m) => m.ProfilePageModule),
+  //   canActivate: [AuthGuard],
+  // },
   {
     path: 'converter',
     loadChildren: () => import('./converter/converter.module').then((m) => m.ConverterPageModule),

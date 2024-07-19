@@ -3,9 +3,10 @@
 <ion-content>
   <ng-container *ngIf="currentUser && !isLoading">
     <div class="detail-header">
+      <img src="assets/images/background/banner_2024.png" />
       <div class="avatar-container">
         <ion-avatar>
-          <ion-img class="profile" [src]="profilePictureUrl"> </ion-img>
+          <ion-img class="profile" [src]="currentUser.profilePic"> </ion-img>
         </ion-avatar>
         <div class="inner">
           <ion-icon name="camera" class="camera-icon"></ion-icon>
