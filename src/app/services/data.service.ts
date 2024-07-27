@@ -8,6 +8,7 @@ import {
   doc,
   updateDoc,
 } from '@angular/fire/firestore'
+import { workshopConverter } from '../tabs/workshops/models/workshop.model'
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export class DataService {
   }
 
   getWorkshops() {
-    const workshopsRef = collection(this.firestore, 'workshops')
+    const workshopsRef = collection(this.firestore, 'workshops').withConverter(workshopConverter)
     return collectionData(workshopsRef)
   }
 
