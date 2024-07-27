@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Subscription } from 'rxjs'
+import { Subject, Subscription } from 'rxjs'
 import { DataService } from 'src/app/services/data.service'
+import { Workshop } from './models/workshop.model'
+import { takeUntil } from 'rxjs/operators'
 
 @Component({
   selector: 'app-workshops',
@@ -8,26 +10,23 @@ import { DataService } from 'src/app/services/data.service'
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page implements OnInit, OnDestroy {
-  data: any
-  workshops: any
-  sub: Subscription
+  workshops: Workshop[] = []
+
+  ngUnsubscribe = new Subject<void>()
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit() {}
-
-  ngOnDestroy() {
-    this.sub.unsubscribe()
+  ngOnInit() {
+    this.dataService
+      .getWorkshops()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((workshops) => {
+        this.workshops = [...workshops]
+      })
   }
 
-  // ionViewDidEnter() {
-  //   this.getData()
-  // }
-
-  async getData() {
-    this.sub = this.dataService.getWorkshops().subscribe((res) => {
-      this.data = res
-      console.log(1)
-    })
+  ngOnDestroy() {
+    this.ngUnsubscribe.next()
+    this.ngUnsubscribe.complete()
   }
 }
