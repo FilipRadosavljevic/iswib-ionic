@@ -1,14 +1,8 @@
 import { Injectable } from '@angular/core'
 
-import {
-  collectionData,
-  collection,
-  docData,
-  Firestore,
-  doc,
-  updateDoc,
-} from '@angular/fire/firestore'
+import { collectionData, collection, Firestore } from '@angular/fire/firestore'
 import { workshopConverter } from '../tabs/workshops/models/workshop.model'
+import { scheduleDayConverter } from '../tabs/schedule/models/schedule-day.model'
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +11,7 @@ export class DataService {
   constructor(private firestore: Firestore) {}
 
   getSchedule() {
-    const scheduleRef = collection(this.firestore, 'schedule')
+    const scheduleRef = collection(this.firestore, 'schedule').withConverter(scheduleDayConverter)
     return collectionData(scheduleRef, { idField: 'id' })
   }
 
