@@ -1,16 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Subject, Subscription } from 'rxjs'
 import { DataService } from 'src/app/services/data.service'
-import { Workshop } from './models/workshop.model'
 import { takeUntil } from 'rxjs/operators'
+import { Sponsor } from './models/sponsor.model'
 
 @Component({
-  selector: 'app-workshops',
+  selector: 'app-sponsors',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page implements OnInit, OnDestroy {
-  workshops: Workshop[] = []
+  sponsors: Sponsor[] = []
 
   ngUnsubscribe = new Subject<void>()
 
@@ -18,10 +18,10 @@ export class Tab2Page implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dataService
-      .getWorkshops()
+      .getSponsors()
       .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((workshops) => {
-        this.workshops = [...workshops]
+      .subscribe((sponsors) => {
+        this.sponsors = [...sponsors]
       })
   }
 

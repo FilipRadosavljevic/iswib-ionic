@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 
 import { collectionData, collection, Firestore } from '@angular/fire/firestore'
-import { workshopConverter } from '../tabs/workshops/models/workshop.model'
+import { sponsorConverter } from '../tabs/workshops/models/sponsor.model'
 import { scheduleDayConverter } from '../tabs/schedule/models/schedule-day.model'
 
 @Injectable({
@@ -15,13 +15,8 @@ export class DataService {
     return collectionData(scheduleRef, { idField: 'id' })
   }
 
-  getWorkshops() {
-    const workshopsRef = collection(this.firestore, 'workshops').withConverter(workshopConverter)
-    return collectionData(workshopsRef)
-  }
-
   getSponsors() {
-    const sponsorsRef = collection(this.firestore, 'sponsors')
+    const sponsorsRef = collection(this.firestore, 'sponsors').withConverter(sponsorConverter)
     return collectionData(sponsorsRef)
   }
 

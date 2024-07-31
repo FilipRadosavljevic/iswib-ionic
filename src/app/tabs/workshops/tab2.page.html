@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-  <div *ngIf="!workshops.length" class="custom-skeleton">
+  <div *ngIf="!sponsors.length" class="custom-skeleton">
     <ion-skeleton-text animated style="width: 60%; height: 25px"></ion-skeleton-text>
     <ion-list *ngFor="let item of [].constructor(10)">
       <ion-card
@@ -46,31 +46,22 @@
     </ion-list>
   </div>
 
-  <div *ngIf="workshops.length">
-    <h1>#NurtureOurFuture</h1>
-    <ion-list *ngFor="let workshop of workshops; index as i">
-      <ion-card [ngStyle]="{ 'background-color': workshop.cardColor }">
+  <div *ngIf="sponsors.length">
+    <h1>Our Sponsors</h1>
+    <ion-list *ngFor="let sponsor of sponsors; index as i">
+      <ion-card [ngStyle]="{ 'background-color': sponsor.cardColor }">
         <ion-card-header>
           <ion-grid>
             <ion-row>
               <ion-col>
-                <ion-card-title [ngStyle]="{ color: workshop.textColor }">{{
-                  workshop.title | titlecase
+                <ion-card-title [ngStyle]="{ color: sponsor.textColor }">{{
+                  sponsor.title | titlecase
                 }}</ion-card-title>
-                <ion-card-subtitle [ngStyle]="{ color: workshop.textColor }">{{
-                  workshop.moderator
-                }}</ion-card-subtitle>
               </ion-col>
               <ion-col size="3">
                 <div>
-                  <ion-avatar [ngClass]="workshop.image2 ? 'image1' : ''">
-                    <img *ngIf="workshop.image" [src]="workshop.image" width="50" height="50" />
-                  </ion-avatar>
-                  <ion-avatar class="image2">
-                    <img *ngIf="workshop.image2" [src]="workshop.image2" width="50" height="50" />
-                  </ion-avatar>
-                  <ion-avatar *ngIf="workshop.image3" class="image3">
-                    <img *ngIf="workshop.image3" [src]="workshop.image3" width="50" height="50" />
+                  <ion-avatar class="image">
+                    <img *ngIf="sponsor.image" [src]="sponsor.image" width="50" height="50" />
                   </ion-avatar>
                 </div>
               </ion-col>
@@ -78,8 +69,8 @@
             </ion-row>
           </ion-grid>
         </ion-card-header>
-        <ion-card-content [ngStyle]="{ color: workshop.textColor }">
-          <p>{{ workshop.description }}</p>
+        <ion-card-content [ngStyle]="{ color: sponsor.textColor }">
+          <p>{{ sponsor.description }}</p>
         </ion-card-content>
       </ion-card>
     </ion-list>
