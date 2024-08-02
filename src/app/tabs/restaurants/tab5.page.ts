@@ -1,6 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Subscription } from 'rxjs'
+import { Subject, Subscription } from 'rxjs'
 import { DataService } from 'src/app/services/data.service'
+import { Activity } from './models/activity.model'
+import { takeUntil } from 'rxjs/operators'
+import { Router } from '@angular/router'
+import { AuthService } from 'src/app/services/auth/auth.service'
+import { User } from 'src/app/models/user.model'
 
 @Component({
   selector: 'app-restaurants',
@@ -8,50 +13,50 @@ import { DataService } from 'src/app/services/data.service'
   styleUrls: ['tab5.page.scss'],
 })
 export class Tab5Page implements OnInit, OnDestroy {
-  sponsors: any = []
-  restaurants: any = []
-  data: any
-  sub: Subscription
-  type: string
+  activities: Activity[] = []
 
-  constructor(private dataService: DataService) {}
+  ngUnsubscribe = new Subject<void>()
+
+  currentUser: User | null = null;
+
+
+  constructor(private router: Router,
+    private dataService: DataService,
+    private authService: AuthService) {}
 
   ngOnInit() {
-    this.type = 'restaurants'
+    this.dataService
+      .getActivities()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((activities) => {
+        this.activities = [...activities]
+      })
+
+      this.authService.user.subscribe((user) => {
+        this.currentUser = user;
+        console.log('Authenticated user:', this.currentUser); // Debugging
+      });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe()
+    this.ngUnsubscribe.next()
+    this.ngUnsubscribe.complete()
   }
 
-  ionViewDidEnter() {
-    this.getData()
-  }
-
-  async getData() {
-    this.sub = this.dataService.getSponsors().subscribe((res) => {
-      this.sponsors = res
-    })
-    this.dataService.getRestaurants().subscribe((res) => {
-      this.data = Object.values(res[0])
-      console.log(this.restaurants)
-
-      this.restaurants = Object.keys(res[0]).filter((element) => element !== 'id')
-      console.log(this.data)
+  goToPage(obj) {
+    this.router.navigate(['/activity-page'], {
+      state: obj,
     })
   }
-
-  segmentChanged(ev) {
-    console.log(ev)
+  
+  async applyToActivity(activity: Activity) {
+    if (this.currentUser) {
+      console.log('Current user:', this.currentUser); // Debugging
+      console.log('Activity:', activity); // Debugging
+      await this.dataService.addUserToActivity(activity.title, this.currentUser);
+    } else {
+      console.error('No user is logged in.');
+    }
   }
 
-  goToLocation(currentObject: any) {
-    // eslint-disable-next-line max-len
-    const googleLocation = `https://www.google.com/maps/search/?api=1&query=${currentObject.location}&query_place_id=${currentObject.placeId}`
-    window.open(googleLocation)
-  }
-
-  seeMore(link: string) {
-    window.open(link)
-  }
 }

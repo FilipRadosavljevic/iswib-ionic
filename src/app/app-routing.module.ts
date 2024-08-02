@@ -40,6 +40,11 @@ const routes: Routes = [
     loadChildren: () => import('./converter/converter.module').then((m) => m.ConverterPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'activity-page',
+    loadChildren: () => import('./activity-page/activity-page.module').then( m => m.ActivityPagePageModule)
+  },
+
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],

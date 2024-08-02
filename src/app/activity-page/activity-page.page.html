@@ -1,0 +1,26 @@
+<ion-content>
+  <div id="wrapper">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tab5"></ion-back-button>
+      <h3>{{ activities.title }}</h3>
+    </ion-buttons>
+    <img class="background-picture" [src]="activities.image" />
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color="primary" class="ion-margin-bottom">Description</ion-card-title>
+        <!-- <ion-card-subtitle color="primary">Description</ion-card-subtitle> -->
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ activities.description }}<br><br>
+        {{activities.date}}, from {{ activities.begin }} to {{ activities.end }} <br><br>
+        Estimated cost: {{ activities.cost }} </p>
+        <!-- <ion-list class="location">
+          <ion-chip (click)="goToLocation()">
+            <ion-icon color="primary" name="location-sharp"></ion-icon>
+            <ion-label color="primary">See location</ion-label>
+          </ion-chip>
+        </ion-list> -->
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
