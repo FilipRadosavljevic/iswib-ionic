@@ -86,8 +86,13 @@
   <div *ngIf="data">
     <h1>Our sponsors</h1>
     <div class="segment-wrapper">
-      <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-        <ion-slide *ngFor="let sponsor of sponsors; index as i">
+      <swiper-container
+        [modules]="swiperModules"
+        slides-per-view="auto"
+        [zoom]="false"
+        [grab-cursor]="true"
+      >
+        <swiper-slide *ngFor="let sponsor of sponsors; index as i">
           <ion-col>
             <ion-card class="sponsors" color="light">
               <img class="sponsors-img" [src]="sponsor.image" />
@@ -99,8 +104,8 @@
               </ion-card-header>
             </ion-card>
           </ion-col>
-        </ion-slide>
-      </ion-slides>
+        </swiper-slide>
+      </swiper-container>
     </div>
 
     <h1>Search by categories</h1>

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { Subscription } from 'rxjs'
+import { IonicSlides } from '@ionic/angular'
 import { DataService } from 'src/app/services/data.service'
 
 @Component({
@@ -8,6 +9,7 @@ import { DataService } from 'src/app/services/data.service'
   styleUrls: ['tab5.page.scss'],
 })
 export class Tab5Page implements OnInit, OnDestroy {
+  swiperModules = [IonicSlides]
   sponsors: any = []
   restaurants: any = []
   data: any

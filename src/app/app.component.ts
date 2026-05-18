@@ -11,6 +11,9 @@ import { takeUntil } from 'rxjs/operators'
 import { AuthService } from './services/auth/auth.service'
 import { Observable, Subject } from 'rxjs'
 import { User } from './models/user.model'
+import { register as registerSwiperElements } from 'swiper/element/bundle'
+
+registerSwiperElements()
 
 @Component({
   selector: 'app-root',
