@@ -4,7 +4,9 @@ const config: CapacitorConfig = {
   appId: 'com.iswib.app',
   appName: 'ISWiB',
   webDir: './www',
-  bundledWebRuntime: false
+  server: {
+    androidScheme: 'http',
+  },
 };
 
 export default config;

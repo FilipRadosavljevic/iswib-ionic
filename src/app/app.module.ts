@@ -23,7 +23,6 @@ import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angul
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
   imports: [
     BrowserModule,
     HttpClientModule,
