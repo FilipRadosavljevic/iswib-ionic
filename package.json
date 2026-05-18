@@ -4,6 +4,8 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
+    "create-bucket": "gcloud storage buckets create gs://iswib-app-firestore --location=EUROPE-CENTRAL2",
+    "import-firestore-data": "gcloud storage cp -r ./firebase-exports/firestore_export/ gs://iswib_import && gcloud firestore import gs://iswib_import/2024-07-31T10:08:39_99888",
     "start:emulators": "firebase emulators:start --import=./firebase-exports --export-on-exit",
     "ng": "ng",
     "start": "ng serve",
