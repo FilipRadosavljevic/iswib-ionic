@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { LoadingController, ToastController } from '@ionic/angular'
 import { AuthService } from '../services/auth/auth.service'
@@ -10,13 +10,13 @@ import { AuthService } from '../services/auth/auth.service'
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-  credentials: FormGroup
+  credentials: UntypedFormGroup
 
   constructor(
     private authService: AuthService,
     private toastController: ToastController,
     private loadingController: LoadingController,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
   ) {}
 

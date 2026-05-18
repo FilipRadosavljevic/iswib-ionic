@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import {
   AbstractControl,
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   ValidationErrors,
   ValidatorFn,
   Validators,
@@ -18,7 +18,7 @@ import { ToastService } from '../services/toast.service'
   styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
-  credentialsForm: FormGroup
+  credentialsForm: UntypedFormGroup
 
   roles: { value: string; label: string }[] = [
     { value: 'ORG', label: 'Org Team' },
@@ -30,7 +30,7 @@ export class RegistrationPage implements OnInit {
   ]
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthService,

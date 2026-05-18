@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AlertController, LoadingController, ToastController } from '@ionic/angular'
 import { AuthService } from '../services/auth/auth.service'
@@ -11,10 +11,10 @@ import { FirebaseError } from '@angular/fire/app'
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  credentialsForm: FormGroup
+  credentialsForm: UntypedFormGroup
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private loadingController: LoadingController,
     private alertController: AlertController,
     private authService: AuthService,
