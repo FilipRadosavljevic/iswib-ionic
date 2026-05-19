@@ -5,45 +5,28 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.json", "e2e/tsconfig.json"],
-        "createDefaultProgram": true
+        "project": ["tsconfig.json"]
       },
       "extends": [
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
         "semi": ["error", "never"],
-        "@typescript-eslint/semi": "off",
-        "@typescript-eslint/member-delimiter-style": "off",
-        "@typescript-eslint/no-shadow": "off",
-        "@typescript-eslint/member-ordering": "off",
         "no-unexpected-multiline": "error",
-        "no-underscore-dangle": "off",
-        "prefer-arrow/prefer-arrow-functions": "off",
-        "@typescript-eslint/dot-notation": "off",
         "@angular-eslint/component-class-suffix": [
           "error",
-          {
-            "suffixes": ["Page", "Component"]
-          }
+          { "suffixes": ["Page", "Component"] }
         ],
         "@angular-eslint/component-selector": [
           "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
+          { "type": "element", "prefix": "app", "style": "kebab-case" }
         ],
         "@angular-eslint/directive-selector": [
           "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
+          { "type": "attribute", "prefix": "app", "style": "camelCase" }
         ]
       }
     },
