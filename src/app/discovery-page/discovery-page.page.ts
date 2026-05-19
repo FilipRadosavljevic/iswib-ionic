@@ -14,7 +14,7 @@ export class DiscoveryPagePage implements OnInit {
   data: any
 
   constructor() {
-    this.data = this.router.getCurrentNavigation().extras.state
+    this.data = this.router.currentNavigation().extras.state
   }
 
   ngOnInit() {}
