@@ -3,18 +3,18 @@ import { Subject } from 'rxjs'
 import { DataService } from '../../services/data.service'
 import { ScheduleDay } from './models/schedule-day.model'
 import { takeUntil } from 'rxjs/operators'
-import { HeaderComponent } from '../../components/header/header.component';
-import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
-import { NgStyle } from '@angular/common';
+import { HeaderComponent } from '../../components/header/header.component'
+import { IonicModule } from '@ionic/angular'
+import { FormsModule } from '@angular/forms'
+
 @Component({
-    selector: 'app-schedule',
-    templateUrl: 'tab1.page.html',
-    styleUrls: ['tab1.page.scss'],
-    imports: [HeaderComponent, IonicModule, FormsModule, NgStyle]
+  selector: 'app-schedule',
+  templateUrl: 'tab1.page.html',
+  styleUrls: ['tab1.page.scss'],
+  imports: [HeaderComponent, IonicModule, FormsModule],
 })
 export class Tab1Page implements OnInit, OnDestroy {
-  private dataService = inject(DataService);
+  private dataService = inject(DataService)
 
   type: string
 

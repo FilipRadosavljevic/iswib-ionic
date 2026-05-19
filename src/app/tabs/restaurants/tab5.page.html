@@ -10,19 +10,19 @@
         @for (item of [].constructor(5); track item) {
           <ion-col size="4">
             <ion-card
-          [ngStyle]="{
-            width: '120px',
-            height: '130px',
-            position: 'relative'
-          }"
-              >
+              [style]="{
+                width: '120px',
+                height: '130px',
+                position: 'relative'
+              }"
+            >
               <ion-card-header>
                 <ion-thumbnail
-              [ngStyle]="{
-                width: '120px',
-                height: '130px'
-              }"
-                  >
+                  [style]="{
+                    width: '120px',
+                    height: '130px'
+                  }"
+                >
                   <ion-skeleton-text animated></ion-skeleton-text>
                 </ion-thumbnail>
               </ion-card-header>
@@ -55,22 +55,22 @@
             <ion-grid>
               <ion-card
                 class="restaurant-card ion-margin-bottom"
-            [ngStyle]="{
-              width: '100%',
-              height: '130px',
-              position: 'relative'
-            }"
-                >
+                [style]="{
+                  width: '100%',
+                  height: '130px',
+                  position: 'relative'
+                }"
+              >
                 <ion-row style="height: 130px">
                   <ion-col size="4"> </ion-col>
                   <ion-col>
                     <ion-card-header>
                       <ion-thumbnail
-                    [ngStyle]="{
-                      width: '350px',
-                      height: '130px'
-                    }"
-                        >
+                        [style]="{
+                          width: '350px',
+                          height: '130px'
+                        }"
+                      >
                         <ion-skeleton-text animated></ion-skeleton-text>
                       </ion-thumbnail>
                     </ion-card-header>
@@ -94,7 +94,7 @@
           slides-per-view="auto"
           [zoom]="false"
           [grab-cursor]="true"
-          >
+        >
           @for (sponsor of sponsors; track sponsor; let i = $index) {
             <swiper-slide>
               <ion-col>
@@ -153,7 +153,10 @@
                             <div id="wrapper">
                               <p>Open from: {{ item.timeFrom }} - {{ item.timeTo }}</p>
                               <div>
-                                <ion-chip (click)="goToLocation(data[i][j])" class="restaurant-chip">
+                                <ion-chip
+                                  (click)="goToLocation(data[i][j])"
+                                  class="restaurant-chip"
+                                >
                                   <ion-icon color="primary" name="location-sharp"></ion-icon>
                                   <ion-label color="primary">See location</ion-label>
                                 </ion-chip>

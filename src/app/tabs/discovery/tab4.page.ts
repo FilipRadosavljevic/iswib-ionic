@@ -2,19 +2,18 @@ import { Component, OnInit, OnDestroy, inject } from '@angular/core'
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { DataService } from 'src/app/services/data.service'
-import { HeaderComponent } from '../../components/header/header.component';
-import { IonicModule } from '@ionic/angular';
-import { NgStyle } from '@angular/common';
+import { HeaderComponent } from '../../components/header/header.component'
+import { IonicModule } from '@ionic/angular'
 
 @Component({
-    selector: 'app-discovery',
-    templateUrl: 'tab4.page.html',
-    styleUrls: ['tab4.page.scss'],
-    imports: [HeaderComponent, IonicModule, NgStyle]
+  selector: 'app-discovery',
+  templateUrl: 'tab4.page.html',
+  styleUrls: ['tab4.page.scss'],
+  imports: [HeaderComponent, IonicModule],
 })
 export class Tab4Page implements OnInit, OnDestroy {
-  private router = inject(Router);
-  private dataService = inject(DataService);
+  private router = inject(Router)
+  private dataService = inject(DataService)
 
   data: any
   sub: Subscription
