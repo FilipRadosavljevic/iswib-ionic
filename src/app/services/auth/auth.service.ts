@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
 import {
   Auth,
   signInWithEmailAndPassword,
@@ -41,13 +41,13 @@ const userConverter: FirestoreDataConverter<User> = {
   providedIn: 'root',
 })
 export class AuthService {
+  private auth = inject(Auth);
+  private firestore = inject(Firestore);
+  private functions = inject(Functions);
+
   private _user$: Observable<User | null>
 
-  constructor(
-    private auth: Auth,
-    private firestore: Firestore,
-    private functions: Functions,
-  ) {
+  constructor() {
     this._user$ = user(this.auth).pipe(
       switchMap(async (user) => {
         if (!user) {

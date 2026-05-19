@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core'
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
+import { Component, OnInit, inject } from '@angular/core'
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router'
-import { LoadingController, ToastController } from '@ionic/angular'
+import { LoadingController, ToastController, IonicModule } from '@ionic/angular'
 import { AuthService } from '../services/auth/auth.service'
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.page.html',
-  styleUrls: ['./forgot-password.page.scss'],
+    selector: 'app-forgot-password',
+    templateUrl: './forgot-password.page.html',
+    styleUrls: ['./forgot-password.page.scss'],
+    imports: [IonicModule, FormsModule, ReactiveFormsModule]
 })
 export class ForgotPasswordPage implements OnInit {
-  credentials: UntypedFormGroup
+  private authService = inject(AuthService);
+  private toastController = inject(ToastController);
+  private loadingController = inject(LoadingController);
+  private fb = inject(UntypedFormBuilder);
+  private router = inject(Router);
 
-  constructor(
-    private authService: AuthService,
-    private toastController: ToastController,
-    private loadingController: LoadingController,
-    private fb: UntypedFormBuilder,
-    private router: Router,
-  ) {}
+  credentials: UntypedFormGroup
 
   get email() {
     return this.credentials.get('email')

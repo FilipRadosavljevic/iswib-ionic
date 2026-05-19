@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header />
 
 <ion-content>
   <h1>Currency converter</h1>
@@ -8,7 +8,7 @@
         <ion-col size="12">
           <ion-chip color="primary" id="fromModal">
             <ion-label>{{ fromCurr }}</ion-label>
-            <ion-icon color="secondary" name="caret-forward"></ion-icon>
+            <ion-icon color="secondary" name="caret-forward" />
           </ion-chip>
           <ion-modal trigger="fromModal" #fromModal>
             <ng-template>
@@ -24,11 +24,13 @@
                 </ion-toolbar>
               </ion-header>
               <ion-content>
-                <ion-searchbar [debounce]="200" (ionChange)="onSearch($event)"></ion-searchbar>
+                <ion-searchbar [debounce]="200" (ionChange)="onSearch($event)" />
                 <ion-list>
-                  <ion-item *ngFor="let curr of searchResults" (click)="onChooseFrom(curr.code)">
-                    <ion-label>{{ curr.code }} - {{ curr.name }}</ion-label>
-                  </ion-item>
+                  @for (curr of searchResults; track curr) {
+                    <ion-item (click)="onChooseFrom(curr.code)">
+                      <ion-label>{{ curr.code }} - {{ curr.name }}</ion-label>
+                    </ion-item>
+                  }
                 </ion-list>
               </ion-content>
             </ng-template>
@@ -38,12 +40,11 @@
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">From</ion-label>
-            <ion-input
-              type="number"
+            <ion-input type="number"
               [(ngModel)]="fromValue"
               #toValueRef
               (keyup)="calculateToValue()"
-            ></ion-input>
+             />
           </ion-item>
         </ion-col>
       </ion-row>
@@ -53,7 +54,7 @@
   <ion-row>
     <ion-col size="12">
       <ion-chip class="switch" (click)="onSwitch()">
-        <ion-icon color="secondary" name="swap-vertical"></ion-icon>
+        <ion-icon color="secondary" name="swap-vertical" />
         <ion-label>Switch Currencies</ion-label>
       </ion-chip>
     </ion-col>
@@ -65,7 +66,7 @@
         <ion-col size="12">
           <ion-chip color="primary" id="toModal">
             <ion-label>{{ toCurr }}</ion-label>
-            <ion-icon color="secondary" name="caret-forward"></ion-icon>
+            <ion-icon color="secondary" name="caret-forward" />
           </ion-chip>
           <ion-modal trigger="toModal" #toModal>
             <ng-template>
@@ -81,11 +82,13 @@
                 </ion-toolbar>
               </ion-header>
               <ion-content>
-                <ion-searchbar [debounce]="200" (ionChange)="onSearch($event)"></ion-searchbar>
+                <ion-searchbar [debounce]="200" (ionChange)="onSearch($event)" />
                 <ion-list>
-                  <ion-item *ngFor="let curr of searchResults" (click)="onChooseTo(curr.code)">
-                    <ion-label>{{ curr.code }} - {{ curr.name }}</ion-label>
-                  </ion-item>
+                  @for (curr of searchResults; track curr) {
+                    <ion-item (click)="onChooseTo(curr.code)">
+                      <ion-label>{{ curr.code }} - {{ curr.name }}</ion-label>
+                    </ion-item>
+                  }
                 </ion-list>
               </ion-content>
             </ng-template>
@@ -94,12 +97,11 @@
         <ion-col size="12">
           <ion-item>
             <ion-label position="floating">To</ion-label>
-            <ion-input
-              type="number"
+            <ion-input type="number"
               [(ngModel)]="toValue"
               #fromValueRef
               (keyup)="calculateFromValue()"
-            ></ion-input>
+             />
           </ion-item>
         </ion-col>
       </ion-row>

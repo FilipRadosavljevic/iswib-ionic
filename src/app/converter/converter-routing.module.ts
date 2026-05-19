@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 
-import { ConverterPage } from './converter.page'
+
 
 const routes: Routes = [
   {
     path: '',
-    component: ConverterPage,
+    loadComponent: () => import('./converter.page').then(m => m.ConverterPage),
   },
 ]
 

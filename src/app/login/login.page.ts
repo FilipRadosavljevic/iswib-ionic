@@ -1,25 +1,24 @@
-import { Component, OnInit } from '@angular/core'
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
-import { Router } from '@angular/router'
-import { AlertController, LoadingController, ToastController } from '@ionic/angular'
+import { Component, OnInit, inject } from '@angular/core'
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { Router, RouterLink } from '@angular/router'
+import { AlertController, LoadingController, ToastController, IonicModule } from '@ionic/angular'
 import { AuthService } from '../services/auth/auth.service'
 import { FirebaseError } from '@angular/fire/app'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+    selector: 'app-login',
+    templateUrl: './login.page.html',
+    styleUrls: ['./login.page.scss'],
+    imports: [IonicModule, FormsModule, ReactiveFormsModule, RouterLink]
 })
 export class LoginPage implements OnInit {
-  credentialsForm: UntypedFormGroup
+  private fb = inject(UntypedFormBuilder);
+  private loadingController = inject(LoadingController);
+  private alertController = inject(AlertController);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-  constructor(
-    private fb: UntypedFormBuilder,
-    private loadingController: LoadingController,
-    private alertController: AlertController,
-    private authService: AuthService,
-    private router: Router,
-  ) {}
+  credentialsForm: UntypedFormGroup
 
   // Easy access for form fields
   get email() {

@@ -9,13 +9,13 @@ import { ForgotPasswordPageRoutingModule } from './forgot-password-routing.modul
 import { ForgotPasswordPage } from './forgot-password.page'
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ForgotPasswordPageRoutingModule,
-    ReactiveFormsModule,
-  ],
-  declarations: [ForgotPasswordPage],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ForgotPasswordPageRoutingModule,
+        ReactiveFormsModule,
+        ForgotPasswordPage,
+    ],
 })
 export class ForgotPasswordPageModule {}

@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { HttpClient } from '@angular/common/http'
-import { Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
 import { environment } from 'environments/environment'
 import { switchMap, tap } from 'rxjs/operators'
 import { writeBatch, doc, Firestore, getDocs, collection } from '@angular/fire/firestore'
@@ -15,12 +15,10 @@ export interface Currency {
   providedIn: 'root',
 })
 export class CurrencyService {
-  currencies: Currency[]
+  private http = inject(HttpClient);
+  private firestore = inject(Firestore);
 
-  constructor(
-    private http: HttpClient,
-    private firestore: Firestore,
-  ) {}
+  currencies: Currency[]
 
   async fetchCurrencies() {
     try {

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { TabsPage } from './tabs.page'
+
 
 const routes: Routes = [
   {
     path: '',
-    component: TabsPage,
+    loadComponent: () => import('./tabs.page').then(m => m.TabsPage),
     children: [
       {
         path: 'schedule',

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-back-button defaultHref="/" />
     </ion-buttons>
     <ion-title>Register</ion-title>
   </ion-toolbar>
@@ -52,19 +52,22 @@
           formControlName="confirmPassword"
         ></ion-input>
       </ion-item>
-      <ion-note
-        color="danger"
-        class="ion-margin-horizontal"
-        *ngIf="confirmPassword.dirty && credentialsForm.errors?.['missMatch']"
-      >
-        Passwords must match
-      </ion-note>
+      @if (confirmPassword.dirty && credentialsForm.errors?.['missMatch']) {
+        <ion-note
+          color="danger"
+          class="ion-margin-horizontal"
+          >
+          Passwords must match
+        </ion-note>
+      }
 
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
         <ion-select interface="action-sheet" placeholder="Select Role" formControlName="role">
-          <ion-select-option *ngFor="let role of roles" [value]="role.value">{{
-            role.label
-          }}</ion-select-option>
+          @for (role of roles; track role) {
+            <ion-select-option [value]="role.value">{{
+              role.label
+            }}</ion-select-option>
+          }
         </ion-select>
       </ion-item>
 
@@ -82,6 +85,6 @@
       alt="logo"
       id="header_picture"
       src="assets/images/background/register.jpg"
-    />
-  </div>
-</ion-content>
+      />
+    </div>
+  </ion-content>

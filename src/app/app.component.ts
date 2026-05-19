@@ -1,36 +1,31 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, OnDestroy, OnInit, inject } from '@angular/core'
+import { Router, RouterLink } from '@angular/router'
 
-import {
-  AlertController,
-  AnimationController,
-  MenuController,
-  ToastController,
-} from '@ionic/angular'
+import { AlertController, AnimationController, MenuController, ToastController, IonicModule } from '@ionic/angular'
 import { takeUntil } from 'rxjs/operators'
 import { AuthService } from './services/auth/auth.service'
 import { Observable, Subject } from 'rxjs'
 import { User } from './models/user.model'
 import { register as registerSwiperElements } from 'swiper/element/bundle'
 
+
 registerSwiperElements()
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    styleUrls: ['app.component.scss'],
+    imports: [IonicModule, RouterLink]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private _unsubscribe$ = new Subject<void>()
+  private animationCtrl = inject(AnimationController);
+  private router = inject(Router);
+  private menu = inject(MenuController);
+  private toastController = inject(ToastController);
+  private alertController = inject(AlertController);
+  authService = inject(AuthService);
 
-  constructor(
-    private animationCtrl: AnimationController,
-    private router: Router,
-    private menu: MenuController,
-    private toastController: ToastController,
-    private alertController: AlertController,
-    public authService: AuthService,
-  ) {}
+  private _unsubscribe$ = new Subject<void>()
 
   user: User | null
 

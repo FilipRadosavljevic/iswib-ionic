@@ -1,20 +1,24 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy, inject } from '@angular/core'
 import { Subject, Subscription } from 'rxjs'
 import { DataService } from 'src/app/services/data.service'
 import { Workshop } from './models/workshop.model'
 import { takeUntil } from 'rxjs/operators'
+import { HeaderComponent } from '../../components/header/header.component';
+import { IonicModule } from '@ionic/angular';
+import { NgStyle, NgClass, TitleCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-workshops',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
+    selector: 'app-workshops',
+    templateUrl: 'tab2.page.html',
+    styleUrls: ['tab2.page.scss'],
+    imports: [HeaderComponent, IonicModule, NgStyle, NgClass, TitleCasePipe]
 })
 export class Tab2Page implements OnInit, OnDestroy {
+  private dataService = inject(DataService);
+
   workshops: Workshop[] = []
 
   ngUnsubscribe = new Subject<void>()
-
-  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.dataService

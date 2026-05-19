@@ -1,17 +1,25 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
-import { ModalController, LoadingController, IonModal } from '@ionic/angular'
+import { Component, ElementRef, OnInit, inject, viewChild } from '@angular/core'
+import { ModalController, LoadingController, IonModal, IonicModule } from '@ionic/angular'
 import { Currency, CurrencyService } from '../services/currency.service'
+import { HeaderComponent } from '../components/header/header.component';
+
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-converter',
-  templateUrl: './converter.page.html',
-  styleUrls: ['./converter.page.scss'],
+    selector: 'app-converter',
+    templateUrl: './converter.page.html',
+    styleUrls: ['./converter.page.scss'],
+    imports: [HeaderComponent, IonicModule, FormsModule]
 })
 export class ConverterPage implements OnInit {
-  @ViewChild('fromModal') fromModal: IonModal
-  @ViewChild('toModal') toModal: IonModal
-  @ViewChild('fromValueRef') fromValueRef: ElementRef<HTMLInputElement>
-  @ViewChild('toValueRef') toValueRef: ElementRef<HTMLInputElement>
+  private currencyService = inject(CurrencyService);
+  private modalCtrl = inject(ModalController);
+  private loadingCtrl = inject(LoadingController);
+
+  readonly fromModal = viewChild<IonModal>('fromModal');
+  readonly toModal = viewChild<IonModal>('toModal');
+  readonly fromValueRef = viewChild<ElementRef<HTMLInputElement>>('fromValueRef');
+  readonly toValueRef = viewChild<ElementRef<HTMLInputElement>>('toValueRef');
   countryRates = new Map<string, number>()
   countryNames = new Map<string, string>()
   currencies: Currency[]
@@ -23,12 +31,6 @@ export class ConverterPage implements OnInit {
 
   fromCurr = 'RSD'
   toCurr = 'EUR'
-
-  constructor(
-    private currencyService: CurrencyService,
-    private modalCtrl: ModalController,
-    private loadingCtrl: LoadingController,
-  ) {}
 
   async ngOnInit() {
     console.log('onInit')
@@ -84,22 +86,22 @@ export class ConverterPage implements OnInit {
   onChooseFrom(code: string) {
     this.fromCurr = code
     this.calculateToValue()
-    this.fromModal.dismiss()
+    this.fromModal().dismiss()
   }
 
   onChooseTo(code: string) {
     this.toCurr = code
     this.calculateFromValue()
-    this.toModal.dismiss()
+    this.toModal().dismiss()
   }
 
   onCancel() {
-    this.fromModal.dismiss()
-    this.toModal.dismiss()
+    this.fromModal().dismiss()
+    this.toModal().dismiss()
   }
 
   onConfirm() {
-    this.fromModal.dismiss()
-    this.toModal.dismiss()
+    this.fromModal().dismiss()
+    this.toModal().dismiss()
   }
 }

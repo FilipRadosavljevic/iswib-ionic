@@ -1,23 +1,25 @@
-import { Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
+import { Observable } from 'rxjs'
 
 import { collectionData, collection, Firestore } from '@angular/fire/firestore'
-import { workshopConverter } from '../tabs/workshops/models/workshop.model'
-import { scheduleDayConverter } from '../tabs/schedule/models/schedule-day.model'
+import { Workshop, workshopConverter } from '../tabs/workshops/models/workshop.model'
+import { ScheduleDay, scheduleDayConverter } from '../tabs/schedule/models/schedule-day.model'
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private firestore: Firestore) {}
+  private firestore = inject(Firestore);
 
-  getSchedule() {
+
+  getSchedule(): Observable<ScheduleDay[]> {
     const scheduleRef = collection(this.firestore, 'schedule').withConverter(scheduleDayConverter)
-    return collectionData(scheduleRef)
+    return collectionData(scheduleRef) as Observable<ScheduleDay[]>
   }
 
-  getWorkshops() {
+  getWorkshops(): Observable<Workshop[]> {
     const workshopsRef = collection(this.firestore, 'workshops').withConverter(workshopConverter)
-    return collectionData(workshopsRef)
+    return collectionData(workshopsRef) as Observable<Workshop[]>
   }
 
   getSponsors() {

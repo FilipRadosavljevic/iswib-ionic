@@ -1,22 +1,26 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
+import { Component, OnInit, OnDestroy, inject } from '@angular/core'
 import { Subscription } from 'rxjs'
-import { IonicSlides } from '@ionic/angular'
+import { IonicSlides, IonicModule } from '@ionic/angular'
 import { DataService } from 'src/app/services/data.service'
+import { HeaderComponent } from '../../components/header/header.component';
+import { NgStyle, NgClass } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-restaurants',
-  templateUrl: 'tab5.page.html',
-  styleUrls: ['tab5.page.scss'],
+    selector: 'app-restaurants',
+    templateUrl: 'tab5.page.html',
+    styleUrls: ['tab5.page.scss'],
+    imports: [HeaderComponent, IonicModule, NgStyle, FormsModule, NgClass]
 })
 export class Tab5Page implements OnInit, OnDestroy {
+  private dataService = inject(DataService);
+
   swiperModules = [IonicSlides]
   sponsors: any = []
   restaurants: any = []
   data: any
   sub: Subscription
   type: string
-
-  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.type = 'restaurants'

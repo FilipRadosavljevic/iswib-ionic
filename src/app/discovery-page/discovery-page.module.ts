@@ -9,7 +9,6 @@ import { DiscoveryPagePageRoutingModule } from './discovery-page-routing.module'
 import { DiscoveryPagePage } from './discovery-page.page'
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, DiscoveryPagePageRoutingModule],
-  declarations: [DiscoveryPagePage],
+    imports: [CommonModule, FormsModule, IonicModule, DiscoveryPagePageRoutingModule, DiscoveryPagePage],
 })
 export class DiscoveryPagePageModule {}

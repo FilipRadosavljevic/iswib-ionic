@@ -1,103 +1,120 @@
-<app-header></app-header>
+<app-header />
 
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
   <div class="segment-wrapper">
     <ion-segment scrollable [(ngModel)]="type">
-      <ion-segment-button *ngFor="let day of days" [value]="day.scheduleDayId">
-        <ion-label>
-          {{ day.dayOfWeek }}<br />
-          <b>{{ day.date }}</b>
-        </ion-label>
-      </ion-segment-button>
+      @for (day of days; track day) {
+        <ion-segment-button [value]="day.scheduleDayId">
+          <ion-label>
+            {{ day.dayOfWeek }}<br />
+            <b>{{ day.date }}</b>
+          </ion-label>
+        </ion-segment-button>
+      }
     </ion-segment>
   </div>
 
-  <div *ngIf="!days?.length" class="custom-skeleton">
-    <div *ngFor="let item of [].constructor(6)">
-      <ion-list>
-        <ion-grid>
-          <ion-row class="ion-align-items-stretch ion-margin-bottom">
-            <ion-col size="3">
-              <ion-text>
-                <h3>
-                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                </h3>
-              </ion-text>
-              <ion-text>
-                <p>
-                  <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-                </p>
-              </ion-text>
-            </ion-col>
-            <ion-col>
-              <ion-card
+  @if (!days?.length) {
+    <div class="custom-skeleton">
+      @for (item of [].constructor(6); track item) {
+        <div>
+          <ion-list>
+            <ion-grid>
+              <ion-row class="ion-align-items-stretch ion-margin-bottom">
+                <ion-col size="3">
+                  <ion-text>
+                    <h3>
+                      <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                    </h3>
+                  </ion-text>
+                  <ion-text>
+                    <p>
+                      <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                    </p>
+                  </ion-text>
+                </ion-col>
+                <ion-col>
+                  <ion-card
                 [ngStyle]="{
                   width: '100%',
                   height: '150px',
                   position: 'relative'
                 }"
-              >
-                <ion-card-header>
-                  <ion-thumbnail
+                    >
+                    <ion-card-header>
+                      <ion-thumbnail
                     [ngStyle]="{
                       width: '100%',
                       height: '150px'
                     }"
-                  >
-                    <ion-skeleton-text animated></ion-skeleton-text>
-                  </ion-thumbnail>
-                </ion-card-header>
-                <ion-card-content>
-                  <ion-item slot="start" lines="none">
-                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                  </ion-item>
-                  <ion-item slot="start" lines="none">
-                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-list>
+                        >
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                      </ion-thumbnail>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-item slot="start" lines="none">
+                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                      </ion-item>
+                      <ion-item slot="start" lines="none">
+                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                      </ion-item>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-list>
+        </div>
+      }
     </div>
-  </div>
-  <div *ngIf="days?.length">
-    <div [ngSwitch]="type" *ngFor="let day of days">
-      <ion-list *ngSwitchCase="day.scheduleDayId">
-        <ion-grid *ngFor="let event of day.events">
-          <ion-row class="ion-align-items-stretch ion-margin-bottom">
-            <ion-col size="3">
-              <ion-text>
-                <h3>{{ event.timeFrom }}</h3>
-              </ion-text>
-              <ion-text>
-                <p>{{ event.timeTo }}</p>
-              </ion-text>
-            </ion-col>
-            <ion-col>
-              <ion-card color="secondary">
-                <ion-card-header>
-                  <ion-card-title>{{ event.eventTitle }}</ion-card-title>
-                </ion-card-header>
-                <ion-card-content>
-                  <ion-item color="secondary" slot="start" lines="none">
-                    <ion-chip
-                      *ngIf="event.location"
-                      (click)="goToLocation(event.location, event.placeId)"
-                      (keydown.enter)="goToLocation(event.location, event.placeId)"
-                      class="restaurant-chip"
-                    >
-                      <ion-icon color="primary" name="location-sharp"></ion-icon>
-                      <ion-label color="primary">See location</ion-label>
-                    </ion-chip>
-                  </ion-item>
-                </ion-card-content>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-list>
+  }
+  @if (days?.length) {
+    <div>
+      @for (day of days; track day) {
+        <div>
+          @switch (type) {
+            @case (day.scheduleDayId) {
+              <ion-list>
+                @for (event of day.events; track event) {
+                  <ion-grid>
+                    <ion-row class="ion-align-items-stretch ion-margin-bottom">
+                      <ion-col size="3">
+                        <ion-text>
+                          <h3>{{ event.timeFrom }}</h3>
+                        </ion-text>
+                        <ion-text>
+                          <p>{{ event.timeTo }}</p>
+                        </ion-text>
+                      </ion-col>
+                      <ion-col>
+                        <ion-card color="secondary">
+                          <ion-card-header>
+                            <ion-card-title>{{ event.eventTitle }}</ion-card-title>
+                          </ion-card-header>
+                          <ion-card-content>
+                            <ion-item color="secondary" slot="start" lines="none">
+                              @if (event.location) {
+                                <ion-chip
+                                  (click)="goToLocation(event.location, event.placeId)"
+                                  (keydown.enter)="goToLocation(event.location, event.placeId)"
+                                  class="restaurant-chip"
+                                  >
+                                  <ion-icon color="primary" name="location-sharp"></ion-icon>
+                                  <ion-label color="primary">See location</ion-label>
+                                </ion-chip>
+                              }
+                            </ion-item>
+                          </ion-card-content>
+                        </ion-card>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                }
+              </ion-list>
+            }
+          }
+        </div>
+      }
     </div>
-  </div>
+  }
 </ion-content>

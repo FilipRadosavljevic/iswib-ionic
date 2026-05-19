@@ -1,23 +1,25 @@
-import { Component, OnInit } from '@angular/core'
-import {
-  AbstractControl,
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms'
+import { Component, OnInit, inject } from '@angular/core'
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router'
-import { AlertController, LoadingController } from '@ionic/angular'
+import { AlertController, LoadingController, IonicModule } from '@ionic/angular'
 import { AuthService } from '../services/auth/auth.service'
 import { ToastService } from '../services/toast.service'
 
+
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.page.html',
-  styleUrls: ['./registration.page.scss'],
+    selector: 'app-registration',
+    templateUrl: './registration.page.html',
+    styleUrls: ['./registration.page.scss'],
+    imports: [IonicModule, FormsModule, ReactiveFormsModule]
 })
 export class RegistrationPage implements OnInit {
+  private fb = inject(UntypedFormBuilder);
+  private loadingController = inject(LoadingController);
+  private alertController = inject(AlertController);
+  private authService = inject(AuthService);
+  private toastService = inject(ToastService);
+  private router = inject(Router);
+
   credentialsForm: UntypedFormGroup
 
   roles: { value: string; label: string }[] = [
@@ -28,15 +30,6 @@ export class RegistrationPage implements OnInit {
     { value: 'MEDIA', label: 'Media' },
     { value: 'PARTICIPANT', label: 'Participant' },
   ]
-
-  constructor(
-    private fb: UntypedFormBuilder,
-    private loadingController: LoadingController,
-    private alertController: AlertController,
-    private authService: AuthService,
-    private toastService: ToastService,
-    private router: Router,
-  ) {}
 
   // Easy access for form fields
   get email() {
