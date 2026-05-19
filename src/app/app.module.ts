@@ -23,11 +23,9 @@ import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angul
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideFirebaseApp(() => {
       const app = initializeApp(environment.firebaseConfig)
       if (Capacitor.isNativePlatform) {
@@ -68,7 +66,6 @@ import { connectFunctionsEmulator, getFunctions, provideFunctions } from '@angul
       return functions
     }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -12,7 +12,7 @@ export class DataService {
 
   getSchedule() {
     const scheduleRef = collection(this.firestore, 'schedule').withConverter(scheduleDayConverter)
-    return collectionData(scheduleRef, { idField: 'id' })
+    return collectionData(scheduleRef)
   }
 
   getWorkshops() {
