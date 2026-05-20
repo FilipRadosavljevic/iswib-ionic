@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header />
 
 <ion-content>
   @if (currentUser && !isLoading) {
@@ -6,10 +6,10 @@
       <img alt="ISWiB banner" src="assets/images/background/banner_2024.png" />
       <div class="avatar-container">
         <ion-avatar>
-          <ion-img class="profile" [src]="currentUser.profilePic"> </ion-img>
+          <ion-img class="profile" [src]="currentUser.profilePic" />
         </ion-avatar>
         <div class="inner">
-          <ion-icon name="camera" class="camera-icon"></ion-icon>
+          <ion-icon name="camera" class="camera-icon" />
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
           <ion-item-sliding>
             <ion-item-options side="start">
               <ion-item-option color="secondary">
-                <ion-icon slot="icon-only" name="search"></ion-icon>
+                <ion-icon slot="icon-only" name="search" />
               </ion-item-option>
             </ion-item-options>
             <ion-item>
@@ -43,7 +43,7 @@
                 <p>{{ order.timestamp | date: 'dd.MM.yyyy' }}</p>
                 @for (product of products; track product) {
                   <ion-list>
-                    <ion-img [src]="product.image"></ion-img>
+                    <ion-img [src]="product.image" />
                   </ion-list>
                 }
                 <h2>Price:</h2>
@@ -52,7 +52,7 @@
             </ion-item>
             <ion-item-options side="end">
               <ion-item-option color="danger" (click)="onDeleteOrder(order.orderID)">
-                <ion-icon slot="icon-only" name="trash"></ion-icon>
+                <ion-icon slot="icon-only" name="trash" />
               </ion-item-option>
             </ion-item-options>
           </ion-item-sliding>

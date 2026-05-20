@@ -4,7 +4,7 @@
   @if (!data) {
     <div class="custom-skeleton">
       <h1>
-        <ion-skeleton-text animated style="width: 60%; height: 25px"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 60%; height: 25px" />
       </h1>
       <div class="segment-wrapper">
         @for (item of [].constructor(5); track item) {
@@ -23,29 +23,29 @@
                     height: '130px'
                   }"
                 >
-                  <ion-skeleton-text animated></ion-skeleton-text>
+                  <ion-skeleton-text animated />
                 </ion-thumbnail>
               </ion-card-header>
               <ion-card-content>
-                <ion-skeleton-text animated style="height: 20px"></ion-skeleton-text>
+                <ion-skeleton-text animated style="height: 20px" />
               </ion-card-content>
             </ion-card>
           </ion-col>
         }
       </div>
       <h1>
-        <ion-skeleton-text animated style="width: 60%; height: 25px"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 60%; height: 25px" />
       </h1>
       <div class="segment-wrapper">
         <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
           <ion-segment-button class="categories-button" value="restaurants" checked>
-            <ion-skeleton-text animated style="height: 20px"></ion-skeleton-text>
+            <ion-skeleton-text animated style="height: 20px" />
           </ion-segment-button>
           <ion-segment-button class="categories-button" value="fastfood">
-            <ion-skeleton-text animated style="height: 20px"></ion-skeleton-text>
+            <ion-skeleton-text animated style="height: 20px" />
           </ion-segment-button>
           <ion-segment-button class="categories-button" value="vegan">
-            <ion-skeleton-text animated style="height: 20px"></ion-skeleton-text>
+            <ion-skeleton-text animated style="height: 20px" />
           </ion-segment-button>
         </ion-segment>
       </div>
@@ -62,7 +62,7 @@
                 }"
               >
                 <ion-row style="height: 130px">
-                  <ion-col size="4"> </ion-col>
+                  <ion-col size="4" />
                   <ion-col>
                     <ion-card-header>
                       <ion-thumbnail
@@ -71,10 +71,10 @@
                           height: '130px'
                         }"
                       >
-                        <ion-skeleton-text animated></ion-skeleton-text>
+                        <ion-skeleton-text animated />
                       </ion-thumbnail>
                     </ion-card-header>
-                    <ion-card-content> </ion-card-content>
+                    <ion-card-content />
                   </ion-col>
                 </ion-row>
               </ion-card>
@@ -103,7 +103,9 @@
                   <ion-card-header>
                     <ion-card-title>{{ sponsor.name }}</ion-card-title>
                     <ion-card-subtitle [hidden]="!sponsor.link">
-                      <a [href]="sponsor.link" target="_blank" rel="noopener noreferrer">See more</a>
+                      <a [href]="sponsor.link" target="_blank" rel="noopener noreferrer"
+                        >See more</a
+                      >
                     </ion-card-subtitle>
                   </ion-card-header>
                 </ion-card>
@@ -117,19 +119,19 @@
         <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="type">
           <ion-segment-button class="categories-button" value="restaurants" checked>
             <ion-chip [ngClass]="type === 'restaurants' ? 'checked' : ''">
-              <ion-icon name="restaurant-sharp" color="primary"></ion-icon>
+              <ion-icon name="restaurant-sharp" color="primary" />
               <ion-label color="primary">Restaurants</ion-label>
             </ion-chip>
           </ion-segment-button>
           <ion-segment-button class="categories-button" value="fastfood">
             <ion-chip [ngClass]="type === 'fastfood' ? 'checked' : ''">
-              <ion-icon name="fast-food" color="primary"></ion-icon>
+              <ion-icon name="fast-food" color="primary" />
               <ion-label color="primary">Fast-food</ion-label>
             </ion-chip>
           </ion-segment-button>
           <ion-segment-button class="categories-button" value="vegan">
             <ion-chip [ngClass]="type === 'vegan' ? 'checked' : ''">
-              <ion-icon name="leaf" color="primary"></ion-icon>
+              <ion-icon name="leaf" color="primary" />
               <ion-label color="primary">Vegan</ion-label>
             </ion-chip>
           </ion-segment-button>
@@ -157,11 +159,11 @@
                                   (click)="goToLocation(data[i][j])"
                                   class="restaurant-chip"
                                 >
-                                  <ion-icon color="primary" name="location-sharp"></ion-icon>
+                                  <ion-icon color="primary" name="location-sharp" />
                                   <ion-label color="primary">See location</ion-label>
                                 </ion-chip>
                                 @if (item.vegan) {
-                                  <ion-icon id="vegan" name="leaf"></ion-icon>
+                                  <ion-icon id="vegan" name="leaf" />
                                 }
                               </div>
                             </div>

@@ -6,5 +6,6 @@ export class User {
     public lastName: string,
     public email: string,
     public workshopId?: string,
+    public profilePic?: string,
   ) {}
 }

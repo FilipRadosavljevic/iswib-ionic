@@ -11,11 +11,13 @@ export class Product {
     public price: number,
     public orders: Orders,
     public imageUrl: string,
+    public image?: string,
+    public quantity?: number,
   ) {}
 
-  // get totalPrice() {
-  //   const { S, M, L, XL } = this.orders
-  //
-  //   return this.price * (S + M + L + XL)
-  // }
+  get totalPrice() {
+    const { S, M, L, XL } = this.orders
+
+    return this.price * (S + M + L + XL)
+  }
 }

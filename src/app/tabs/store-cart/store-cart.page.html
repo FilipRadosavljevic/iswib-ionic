@@ -6,10 +6,10 @@
 
 <ion-content>
   <ion-list>
-    @for (product of productsInCart; track product) {
+    @for (product of productsInCart(); track product) {
       <ion-item lines="none" class="product-items">
         <ion-thumbnail slot="start" class="thumbnail">
-          <ion-img [src]="product.image"></ion-img>
+          <ion-img [src]="product.image" />
         </ion-thumbnail>
         <ion-label>
           <h2>{{ product.name }}</h2>

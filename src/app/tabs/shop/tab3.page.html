@@ -1,11 +1,16 @@
-<app-header></app-header>
+<app-header />
 
 <ion-content class="ion-padding-horizontal">
   @if (user) {
     <ion-toolbar color="primary">
       <ion-buttons collapse="true" slot="end">
-        <ion-button class="badge-button" fill="clear" (click)="openCartModal()"  (keydown)="openCartModal()">
-          <ion-icon class="icon" size="large" name="cart"></ion-icon>
+        <ion-button
+          class="badge-button"
+          fill="clear"
+          (click)="openCartModal()"
+          (keydown)="openCartModal()"
+        >
+          <ion-icon class="icon" size="large" name="cart" />
           <ion-badge class="badge-single-digits" color="danger">{{
             calculateCartQuantity()
           }}</ion-badge>
@@ -18,10 +23,14 @@
       @for (product of products; track product) {
         <ion-row class="ion-margin-vertical">
           <ion-card>
-            <ion-col size="12" >
+            <ion-col size="12">
               <div class="image-container">
-
-                <ion-img [src]="product.imageUrl" (click)="addToCart(product)" (keydown)="addToCart(product)" class="product-image"></ion-img>
+                <ion-img
+                  [src]="product.imageUrl"
+                  (click)="addToCart(product)"
+                  (keydown)="addToCart(product)"
+                  class="product-image"
+                />
               </div>
               <div class="ion-justify-content-between">
                 <p class="detail-name">{{ product.name }}</p>
@@ -29,10 +38,10 @@
                 <p class="detail-price">{{ product.price | currency: 'EUR' }}</p>
               </div>
 
-              @if (product.sizes) {
+              @if (product.orders) {
                 <div>
                   <ion-select>
-                    @for (size of Object.entries(product.sizes); track size) {
+                    @for (size of Object.entries(product.orders); track size) {
                       <ion-select-option [value]="size[1]">{{ size[0] }}</ion-select-option>
                     }
                   </ion-select>
@@ -54,7 +63,7 @@
           (click)="redirectLogin('Login to view your cart')"
           (keydown)="redirectLogin('Login to view your cart')"
         >
-          <ion-icon class="icon" size="large" name="cart"></ion-icon>
+          <ion-icon class="icon" size="large" name="cart" />
         </ion-button>
       </ion-buttons>
       <h1>ISWiB Store</h1>
@@ -70,7 +79,7 @@
                 (click)="redirectLogin('Login to order this product')"
                 (keydown)="redirectLogin('Login to order this product')"
                 class="grid-img"
-              ></ion-img>
+              />
               <p class="detail-name">{{ product.name }}</p>
 
               <p class="detail-price">{{ product.price | currency: 'EUR' }}</p>

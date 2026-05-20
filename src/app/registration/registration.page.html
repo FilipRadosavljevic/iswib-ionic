@@ -15,7 +15,7 @@
           placeholder="First Name"
           formControlName="firstName"
           errorText="First name is required"
-        ></ion-input>
+        />
       </ion-item>
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
         <ion-input
@@ -23,7 +23,7 @@
           placeholder="Last Name"
           formControlName="lastName"
           errorText="Last name is required"
-        ></ion-input>
+        />
       </ion-item>
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
         <ion-input
@@ -31,7 +31,7 @@
           placeholder="Email"
           formControlName="email"
           [errorText]="email.errors?.['required'] ? 'Email is required' : 'Email is invalid'"
-        ></ion-input>
+        />
       </ion-item>
       <ion-item color="primary" class="ion-margin-horizontal ion-margin-vertical" lines="none">
         <ion-input
@@ -43,30 +43,23 @@
               ? 'Password is required'
               : 'Password needs to be at least 6 characters'
           "
-        ></ion-input>
+        />
       </ion-item>
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
         <ion-input
           type="password"
           placeholder="Confirm Password"
           formControlName="confirmPassword"
-        ></ion-input>
+        />
       </ion-item>
       @if (confirmPassword.dirty && credentialsForm.errors?.['missMatch']) {
-        <ion-note
-          color="danger"
-          class="ion-margin-horizontal"
-          >
-          Passwords must match
-        </ion-note>
+        <ion-note color="danger" class="ion-margin-horizontal"> Passwords must match </ion-note>
       }
 
       <ion-item color="primary" class="ion-margin-horizontal" lines="none">
         <ion-select interface="action-sheet" placeholder="Select Role" formControlName="role">
           @for (role of roles; track role) {
-            <ion-select-option [value]="role.value">{{
-              role.label
-            }}</ion-select-option>
+            <ion-select-option [value]="role.value">{{ role.label }}</ion-select-option>
           }
         </ion-select>
       </ion-item>
@@ -85,6 +78,6 @@
       alt="logo"
       id="header_picture"
       src="assets/images/background/register.jpg"
-      />
-    </div>
-  </ion-content>
+    />
+  </div>
+</ion-content>
