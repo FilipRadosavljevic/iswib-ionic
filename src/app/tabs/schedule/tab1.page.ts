@@ -40,7 +40,7 @@ export class Tab1Page implements OnInit, OnDestroy {
   }
 
   goToLocation(location: string, placeId: string) {
-    // eslint-disable-next-line max-len
+     
     const googleLocation = `https://www.google.com/maps/search/?api=1&query=${location}&query_place_id=${placeId}`
     window.open(googleLocation)
   }

@@ -1,9 +1,17 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core'
+import { Component, OnDestroy, inject } from '@angular/core'
 import { Router } from '@angular/router'
 import { Subscription } from 'rxjs'
 import { DataService } from 'src/app/services/data.service'
 import { HeaderComponent } from '../../components/header/header.component'
 import { IonicModule } from '@ionic/angular'
+
+interface DiscoveryItem {
+  name: string
+  image: string
+  description?: string
+  location?: string
+  placeId?: string
+}
 
 @Component({
   selector: 'app-discovery',
@@ -11,16 +19,12 @@ import { IonicModule } from '@ionic/angular'
   styleUrls: ['tab4.page.scss'],
   imports: [HeaderComponent, IonicModule],
 })
-export class Tab4Page implements OnInit, OnDestroy {
+export class Tab4Page implements OnDestroy {
   private router = inject(Router)
   private dataService = inject(DataService)
 
-  data: any
+  data: DiscoveryItem[]
   sub: Subscription
-  userID: any
-  hasLiked: any
-
-  ngOnInit() {}
 
   ngOnDestroy() {
     this.sub.unsubscribe()
@@ -31,8 +35,8 @@ export class Tab4Page implements OnInit, OnDestroy {
   }
 
   async getData() {
-    this.sub = await this.dataService.getDiscovery().subscribe((res) => {
-      this.data = res
+    this.sub = this.dataService.getDiscovery().subscribe((res) => {
+      this.data = res as DiscoveryItem[]
     })
   }
 
@@ -69,8 +73,7 @@ export class Tab4Page implements OnInit, OnDestroy {
     })
   }
 
-  goToLocation(currentObject: any) {
-    // eslint-disable-next-line max-len
+  goToLocation(currentObject: DiscoveryItem) {
     const googleLocation = `https://www.google.com/maps/search/?api=1&query=${currentObject.location}&query_place_id=${currentObject.placeId}`
     window.open(googleLocation)
   }

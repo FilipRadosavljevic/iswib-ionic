@@ -99,11 +99,11 @@
             <swiper-slide>
               <ion-col>
                 <ion-card class="sponsors" color="light">
-                  <img class="sponsors-img" [src]="sponsor.image" />
+                  <img class="sponsors-img" [alt]="sponsor.name" [src]="sponsor.image" />
                   <ion-card-header>
                     <ion-card-title>{{ sponsor.name }}</ion-card-title>
                     <ion-card-subtitle [hidden]="!sponsor.link">
-                      <a (click)="seeMore(sponsor.link)">See more</a>
+                      <a [href]="sponsor.link" target="_blank" rel="noopener noreferrer">See more</a>
                     </ion-card-subtitle>
                   </ion-card-header>
                 </ion-card>
@@ -145,7 +145,7 @@
                     <ion-card color="primary" class="restaurant-card ion-margin-bottom">
                       <ion-row>
                         <ion-col size="4">
-                          <img [src]="item.image" />
+                          <img [alt]="item.name" [src]="item.image" />
                         </ion-col>
                         <ion-col>
                           <ion-card-content>

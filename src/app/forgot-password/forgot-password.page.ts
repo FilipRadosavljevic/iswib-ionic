@@ -11,11 +11,11 @@ import { AuthService } from '../services/auth/auth.service'
     imports: [IonicModule, FormsModule, ReactiveFormsModule]
 })
 export class ForgotPasswordPage implements OnInit {
-  private authService = inject(AuthService);
-  private toastController = inject(ToastController);
-  private loadingController = inject(LoadingController);
-  private fb = inject(UntypedFormBuilder);
-  private router = inject(Router);
+  private authService = inject(AuthService)
+  private toastController = inject(ToastController)
+  private loadingController = inject(LoadingController)
+  private fb = inject(UntypedFormBuilder)
+  private router = inject(Router)
 
   credentials: UntypedFormGroup
 

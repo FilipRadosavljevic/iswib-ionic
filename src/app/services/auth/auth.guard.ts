@@ -6,8 +6,8 @@ import { Router } from '@angular/router'
   providedIn: 'root',
 })
 export class AuthGuard  {
-  private router = inject(Router);
-  private auth = inject(Auth);
+  private router = inject(Router)
+  private auth = inject(Auth)
 
 
   async canActivate() {

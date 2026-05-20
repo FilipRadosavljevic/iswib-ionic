@@ -13,12 +13,12 @@ import { ToastService } from '../services/toast.service'
     imports: [IonicModule, FormsModule, ReactiveFormsModule]
 })
 export class RegistrationPage implements OnInit {
-  private fb = inject(UntypedFormBuilder);
-  private loadingController = inject(LoadingController);
-  private alertController = inject(AlertController);
-  private authService = inject(AuthService);
-  private toastService = inject(ToastService);
-  private router = inject(Router);
+  private fb = inject(UntypedFormBuilder)
+  private loadingController = inject(LoadingController)
+  private alertController = inject(AlertController)
+  private authService = inject(AuthService)
+  private toastService = inject(ToastService)
+  private router = inject(Router)
 
   credentialsForm: UntypedFormGroup
 

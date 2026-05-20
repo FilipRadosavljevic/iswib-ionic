@@ -1,6 +1,6 @@
 import { Product } from 'src/app/models/product.model'
 
-export const companyStoreProducts = [
+export const companyStoreProducts: Partial<Product>[] = [
   {
     name: 'Backpack',
     price: 8,

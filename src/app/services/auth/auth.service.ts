@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+ 
 import { Injectable, inject } from '@angular/core'
 import {
   Auth,
@@ -41,9 +41,9 @@ const userConverter: FirestoreDataConverter<User> = {
   providedIn: 'root',
 })
 export class AuthService {
-  private auth = inject(Auth);
-  private firestore = inject(Firestore);
-  private functions = inject(Functions);
+  private auth = inject(Auth)
+  private firestore = inject(Firestore)
+  private functions = inject(Functions)
 
   private _user$: Observable<User | null>
 

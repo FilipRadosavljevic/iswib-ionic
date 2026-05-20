@@ -5,7 +5,7 @@ import { ToastButton, ToastController } from '@ionic/angular'
   providedIn: 'root',
 })
 export class ToastService {
-  private toastController = inject(ToastController);
+  private toastController = inject(ToastController)
 
 
   async presentToast(

@@ -9,7 +9,7 @@ import { ScheduleDay, scheduleDayConverter } from '../tabs/schedule/models/sched
   providedIn: 'root',
 })
 export class DataService {
-  private firestore = inject(Firestore);
+  private firestore = inject(Firestore)
 
 
   getSchedule(): Observable<ScheduleDay[]> {

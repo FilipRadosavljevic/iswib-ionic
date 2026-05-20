@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, inject, viewChild } from '@angular/core'
 import { ModalController, LoadingController, IonModal, IonicModule } from '@ionic/angular'
 import { Currency, CurrencyService } from '../services/currency.service'
-import { HeaderComponent } from '../components/header/header.component';
+import { HeaderComponent } from '../components/header/header.component'
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
 
 @Component({
     selector: 'app-converter',
@@ -12,14 +12,14 @@ import { FormsModule } from '@angular/forms';
     imports: [HeaderComponent, IonicModule, FormsModule]
 })
 export class ConverterPage implements OnInit {
-  private currencyService = inject(CurrencyService);
-  private modalCtrl = inject(ModalController);
-  private loadingCtrl = inject(LoadingController);
+  private currencyService = inject(CurrencyService)
+  private modalCtrl = inject(ModalController)
+  private loadingCtrl = inject(LoadingController)
 
-  readonly fromModal = viewChild<IonModal>('fromModal');
-  readonly toModal = viewChild<IonModal>('toModal');
-  readonly fromValueRef = viewChild<ElementRef<HTMLInputElement>>('fromValueRef');
-  readonly toValueRef = viewChild<ElementRef<HTMLInputElement>>('toValueRef');
+  readonly fromModal = viewChild<IonModal>('fromModal')
+  readonly toModal = viewChild<IonModal>('toModal')
+  readonly fromValueRef = viewChild<ElementRef<HTMLInputElement>>('fromValueRef')
+  readonly toValueRef = viewChild<ElementRef<HTMLInputElement>>('toValueRef')
   countryRates = new Map<string, number>()
   countryNames = new Map<string, string>()
   currencies: Currency[]
@@ -40,8 +40,8 @@ export class ConverterPage implements OnInit {
     this.populateMaps()
   }
 
-  onSearch(event: any) {
-    const query = event.target.value.toLowerCase()
+  onSearch(event: Event) {
+    const query = (event.target as HTMLInputElement).value.toLowerCase()
     this.searchResults = this.currencies.filter(
       (curr) =>
         curr.code.toLowerCase().indexOf(query) > -1 || curr.name.toLowerCase().indexOf(query) > -1,

@@ -75,18 +75,18 @@
                     <div>
                       <ion-avatar [ngClass]="workshop.image2 ? 'image1' : ''">
                         @if (workshop.image) {
-                          <img [src]="workshop.image" width="50" height="50" />
+                          <img [alt]="workshop.title" [src]="workshop.image" width="50" height="50" />
                         }
                       </ion-avatar>
                       <ion-avatar class="image2">
                         @if (workshop.image2) {
-                          <img [src]="workshop.image2" width="50" height="50" />
+                          <img [alt]="workshop.title" [src]="workshop.image2" width="50" height="50" />
                         }
                       </ion-avatar>
                       @if (workshop.image3) {
                         <ion-avatar class="image3">
                           @if (workshop.image3) {
-                            <img [src]="workshop.image3" width="50" height="50" />
+                            <img [alt]="workshop.title" [src]="workshop.image3" width="50" height="50" />
                           }
                         </ion-avatar>
                       }

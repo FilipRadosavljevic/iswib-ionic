@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core'
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { Router, RouterLink } from '@angular/router'
-import { AlertController, LoadingController, ToastController, IonicModule } from '@ionic/angular'
+import { AlertController, LoadingController, IonicModule } from '@ionic/angular'
 import { AuthService } from '../services/auth/auth.service'
 import { FirebaseError } from '@angular/fire/app'
 
@@ -12,11 +12,11 @@ import { FirebaseError } from '@angular/fire/app'
     imports: [IonicModule, FormsModule, ReactiveFormsModule, RouterLink]
 })
 export class LoginPage implements OnInit {
-  private fb = inject(UntypedFormBuilder);
-  private loadingController = inject(LoadingController);
-  private alertController = inject(AlertController);
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  private fb = inject(UntypedFormBuilder)
+  private loadingController = inject(LoadingController)
+  private alertController = inject(AlertController)
+  private authService = inject(AuthService)
+  private router = inject(Router)
 
   credentialsForm: UntypedFormGroup
 

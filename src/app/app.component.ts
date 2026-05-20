@@ -4,7 +4,7 @@ import { Router, RouterLink } from '@angular/router'
 import { AlertController, AnimationController, MenuController, ToastController, IonicModule } from '@ionic/angular'
 import { takeUntil } from 'rxjs/operators'
 import { AuthService } from './services/auth/auth.service'
-import { Observable, Subject } from 'rxjs'
+import { Subject } from 'rxjs'
 import { User } from './models/user.model'
 import { register as registerSwiperElements } from 'swiper/element/bundle'
 
@@ -18,12 +18,12 @@ registerSwiperElements()
     imports: [IonicModule, RouterLink]
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private animationCtrl = inject(AnimationController);
-  private router = inject(Router);
-  private menu = inject(MenuController);
-  private toastController = inject(ToastController);
-  private alertController = inject(AlertController);
-  authService = inject(AuthService);
+  private animationCtrl = inject(AnimationController)
+  private router = inject(Router)
+  private menu = inject(MenuController)
+  private toastController = inject(ToastController)
+  private alertController = inject(AlertController)
+  authService = inject(AuthService)
 
   private _unsubscribe$ = new Subject<void>()
 
@@ -40,7 +40,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this._unsubscribe$.complete()
   }
 
-  myCustomPageTransition = (_baseEl: any, opts?: any) => {
+  myCustomPageTransition = (
+    _baseEl: HTMLElement,
+    opts: { leavingEl: HTMLElement; enteringEl: HTMLElement },
+  ) => {
     const anim1 = this.animationCtrl
       .create()
       .addElement(opts.leavingEl)

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core'
-import { Subject, Subscription } from 'rxjs'
+import { Subject } from 'rxjs'
 import { DataService } from 'src/app/services/data.service'
 import { Workshop } from './models/workshop.model'
 import { takeUntil } from 'rxjs/operators'
